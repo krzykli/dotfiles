@@ -1,0 +1,1269 @@
+- cmd: cd Icons/
+  when: 1440416047
+  paths:
+    - Icons/
+- cmd: cclear
+  when: 1440417315
+- cmd: cd .config/fish/
+  when: 1440417879
+  paths:
+    - .config/fish/
+- cmd: mv fish.config config.fish
+  when: 1440417884
+  paths:
+    - fish.config
+- cmd: cd nerdtree/
+  when: 1440419417
+  paths:
+    - nerdtree/
+- cmd: git clone https://github.com/scrooloose/nerdtree.git .
+  when: 1440419443
+  paths:
+    - .
+- cmd: vim .sprint
+  when: 1440419488
+- cmd: $foundry_LICENSE 
+  when: 1440426388
+- cmd: eval $foundry_LICENSE 
+  when: 1440426405
+- cmd: echo $foundry_LICENSE
+  when: 1440426419
+- cmd: cd UI4/Resources/
+  when: 1440426521
+  paths:
+    - UI4/Resources/
+- cmd: :q
+  when: 1440426530
+- cmd: fish help
+  when: 1440427396
+- cmd: fish -help
+  when: 1440427400
+- cmd: fish --help
+  when: 1440427402
+- cmd: fish .config/fish/config.fish 
+  when: 1440427985
+  paths:
+    - .config/fish/config.fish
+- cmd: /workspace/Katana/QA_Resources/Resources/Apps/Katana/Modules/.qaBashrc
+  when: 1440428353
+  paths:
+    - /workspace/Katana/QA_Resources/Resources/Apps/Katana/Modules/.qaBashrc
+- cmd: vim /workspace/Katana/QA_Resources/Resources/Apps/Katana/Modules/.qaBashrc
+  when: 1440434485
+  paths:
+    - /workspace/Katana/QA_Resources/Resources/Apps/Katana/Modules/.qaBashrc
+- cmd: which k
+  when: 1440434557
+- cmd: bash /workspace/Katana/QA_Resources/Resources/Apps/Katana/Modules/.qaBashrc
+  when: 1440434736
+  paths:
+    - /workspace/Katana/QA_Resources/Resources/Apps/Katana/Modules/.qaBashrc
+- cmd: bash testBash.sh 
+  when: 1440435301
+  paths:
+    - testBash.sh
+- cmd: vim testBash.sh 
+  when: 1440435345
+  paths:
+    - testBash.sh
+- cmd: source testBash.sh
+  when: 1440435357
+  paths:
+    - testBash.sh
+- cmd: bash testBash.sh
+  when: 1440435367
+  paths:
+    - testBash.sh
+- cmd: echo $TAK
+  when: 1440435375
+- cmd: echo $asdf
+  when: 1440435379
+- cmd: cd /workspace/Katana/2.1dev/
+  when: 1440436082
+  paths:
+    - /workspace/Katana/2.1dev/
+- cmd: cd asdf]
+  when: 1440436389
+- cmd: cd as
+  when: 1440436396
+- cmd: cd kos
+  when: 1440436398
+- cmd: ./katana 
+  when: 1440587940
+  paths:
+    - ./katana
+- cmd: ./katana -a /opt/Foundry/Katana2.0v1/katana 
+  when: 1440587953
+  paths:
+    - ./katana
+    - /opt/Foundry/Katana2.0v1/katana
+- cmd: ./katana -a /opt/Foundry/Katana2.0v1/plugins/Resources/Arnold4.1/
+  when: 1440587970
+  paths:
+    - ./katana
+    - /opt/Foundry/Katana2.0v1/plugins/Resources/Arnold4.1/
+- cmd: export KATANA_RESOURCES=/opt/Foundry/Katana2.0v1/plugins/Resources/Arnold4.1/
+  when: 1440587989
+- cmd: set KATANA_RESOURCES=/opt/Foundry/Katana2.0v1/plugins/Resources/Arnold4.1/
+  when: 1440587998
+- cmd: set KATANA_RESOURCES="/opt/Foundry/Katana2.0v1/plugins/Resources/Arnold4.1/"
+  when: 1440588003
+- cmd: set KATANA_RESOURCES /opt/Foundry/Katana2.0v1/plugins/Resources/Arnold4.1/
+  when: 1440588011
+  paths:
+    - /opt/Foundry/Katana2.0v1/plugins/Resources/Arnold4.1/
+- cmd: ./katana
+  when: 1440588029
+  paths:
+    - ./katana
+- cmd: cd Bugs/
+  when: 1440593311
+  paths:
+    - Bugs/
+- cmd: cd sabre/tests/
+  when: 1440593862
+  paths:
+    - sabre/tests/
+- cmd: mkdir Bugs
+  when: 1440593870
+- cmd: ./runtests.sh tests/Bugs/
+  when: 1440593907
+  paths:
+    - ./runtests.sh
+    - tests/Bugs/
+- cmd: ./runtests.sh sabre/tests/Bugs/
+  when: 1440593920
+  paths:
+    - ./runtests.sh
+    - sabre/tests/Bugs/
+- cmd: ./runtests.sh -t sabre/tests/Bugs/
+  when: 1440593925
+  paths:
+    - ./runtests.sh
+    - sabre/tests/Bugs/
+- cmd: mv tests/Bugs/57212.py sabre/tests/Bugs/
+  when: 1440593962
+  paths:
+    - tests/Bugs/57212.py
+    - sabre/tests/Bugs/
+- cmd: rm -rf tests/Bugs/
+  when: 1440593969
+  paths:
+    - tests/Bugs/
+- cmd: ./runtests.sh -t sabre/tests/Bugs/57212.py 
+  when: 1440593975
+  paths:
+    - ./runtests.sh
+    - sabre/tests/Bugs/57212.py
+- cmd: ./runtests.sh run -t sabre/tests/Bugs/57212.py 
+  when: 1440593984
+  paths:
+    - ./runtests.sh
+    - sabre/tests/Bugs/57212.py
+- cmd: ./runtests.sh run -t sabre/tests/Bugs
+  when: 1440594008
+  paths:
+    - ./runtests.sh
+    - sabre/tests/Bugs
+- cmd: lc
+  when: 1440608915
+- cmd: quit
+  when: 1440609278
+- cmd: tmxu
+  when: 1443796861
+- cmd: cd .vim/bundle/
+  when: 1443797397
+  paths:
+    - .vim/bundle/
+- cmd: rm -rf vim-fish/
+  when: 1443797407
+  paths:
+    - vim-fish/
+- cmd: vim .vimrc
+  when: 1443797466
+  paths:
+    - .vimrc
+- cmd: vim .config/
+  when: 1443798043
+  paths:
+    - .config/
+- cmd: cat .shell_prompt.sh 
+  when: 1443798772
+  paths:
+    - .shell_prompt.sh
+- cmd: k
+  when: 1443801523
+- cmd: clea
+  when: 1443803444
+- cmd: rls
+  when: 1443803444
+- cmd: mv Downloads/KtoA-1.0.5-linux.tgz /mnt/netdev/mullan/Netlaunch/arnold/
+  when: 1444035467
+  paths:
+    - Downloads/KtoA-1.0.5-linux.tgz
+    - /mnt/netdev/mullan/Netlaunch/arnold/
+- cmd: tar -xvf KtoA-1.0.5-linux.tgz 
+  when: 1444035487
+  paths:
+    - KtoA-1.0.5-linux.tgz
+- cmd: rm -rf KtoA-1.0.5-linux.tgz 
+  when: 1444035500
+  paths:
+    - KtoA-1.0.5-linux.tgz
+- cmd: tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill
+  when: 1444035580
+- cmd: netdev
+  when: 1444036921
+- cmd: cd /mnt/netdev/mullan/Netlaunch/arnold/
+  when: 1444036943
+  paths:
+    - /mnt/netdev/mullan/Netlaunch/arnold/
+- cmd: k 2.1dev --ktoa=1.0.5
+  when: 1444037066
+- cmd: k 2.1dev --list-ktoa
+  when: 1444037070
+- cmd: k 2.1dev --help
+  when: 1444037075
+- cmd: k 2.1dev --list-arnold
+  when: 1444037080
+- cmd: k 2.1dev --arnold=4.2.9.0
+  when: 1444037100
+- cmd: cd KtoA-1.0.
+  when: 1444037111
+- cmd: cd KtoA-1.0.5-linux/
+  when: 1444037115
+  paths:
+    - KtoA-1.0.5-linux/
+- cmd: ./kick 
+  when: 1444037121
+  paths:
+    - ./kick
+- cmd: ln -s KtoA-1.0.5-linux 4.2.10.0
+  when: 1444037141
+  paths:
+    - KtoA-1.0.5-linux
+- cmd: chsh -s `which fish` krzysztof.klimczyk
+  when: 1444039552
+- cmd: chsh -s `which fish` 'krzysztof.klimczyk'
+  when: 1444039563
+- cmd: chsh -s `which fish` --username krzysztof.klimczyk
+  when: 1444039570
+- cmd: sudo chsh -s `which fish` krzysztofklimczyk
+  when: 1444039593
+- cmd: chsh --list-shells
+  when: 1444039653
+- cmd: chsh --help
+  when: 1444039660
+- cmd: sudo chsh -s `which fish`
+  when: 1444039669
+- cmd: sudo chsh -s `which fish` krzysztof.klimczyk
+  when: 1444039688
+- cmd: sudo chsh -s /usr/bin/fish krzysztof.klimczyk
+  when: 1444039707
+  paths:
+    - /usr/bin/fish
+- cmd: su
+  when: 1444041045
+- cmd: /mnt/netdev/mullan/Netlaunch/arnold/4.2.10.0/procedurals/
+  when: 1444042496
+  paths:
+    - /mnt/netdev/mullan/Netlaunch/arnold/4.2.10.0/procedurals/
+- cmd: cd procedurals/
+  when: 1444042508
+  paths:
+    - procedurals/
+- cmd: cd Args/
+  when: 1444042512
+  paths:
+    - Args/
+- cmd: git grep CheckMakeFileBuild
+  when: 1444050565
+- cmd: ggrep CheckMakeFileBuild
+  when: 1444050858
+- cmd: cd ../
+  when: 1444050861
+  paths:
+    - ../
+- cmd: cd FnTestUtils/
+  when: 1444050931
+  paths:
+    - FnTestUtils/
+- cmd: cd  ..
+  when: 1444050985
+  paths:
+    - ..
+- cmd: TestHelpers/
+  when: 1444051000
+  paths:
+    - TestHelpers/
+- cmd: testh 
+  when: 1444051006
+- cmd: cd TestUnits/
+  when: 1444051021
+  paths:
+    - TestUnits/
+- cmd: cd FnKatanaTestModules/
+  when: 1444051038
+  paths:
+    - FnKatanaTestModules/
+- cmd: cd FnKatanaTestTypes/
+  when: 1444051045
+  paths:
+    - FnKatanaTestTypes/
+- cmd: vim FnKatanaTestUtils.py
+  when: 1444051105
+  paths:
+    - FnKatanaTestUtils.py
+- cmd: vim FnKatanaTestTypes/
+  when: 1444051124
+  paths:
+    - FnKatanaTestTypes/
+- cmd: cat FnKatanaTestUtils.py
+  when: 1444051174
+  paths:
+    - FnKatanaTestUtils.py
+- cmd: cd FnTestBaseTypes/
+  when: 1444051199
+  paths:
+    - FnTestBaseTypes/
+- cmd: which python
+  when: 1444054126
+- cmd: cd /usr/local/bin/python27 
+  when: 1444054148
+  paths:
+    - /usr/local/bin/python27
+- cmd: cd /usr/local/bin/python2.7
+  when: 1444054151
+  paths:
+    - /usr/local/bin/python2.7
+- cmd: cd python2.7/
+  when: 1444054171
+  paths:
+    - python2.7/
+- cmd: mkdir testHarnessPython27
+  when: 1444054486
+- cmd: cat testHarnessPython27_cbd.xml 
+  when: 1444054643
+  paths:
+    - testHarnessPython27_cbd.xml
+- cmd: cp ~/testHarnessPython27_cbd.xml .
+  when: 1444054723
+  paths:
+    - .
+- cmd: p4 wscreate -f ~/testHarnessPython27_cbd.xml -w testHarnessPython27
+  when: 1444054726
+- cmd: p4 wscreate -f testHarnessPython27_cbd.xml -w testHarnessPython27
+  when: 1444054742
+  paths:
+    - testHarnessPython27_cbd.xml
+- cmd: source ~/.config/fish/config.fish 
+  when: 1444055474
+- cmd: p4 sync //Foundry/Thirdparty/Python/2.7.3
+  when: 1444055478
+- cmd: cd ls
+  when: 1444055668
+- cmd: cd qaResTemp/QA_Resources
+  when: 1444055675
+  paths:
+    - qaResTemp/QA_Resources
+- cmd: cd testHarnessPython27/
+  when: 1444055681
+  paths:
+    - testHarnessPython27/
+- cmd: cd Perforce/
+  when: 1444055793
+  paths:
+    - Perforce/
+- cmd: cd krzysztof.klimczyk_python27/
+  when: 1444055794
+  paths:
+    - krzysztof.klimczyk_python27/
+- cmd: rm -rf Foundry/
+  when: 1444055833
+  paths:
+    - Foundry/
+- cmd: cd krzysztof.klimczyk_thirdparty_python/
+  when: 1444055950
+  paths:
+    - krzysztof.klimczyk_thirdparty_python/
+- cmd: rm -rf Apps/ColorwayIOS/
+  when: 1444055959
+  paths:
+    - Apps/ColorwayIOS/
+- cmd: rm -rf Apps/
+  when: 1444055965
+  paths:
+    - Apps/
+- cmd: cd Foundry/
+  when: 1444056021
+  paths:
+    - Foundry/
+- cmd: cd TestHarness
+  when: 1444056043
+  paths:
+    - TestHarness
+- cmd: cd Thirdparty/Python/
+  when: 1444056047
+  paths:
+    - Thirdparty/Python/
+- cmd: cd deps/
+  when: 1444056059
+  paths:
+    - deps/
+- cmd: cp -r /workspace/Katana/krzysztof.klimczyk_thirdparty_python/Foundry/Thirdparty/Python/2.7.3 .
+  when: 1444056129
+  paths:
+    - /workspace/Katana/krzysztof.klimczyk_thirdparty_python/Foundry/Thirdparty/Python/2.7.3
+    - .
+- cmd: cd main/
+  when: 1444056137
+  paths:
+    - main/
+- cmd: rm -rf readonly
+  when: 1444056166
+  paths:
+    - readonly
+- cmd: rm -rf work/
+  when: 1444056172
+  paths:
+    - work/
+- cmd: mv main/* .
+  when: 1444056182
+  paths:
+    - .
+- cmd: rm -rf main
+  when: 1444056188
+  paths:
+    - main
+- cmd: ./python2.7
+  when: 1444056238
+  paths:
+    - ./python2.7
+- cmd: cd src
+  when: 1444056257
+  paths:
+    - src
+- cmd: cd 2.6.5/
+  when: 1444056273
+  paths:
+    - 2.6.5/
+- cmd: ./python2.6
+  when: 1444056286
+  paths:
+    - ./python2.6
+- cmd: cd 2.7.3/
+  when: 1444056303
+  paths:
+    - 2.7.3/
+- cmd: cd linux-64-x86-release-410/
+  when: 1444056306
+  paths:
+    - linux-64-x86-release-410/
+- cmd: cd src/
+  when: 1444056381
+  paths:
+    - src/
+- cmd: ./install-sh 
+  when: 1444056386
+  paths:
+    - ./install-sh
+- cmd: ./configure 
+  when: 1444056427
+  paths:
+    - ./configure
+- cmd: make
+  when: 1444056455
+- cmd: sudo make
+  when: 1444056482
+- cmd: rm -rf 2.7.3
+  when: 1444056511
+  paths:
+    - 2.7.3
+- cmd: python27
+  when: 1444056519
+- cmd: which python 27
+  when: 1444056524
+- cmd: rm -rf krzysztof.klimczyk_thirdparty_python
+  when: 1444056584
+  paths:
+    - krzysztof.klimczyk_thirdparty_python
+- cmd: rm -rf testHarnessPython27/
+  when: 1444056592
+  paths:
+    - testHarnessPython27/
+- cmd: cd /opt/python
+  when: 1444056626
+  paths:
+    - /opt/python
+- cmd: cd Python-2.7.3/
+  when: 1444056628
+  paths:
+    - Python-2.7.3/
+- cmd: ./python
+  when: 1444056635
+  paths:
+    - ./python
+- cmd: cd /opt/python/
+  when: 1444056748
+  paths:
+    - /opt/python/
+- cmd: cd /workspace/
+  when: 1444056752
+  paths:
+    - /workspace/
+- cmd: mkdir testharness27
+  when: 1444056760
+- cmd: cd testharness27/
+  when: 1444056761
+  paths:
+    - testharness27/
+- cmd: p4 wscreate -f //Foundry/CBD/Apps/Katana/main_test.xml -w testharness27
+  when: 1444056845
+- cmd: rm -rf *
+  when: 1444056983
+- cmd: p4 -c testharness27 sync
+  when: 1444056985
+- cmd: mr
+  when: 1444056994
+- cmd: p4v
+  when: 1444057009
+- cmd: exirt
+  when: 1444057340
+- cmd: ./FnRunTests.py -p /opt/Foundry/Katana2.1dev/katana --xml --log fullRun27.xml
+  when: 1444062183
+  paths:
+    - ./FnRunTests.py
+    - /opt/Foundry/Katana2.1dev/katana
+- cmd: firefox fullRun27.xml
+  when: 1444063544
+  paths:
+    - fullRun27.xml
+- cmd: cd ll
+  when: 1444064039
+- cmd: cd testharness
+  when: 1444064044
+- cmd: cd Apps/
+  when: 1444064055
+  paths:
+    - Apps/
+- cmd: cd ../../..
+  when: 1444064061
+  paths:
+    - ../../..
+- cmd: cd Python/
+  when: 1444064068
+  paths:
+    - Python/
+- cmd: rm -rf 2.6.5/
+  when: 1444064073
+  paths:
+    - 2.6.5/
+- cmd: cd Katana
+  when: 1444064112
+  paths:
+    - Katana
+- cmd: ./FnRunTests.py -p /opt/Foundry/Katana2.1dev/katana --xml --log fullRun27_2.xml
+  when: 1444067254
+  paths:
+    - /opt/Foundry/Katana2.1dev/katana
+- cmd: firefox fullRun27_2.xml
+  when: 1444121461
+  paths:
+    - fullRun27_2.xml
+- cmd: python tpScript.py 
+  when: 1444121678
+  paths:
+    - tpScript.py
+- cmd: gedit sprintReport.txt 
+  when: 1444121900
+  paths:
+    - sprintReport.txt
+- cmd: gimp Pictures/locationVisibility.png 
+  when: 1444121965
+  paths:
+    - Pictures/locationVisibility.png
+- cmd: gimp Pictures/visibilityLinkNew.png 
+  when: 1444122006
+  paths:
+    - Pictures/visibilityLinkNew.png
+- cmd: gimp
+  when: 1444122333
+- cmd: cp nodesActiveState.mpeg /mnt/netdev/krzysztof.klimczyk/recordings/
+  when: 1444122371
+  paths:
+    - nodesActiveState.mpeg
+    - /mnt/netdev/krzysztof.klimczyk/recordings/
+- cmd: vlc nodesActiveState.mpeg 
+  when: 1444122477
+  paths:
+    - nodesActiveState.mpeg
+- cmd: 1.6dev
+  when: 1444129305
+- cmd: k 1.6dev
+  when: 1444129308
+- cmd: k 1.6v3
+  when: 1444129337
+- cmd: ik 2.0dev
+  when: 1444130167
+- cmd: p4
+  when: 1444130874
+- cmd: p4 help sync
+  when: 1444130879
+- cmd: mvc sync
+  when: 1444130913
+- cmd: mvc sync -f //Foundry/CBD/Apps/Katana/main_test.xml
+  when: 1444130948
+- cmd: mvc sync -f /Apps/Katana/TestHarness.fbuild
+  when: 1444131016
+- cmd: mvc sync -f Apps/Katana/TestHarness.fbuild
+  when: 1444131027
+- cmd: find -r *.pyc
+  when: 1444131769
+- cmd: find -r "*.pyc"
+  when: 1444131780
+- cmd: find  "*.pyc"
+  when: 1444131784
+- cmd: find  -name "*.pyc"
+  when: 1444131922
+- cmd: rm -f `find -name *.pyc`
+  when: 1444131942
+- cmd: rm -f `find "-name *.pyc"`
+  when: 1444131947
+- cmd: rm -f `find -name "*.pyc"`
+  when: 1444131952
+- cmd: `find -name '*.pyc'`
+  when: 1444131981
+- cmd: rm -f `find -name '*.pyc'`
+  when: 1444132010
+- cmd: rm `find -name '*.pyc'`
+  when: 1444132079
+- cmd: find -name '*.pyc' -delete
+  when: 1444132136
+- cmd: find -name '*.pyc'
+  when: 1444132139
+- cmd: ggrep SceneGraphDataTest
+  when: 1444132250
+- cmd: git grep SceneGraphDataTest
+  when: 1444132267
+- cmd: p4 sync
+  when: 1444132347
+- cmd: p4 sync -f
+  when: 1444132676
+- cmd: git add *
+  when: 1444133328
+- cmd: git status
+  when: 1444133338
+- cmd: s
+  when: 1444133377
+- cmd: ./go
+  when: 1444133850
+- cmd: rm .git
+  when: 1444134166
+  paths:
+    - .git
+- cmd: rm -rf .git
+  when: 1444134171
+  paths:
+    - .git
+- cmd: cd Tests/Apps/Katana/
+  when: 1444134176
+  paths:
+    - Tests/Apps/Katana/
+- cmd: cd TestH
+  when: 1444134183
+- cmd: cd Tests/
+  when: 1444134201
+  paths:
+    - Tests/
+- cmd: cd Apps/Katana/
+  when: 1444134203
+  paths:
+    - Apps/Katana/
+- cmd: cd TestHarness/
+  when: 1444134207
+  paths:
+    - TestHarness/
+- cmd: cd TestTypes/
+  when: 1444134210
+  paths:
+    - TestTypes/
+- cmd: ll
+  when: 1444134212
+- cmd: /workspace/Katana/TestHarness/Tests/Apps/Katana/TestHarness/TestTypes
+  when: 1444134258
+  paths:
+    - /workspace/Katana/TestHarness/Tests/Apps/Katana/TestHarness/TestTypes
+- cmd: vim JUnit.py 
+  when: 1444134474
+  paths:
+    - JUnit.py
+- cmd: vim Generic.py 
+  when: 1444134484
+  paths:
+    - Generic.py
+- cmd: vim __init__.py 
+  when: 1444134593
+  paths:
+    - __init__.py
+- cmd: cd Common/
+  when: 1444134607
+  paths:
+    - Common/
+- cmd: set KATANA_DISABLE_WORKING_SETS_UI 1
+  when: 1444138594
+- cmd: k 2.1dev --arnold=4.2.10.0
+  when: 1444138613
+- cmd: set KATANA_DISABLE_WORKING_SETS_UI
+  when: 1444138807
+- cmd: vim .katana/.init.py
+  when: 1444138866
+- cmd: cd .katana
+  when: 1444138868
+  paths:
+    - .katana
+- cmd: cd /mnt/netqa/Testing
+  when: 1444139473
+  paths:
+    - /mnt/netqa/Testing
+- cmd: cd Assets/
+  when: 1444139478
+  paths:
+    - Assets/
+- cmd: vim FnTestUtils/FnTest.py 
+  when: 1444142912
+  paths:
+    - FnTestUtils/FnTest.py
+- cmd: cd ../Apps/Katana/
+  when: 1444142918
+  paths:
+    - ../Apps/Katana/
+- cmd: cd TestHelpers/
+  when: 1444142924
+  paths:
+    - TestHelpers/
+- cmd: cd /mnt/netdev/mullan/Netlaunch/pixar/
+  when: 1444149586
+  paths:
+    - /mnt/netdev/mullan/Netlaunch/pixar/
+- cmd: cd versioned/
+  when: 1444149594
+  paths:
+    - versioned/
+- cmd: k 2.0dev
+  when: 1444150929
+- cmd: cd /opt/Foundry/Katana2.1dev/
+  when: 1444151259
+  paths:
+    - /opt/Foundry/Katana2.1dev/
+- cmd: cd plugins/
+  when: 1444151263
+  paths:
+    - plugins/
+- cmd: cd Resources/
+  when: 1444151264
+  paths:
+    - Resources/
+- cmd: cd PRMan17/
+  when: 1444151267
+  paths:
+    - PRMan17/
+- cmd: pwd
+  when: 1444151293
+- cmd: set RMAN_SHADERPATH /opt/Foundry/Katana2.1dev/plugins/Resources/PRMan17/Shaders
+  when: 1444151311
+  paths:
+    - /opt/Foundry/Katana2.1dev/plugins/Resources/PRMan17/Shaders
+- cmd: k 2.1dev --print-script
+  when: 1444151407
+- cmd: k 2.1dev --prman=20.1
+  when: 1444151890
+- cmd: cd 
+  when: 1444208384
+- cmd: cd Downloads/
+  when: 1444208397
+  paths:
+    - Downloads/
+- cmd: mv Downloads/familyDescriptionAus.pdf familyTies.pdf
+  when: 1444211591
+  paths:
+    - Downloads/familyDescriptionAus.pdf
+- cmd: mv Downloads/finance_oneYearBankStatement.1-15.pdf finance_oneYearBankStatement_part1.pdf
+  when: 1444214888
+  paths:
+    - Downloads/finance_oneYearBankStatement.1-15.pdf
+- cmd: mv Downloads/finance_oneYearBankStatement.16-31.pdf  finance_oneYearBankStatement_part2.pdf
+  when: 1444214899
+  paths:
+    - Downloads/finance_oneYearBankStatement.16-31.pdf
+- cmd: vim ~/go.sh
+  when: 1444736161
+- cmd: vim go.sh 
+  when: 1444736292
+  paths:
+    - go.sh
+- cmd: go.sh 
+  when: 1444736302
+  paths:
+    - go.sh
+- cmd: ll -a go.sh 
+  when: 1444736309
+  paths:
+    - go.sh
+- cmd: k 2.1dev --prman=20.3
+  when: 1444738764
+- cmd: abbr -a gco
+  when: 1444742054
+- cmd: cd /etc/yum.repos.d/
+  when: 1444742204
+  paths:
+    - /etc/yum.repos.d/
+- cmd: wget http://download.opensuse.org/repositories/shells:fish:release:2/CentOS_6/shells:fish:release:2.repo
+  when: 1444742208
+- cmd: sudo wget http://download.opensuse.org/repositories/shells:fish:release:2/CentOS_6/shells:fish:release:2.repo
+  when: 1444742211
+- cmd: yum update fish
+  when: 1444742219
+- cmd: sudo yum update fish
+  when: 1444742257
+- cmd: abbr -a gcm git checkout master
+  when: 1444742308
+- cmd: vim .config/fish/config.fish 
+  when: 1444743553
+  paths:
+    - .config/fish/config.fish
+- cmd: git checkout master 
+  when: 1444743639
+- cmd: a git checkout KATANA_17A_45B_BRANCH
+  when: 1444743647
+- cmd: git checkout master
+  when: 1444743713
+- cmd: git checkout KATANA_17A_45B_BRANCH
+  when: 1444743715
+- cmd: ggrep import logging
+  when: 1444744215
+- cmd: ggrep "import logger"
+  when: 1444744231
+- cmd: ggrep "import logging"
+  when: 1444748715
+- cmd: ggrep "@param"
+  when: 1444748799
+- cmd: ggrep "@raises"
+  when: 1444748805
+- cmd: ggrep "raises"
+  when: 1444748815
+- cmd: which python26
+  when: 1444757684
+- cmd: which python27
+  when: 1444757685
+- cmd: cd /usr/local/bin/python27
+  when: 1444757689
+  paths:
+    - /usr/local/bin/python27
+- cmd: tmux kill-session -t 0
+  when: 1444817117
+- cmd: vim ~/.config/fish/config.fish 
+  when: 1444743659
+- cmd: git pull
+  when: 1444817512
+- cmd: kdbuild
+  when: 1444817523
+- cmd: kdebug
+  when: 1444817749
+- cmd: ik 2.1v1b3
+  when: 1444822438
+- cmd: python 116 / 7
+  when: 1444823204
+  paths:
+    - /
+- cmd: rm /workspace/Katana/TestHarness/Tests/Apps/Katana/Alembic_In_tabTest.xml
+  when: 1444829808
+  paths:
+    - /workspace/Katana/TestHarness/Tests/Apps/Katana/Alembic_In_tabTest.xml
+- cmd: ll -a
+  when: 1444830796
+- cmd: cd Utils/
+  when: 1444830833
+  paths:
+    - Utils/
+- cmd: cd TP/
+  when: 1444830835
+  paths:
+    - TP/
+- cmd: CD /lib64/python2.7/site-packages
+  when: 1444831136
+- cmd: cd /lib64/python2.7/site-packages
+  when: 1444831139
+- cmd: cd /usr/lib64/python2.7/site-packages
+  when: 1444831146
+- cmd: gedit
+  when: 1444831280
+- cmd: /opt/Foundry/Katana2.1dev/katana 
+  when: 1444832667
+  paths:
+    - /opt/Foundry/Katana2.1dev/katana
+- cmd: vim .bashrc
+  when: 1444832945
+  paths:
+    - .bashrc
+- cmd: fish
+  when: 1444832969
+- cmd: tmux
+  when: 1444832990
+- cmd: ./go.sh 
+  when: 1444832992
+  paths:
+    - ./go.sh
+- cmd: k 2.1v1v2
+  when: 1444833712
+- cmd: qares
+  when: 1444837073
+- cmd: cd Modules/
+  when: 1444837075
+  paths:
+    - Modules/
+- cmd: cd Katana/
+  when: 1444837080
+  paths:
+    - Katana/
+- cmd: cd Plugins/Tabs/
+  when: 1444837084
+  paths:
+    - Plugins/Tabs/
+- cmd: cd Plugins/
+  when: 1444837094
+  paths:
+    - Plugins/
+- cmd: cd Nodes/
+  when: 1444837095
+  paths:
+    - Nodes/
+- cmd: cd ../..l
+  when: 1444837098
+- cmd: l
+  when: 1444837099
+- cmd: cd UIP
+  when: 1444837104
+- cmd: cd UIPlugins/ls
+  when: 1444837109
+- cmd: cd UIPlugins/
+  when: 1444837113
+  paths:
+    - UIPlugins/
+- cmd: cd ../UIPerformanceTests/
+  when: 1444837118
+  paths:
+    - ../UIPerformanceTests/
+- cmd: cd ../..
+  when: 1444837121
+  paths:
+    - ../..
+- cmd: python
+  when: 1444842415
+- cmd: gedit /workspace/Katana/TestHarness/Tests/Apps/Katana/TEST_RESULTS_2015-10-14_18-16-28/TestUnits/NetworkMaterialConnections/NetworkMaterialBadConnection_prman17.0/test_script.py
+  when: 1444900620
+  paths:
+    - /workspace/Katana/TestHarness/Tests/Apps/Katana/TEST_RESULTS_2015-10-14_18-16-28/TestUnits/NetworkMaterialConnections/NetworkMaterialBadConnection_prman17.0/test_script.py
+- cmd: ik 2.1dev
+  when: 1444902057
+- cmd: kgit
+  when: 1444902154
+- cmd: gitk
+  when: 1444902155
+- cmd: k 2.1v1b3
+  when: 1444902680
+- cmd: kk 2.1dev
+  when: 1444902973
+- cmd: k 2.1dev --list-vray
+  when: 1444903135
+- cmd: k 2.1dev adv_30501_katana_2_0_linux_x64
+  when: 1444903141
+- cmd: k 2.1dev --vray=adv_30501_katana_2_0_linux_x64
+  when: 1444903147
+- cmd: k 2.1dev --vray=adv_30501_katana_2_0_linux_x64 --print-script
+  when: 1444903697
+- cmd: cd /mnt/netdev/mullan/Netlaunch/vray/vray_adv_30501_katana_2_0_linux_x64/vrayplugins
+  when: 1444903718
+  paths:
+    - /mnt/netdev/mullan/Netlaunch/vray/vray_adv_30501_katana_2_0_linux_x64/vrayplugins
+- cmd: cd vray
+  when: 1444903753
+- cmd: cd vrayplugins/
+  when: 1444903755
+  paths:
+    - vrayplugins/
+- cmd: vim
+  when: 1444904358
+- cmd: tar -xvf Downloads/example.tar.gz 
+  when: 1444905118
+  paths:
+    - Downloads/example.tar.gz
+- cmd: gunzip Downloads/example.tar.gz 
+  when: 1444905128
+  paths:
+    - Downloads/example.tar.gz
+- cmd: tar -xvf Downloads/example.tar 
+  when: 1444905136
+  paths:
+    - Downloads/example.tar
+- cmd: vlc example.avi
+  when: 1444905150
+  paths:
+    - example.avi
+- cmd: ll /tmp/aovs/beauty.exr
+  when: 1444906844
+  paths:
+    - /tmp/aovs/beauty.exr
+- cmd: ll /tmp/aovs/direct_diffuse.exr
+  when: 1444906856
+  paths:
+    - /tmp/aovs/direct_diffuse.exr
+- cmd: ll /tmp/aovs/spec.exr
+  when: 1444906947
+- cmd: ll /tmp/aovs/P_pass.exr
+  when: 1444906959
+- cmd: k 1.0v1
+  when: 1444907703
+- cmd: k 1.0v1 --no-prman --no-arnold
+  when: 1444907710
+- cmd: /opt/Foundry/Katana2.1dev/katana -l koko
+  when: 1444908361
+- cmd: /opt/Foundry/Katana2.1dev/katana -l dupka2
+  when: 1444908380
+- cmd: /opt/Foundry/Katana2.1dev/katana --layout dupka2
+  when: 1444908406
+- cmd: git grep
+  when: 1444908675
+- cmd: ggrep "bld/env.share.model"
+  when: 1444908683
+- cmd: ggrep "bld\\/env.share.model"
+  when: 1444908695
+- cmd: ggrep
+  when: 1444908713
+- cmd: cd ../Geolib3/
+  when: 1444908722
+  paths:
+    - ../Geolib3/
+- cmd: git grep "bld/env.share.model"
+  when: 1444908725
+- cmd: git grep "env.share.model"
+  when: 1444908730
+- cmd: gedit ilmList
+  when: 1444908870
+- cmd: mv ilmList ~
+  when: 1444908887
+  paths:
+    - ilmList
+- cmd: maya
+  when: 1444909405
+- cmd: cd /workspace/Katana/TestHarness/
+  when: 1444919573
+  paths:
+    - /workspace/Katana/TestHarness/
+- cmd: set P4CLIENT krzysztof_katana_collet_testHarness
+  when: 1444919584
+- cmd: p4 diff
+  when: 1444919585
+- cmd: p4 diff >> multisampleData.diff
+  when: 1444919600
+- cmd: mv multisampleData.diff ~
+  when: 1444919604
+  paths:
+    - multisampleData.diff
+- cmd: cd
+  when: 1444920080
+- cmd: k 2.1dev
+  when: 1444909655
+- cmd: k 2.1v1b2
+  when: 1444920657
+- cmd: cd -
+  when: 1444920755
+- cmd: p4 diff -du 
+  when: 1444920761
+- cmd: k 2.1v1b1
+  when: 1444920704
+- cmd: k 2.0v1
+  when: 1444920840
+- cmd: k 2.0v1 --no-arold
+  when: 1444920844
+- cmd: k 2.0v1 --prman=17.0
+  when: 1444920978
+- cmd: k 2.0v1 --prman=17.0 --no-arnold
+  when: 1444920984
+- cmd: p4 diff -du
+  when: 1444921379
+- cmd: p4 diff -du >> multisample.diff
+  when: 1444921386
+- cmd: mv multisample.diff ~
+  when: 1444921391
+  paths:
+    - multisample.diff
+- cmd: arc diff default
+  when: 1444921753
+- cmd: cd /opt/phabricator
+  when: 1444921783
+- cmd: p4 diff2
+  when: 1444922367
+- cmd: p4 diff2 -du
+  when: 1444922375
+- cmd: p4 diff2 -d
+  when: 1444922377
+- cmd: k 2.0v1 --no-arnold
+  when: 1444920846
+- cmd: exit
+  when: 1444924295
+- cmd: clear
+  when: 1444924350
+- cmd: cd Thirdparty/
+  when: 1444925010
+  paths:
+    - Thirdparty/
+- cmd: cd Alembic/1.5.3/
+  when: 1444925016
+  paths:
+    - Alembic/1.5.3/
+- cmd: cd linux-64-x86-release-410-gcc/
+  when: 1444925020
+  paths:
+    - linux-64-x86-release-410-gcc/
+- cmd: set LD_LIBRARY_PATH $PWD/../../../../../OpenEXR/2.0.1/bin/linux-64-x86-release-410/lib/
+  when: 1444925102
+- cmd: ./abcecho -h
+  when: 1444925132
+- cmd: ./abcecho --help
+  when: 1444925139
+- cmd: ./abcecho
+  when: 1444925143
+- cmd: ./abcecho ~/cube1.abc 
+  when: 1444925146
+- cmd: ./abcecho ~/cube1.abc --verbose
+  when: 1444925178
+- cmd: houdini 
+  when: 1444925421
+- cmd: cd /opt/hfs11.1.118/
+  when: 1444925429
+  paths:
+    - /opt/hfs11.1.118/
+- cmd: cd bin/
+  when: 1444925433
+  paths:
+    - bin/
+- cmd: bash houdini_setup_bash 
+  when: 1444925449
+  paths:
+    - houdini_setup_bash
+- cmd: houdini
+  when: 1444925455
+- cmd: bash
+  when: 1444925463
+- cmd: sh
+  when: 1444925475
+- cmd: cd bin
+  when: 1444925492
+  paths:
+    - bin
+- cmd: ./houdini
+  when: 1444925500
+- cmd: mv cubePivot.abc /mnt/netdev/krzysztof.klimczyk/
+  when: 1444925538
+  paths:
+    - cubePivot.abc
+    - /mnt/netdev/krzysztof.klimczyk/
+- cmd: mv cube1.abc /mnt/netdev/krzysztof.klimczyk/
+  when: 1444925547
+  paths:
+    - cube1.abc
+    - /mnt/netdev/krzysztof.klimczyk/
+- cmd: /usr/autodesk/maya2015-x64/
+  when: 1444926043
+- cmd: cd devkit/
+  when: 1444926048
+  paths:
+    - devkit/
+- cmd: cd Alembic/
+  when: 1444926052
+  paths:
+    - Alembic/
+- cmd: cd lib/
+  when: 1444926057
+  paths:
+    - lib/
+- cmd: tree
+  when: 1444926063
+- cmd: cd plug-ins/
+  when: 1444926070
+  paths:
+    - plug-ins/
+- cmd: cd AbcExport/
+  when: 1444926084
+  paths:
+    - AbcExport/
+- cmd: grep -i pivot
+  when: 1444926095
+- cmd: grep -i pivot *
+  when: 1444926101
+- cmd: cd ..
+  when: 1444926166
+  paths:
+    - ..
+- cmd: ls
+  when: 1444926166
+- cmd: cd include/
+  when: 1444926169
+  paths:
+    - include/
+- cmd: ls
+  when: 1444926170
+- cmd: grep -i kRotate* *
+  when: 1444926177
+- cmd: grep -ir "kRotate*" *
+  when: 1444926191
+- cmd: kgit
+  when: 1444926212
+- cmd: cd ../Geolib3/
+  when: 1444926213
+  paths:
+    - ../Geolib3/
+- cmd: ls
+  when: 1444926213
+- cmd: cd Ops/AlembicIn/
+  when: 1444926217
+  paths:
+    - Ops/AlembicIn/
+- cmd: ls
+  when: 1444926217
+- cmd: grep -ir "kRotate*" *
+  when: 1444926223
+- cmd: vim src/XformCook.cpp
+  when: 1444926237
+  paths:
+    - src/XformCook.cpp
+- cmd: grep -ir "kRotatePivot*" *
+  when: 1444926259
+- cmd: grep -ir "pivot*" *
+  when: 1444926267
+- cmd: cd -
+  when: 1444926290
+- cmd: ls
+  when: 1444926291
+- cmd: cd ../..
+  when: 1444926294
+  paths:
+    - ../..
+- cmd: ls
+  when: 1444926294
+- cmd: cd Thirdparty/Alembic/1.5.3/bin/linux-64-x86-release-410-gcc/include/
+  when: 1444926306
+  paths:
+    - Thirdparty/Alembic/1.5.3/bin/linux-64-x86-release-410-gcc/include/
+- cmd: ls
+  when: 1444926307
+- cmd: grep -ir "pivot*" *
+  when: 1444926310
+- cmd: /opt/modo/modo
+  when: 1444926495
+- cmd: grep -ir "k.*Hint*" *
+  when: 1444927403
+- cmd: grep -r "k.*Hint*" *
+  when: 1444927419
+- cmd: kgit
+  when: 1444927466
