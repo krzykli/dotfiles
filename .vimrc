@@ -2,6 +2,9 @@
 "General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+inoremap jk <Esc>
+set timeoutlen=100
+
 set shell=/bin/bash
 syntax on
 colorscheme molokai
