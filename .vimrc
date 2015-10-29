@@ -3,7 +3,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 inoremap jk <Esc>
-set timeoutlen=100
+set timeoutlen=150
 
 set shell=/bin/bash
 syntax on
