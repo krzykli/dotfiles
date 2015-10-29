@@ -3,7 +3,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 inoremap jk <Esc>
-set timeoutlen=150
+set timeoutlen=200
+let mapleader = "\<Space>"
 
 set shell=/bin/bash
 syntax on
@@ -34,7 +35,7 @@ set t_Co=256
 set colorcolumn=80
 highlight ColorColumn guibg=#333 ctermbg=237
 
-noremap <Leader>s :update<CR>
+nnoremap <Leader>s :update<CR>
 set pastetoggle=<F2> "Paste toggle
 
 "Invisible characters, on be default
