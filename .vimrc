@@ -62,6 +62,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround.git'
 Plugin 'bling/vim-airline'
 Plugin 'edkolev/promptline.vim'
 Plugin 'edkolev/tmuxline.vim'
@@ -101,7 +102,7 @@ endif
 "Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/local/bin/python'
 
@@ -134,3 +135,7 @@ endif
 
 "Supertab
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
+
+"Surround
+nmap "" csw"
+nmap '' csw'
