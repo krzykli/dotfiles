@@ -1,12 +1,34 @@
+function s:getCurrentColumn()
+    echom "turbo"
+endfunction
 
 "General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+set encoding=utf-8
 inoremap jk <Esc>
 set timeoutlen=200
 let mapleader = ";"
 
-set shell=/bin/bash
+
+" build shortcut
+nnoremap <Leader>b : !start cmd /k "build.bat" & pause & exit<CR>
+
+" convert a word to uppercase
+nnoremap <Leader>u gUiwe
+inoremap <Leader>u <Esc>gUiwea
+
+" moving lines
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+nnoremap <A-h> d^
+vnoremap <A-h> :call s:getCurrentColumn()<CR>
+
+"set shell=/bin/bash
 syntax on
 colorscheme molokai
 
@@ -15,7 +37,6 @@ set number "numbered lines
 set softtabstop=4 "tab length
 set shiftwidth=4 "indent length
 set expandtab "convert tabs to spaces
-set clipboard=unnamedplus
 set scrolloff=10
 set cursorline
 set guioptions-=m  " remove menu bar
@@ -31,9 +52,9 @@ set nofoldenable    " disable folding
 filetype off
 filetype plugin indent on
 
-set t_Co=256
+"set t_Co=256
 set colorcolumn=80
-highlight ColorColumn guibg=#333 ctermbg=237
+"highlight ColorColumn guibg=#333 ctermbg=237
 
 nnoremap <Leader>w :update<CR>
 set pastetoggle=<F2> "Paste toggle
@@ -66,7 +87,7 @@ Plugin 'tpope/vim-surround.git'
 Plugin 'bling/vim-airline'
 Plugin 'edkolev/promptline.vim'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'scrooloose/nerdtree'
