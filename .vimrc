@@ -1,6 +1,3 @@
-function s:getCurrentColumn()
-    echom "turbo"
-endfunction
 
 "General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -8,14 +5,24 @@ set encoding=utf-8
 inoremap jk <Esc>
 set timeoutlen=200
 let mapleader = ";"
-
+color kokos
 
 " build shortcut
 nnoremap <Leader>b : !start cmd /k "build.bat" & pause & exit<CR>
 
+" replace all occurences
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+" run selected python code with F5
+vnoremap <F5> :'<'>!python<CR>:redraw!<CR>
+
 " convert a word to uppercase
 nnoremap <Leader>u gUiwe
 inoremap <Leader>u <Esc>gUiwea
+
+" moving with lh keys in normal mode
+nnoremap <S-l> e
+nnoremap <S-h> b
 
 " moving lines
 nnoremap <A-j> :m .+1<CR>==
@@ -24,13 +31,10 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
-
 nnoremap <A-h> d^
-vnoremap <A-h> :call s:getCurrentColumn()<CR>
 
 "set shell=/bin/bash
 syntax on
-colorscheme molokai
 
 set title
 set number "numbered lines
@@ -76,6 +80,12 @@ nnoremap tn :tabnew<CR>
 nnoremap tj :tabprev<CR>
 nnoremap tk :tabnext<CR>
 
+"C++
+" Code Block
+inoremap {{ {<CR>}<Esc>ko 
+" Go inside parenthesis after creating them 
+inoremap (( ()<Esc>i
+
 "Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -84,19 +94,20 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround.git'
-Plugin 'bling/vim-airline'
-Plugin 'edkolev/promptline.vim'
-Plugin 'edkolev/tmuxline.vim'
+"Plugin 'bling/vim-airline'
+"Plugin 'edkolev/promptline.vim'
+"Plugin 'edkolev/tmuxline.vim'
 "Plugin 'airblade/vim-gitgutter'
-Plugin 'majutsushi/tagbar'
+"Plugin 'majutsushi/tagbar'
+Plugin 'lrvick/Conque-Shell.git'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
-Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'ervandew/supertab'
-Plugin 'vim-scripts/fish.vim'
+"Plugin 'ervandew/supertab'
+"Plugin 'vim-scripts/fish.vim'
 call vundle#end()
 
 "Airline
@@ -130,6 +141,7 @@ let g:syntastic_python_python_exec = '/usr/local/bin/python'
 
 "Tmux
 if exists('$TMUX')
+  echom "TMUX"
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()
     silent! execute "wincmd " . a:wincmd
@@ -143,10 +155,10 @@ if exists('$TMUX')
   let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
   let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
 
-  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+  nnoremap <silent> <c-h> :call tmuxorsplitswitch('h', 'l')<cr>
+  nnoremap <silent> <c-j> :call tmuxorsplitswitch('j', 'd')<cr>
+  nnoremap <silent> <c-k> :call tmuxorsplitswitch('k', 'u')<cr>
+  nnoremap <silent> <c-l> :call tmuxorsplitswitch('l', 'r')<cr>
 else
   map <C-h> <C-w>h
   map <C-j> <C-w>j
@@ -160,3 +172,4 @@ let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
 "Surround
 nmap "" csw"
 nmap '' csw'
+
