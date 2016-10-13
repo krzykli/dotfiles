@@ -13,6 +13,10 @@ nnoremap <Leader>b : !start cmd /k "build.bat" & pause & exit<CR>
 " replace all occurences
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
+" jedi-vim
+let g:jedi#use_tabs_not_buffers = 1
+autocmd FileType python setlocal completeopt-=preview
+
 " run selected python code with F5
 vnoremap <F5> :'<'>!python<CR>:redraw!<CR>
 
@@ -94,6 +98,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround.git'
+Plugin 'davidhalter/jedi-vim.git'
 "Plugin 'bling/vim-airline'
 "Plugin 'edkolev/promptline.vim'
 "Plugin 'edkolev/tmuxline.vim'
