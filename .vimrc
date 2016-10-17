@@ -7,6 +7,10 @@ set timeoutlen=200
 let mapleader = ";"
 color kokos
 
+" search
+set hlsearch
+set incsearch
+
 " build shortcut
 nnoremap <Leader>b : !start cmd /k "build.bat" & pause & exit<CR>
 
