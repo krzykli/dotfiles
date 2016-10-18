@@ -5,6 +5,7 @@ set encoding=utf-8
 inoremap jk <Esc>
 set timeoutlen=200
 let mapleader = ";"
+set ignorecase
 color kokos
 
 " search
