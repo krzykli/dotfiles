@@ -8,6 +8,10 @@ let mapleader = ";"
 set ignorecase
 color kokos
 
+" indentation options
+au! FileType python setl nosmartindent
+set formatoptions+=cr
+
 " search
 set hlsearch
 set incsearch
@@ -17,6 +21,12 @@ nnoremap <Leader>b : !start cmd /k "build.bat" & pause & exit<CR>
 
 " replace all occurences
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+" wrap word in brackets
+inoremap w0 (<Esc>lEa)
+
+" move to the last char in line in insert mode
+inoremap a; <Esc>A
 
 " jedi-vim
 let g:jedi#use_tabs_not_buffers = 1
@@ -104,6 +114,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround.git'
 Plugin 'davidhalter/jedi-vim.git'
+Plugin 'haya14busa/incsearch.vim'
 Plugin 'chaoren/vim-wordmotion'
 "Plugin 'bling/vim-airline'
 "Plugin 'edkolev/promptline.vim'
@@ -184,3 +195,7 @@ let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
 nmap "" csw"
 nmap '' csw'
 
+" incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
