@@ -56,7 +56,6 @@ nnoremap <A-h> d^
 syntax on
 
 set title
-set number "numbered lines
 set softtabstop=4 "tab length
 set shiftwidth=4 "indent length
 set expandtab "convert tabs to spaces
@@ -76,7 +75,7 @@ filetype off
 filetype plugin indent on
 
 "set t_Co=256
-set colorcolumn=80
+"set colorcolumn=80
 "highlight ColorColumn guibg=#333 ctermbg=237
 
 nnoremap <Leader>w :update<CR>
