@@ -1,12 +1,42 @@
+let mapleader = ";"
+nnoremap <Leader>w :update<CR>
+set pastetoggle=<F2> "Paste toggle
+
+
+source O:\dev\krzysztof.klimczyk\dotfiles\flyingBark.vim
+nnoremap dev :!devCopy.py -c<CR>
+nnoremap svnup :!svnUpWorkspace.py<CR>
+nnoremap <Leader>b :update<CR>:!rez build -i -c<CR>
+nnoremap <Esc> :q<CR>
+vnoremap <C-c> "*y
+"nnoremap <Leader>rr :!rez release<CR>
+
+set undodir=O:\dev\krzysztof.klimczyk\dotfiles\.vim\.undo\\
+set backupdir=O:\dev\krzysztof.klimczyk\dotfiles\.vim\.backup\\
+set directory=O:\dev\krzysztof.klimczyk\dotfiles\.vim\.swap\\
+
 
 "General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set encoding=utf-8
 inoremap jk <Esc>
+set selection=inclusive
 set timeoutlen=200
-let mapleader = ";"
 set ignorecase
 color kokos
+nmap <F5> :redraw!<CR>
+
+inoremap <A-p> <Esc>"*p:redraw!<CR>
+nnoremap <A-p> <Esc>"*p:redraw!<CR>
+nnoremap fms o# FB_MODIFIED_START<Esc>
+nnoremap fme o# FB_MODIFIED_END<Esc>
+
+
+inoremap <Leader>date <C-R>=strftime("%a%d%b%Y")<CR>
+" python
+au! FileType python setl nosmartindent 
+set formatoptions+=cr
+nnoremap pdb oimport pdb; pdb.set_trace()<Esc>
 
 " indentation options
 au! FileType python setl nosmartindent
@@ -16,11 +46,11 @@ set formatoptions+=cr
 set hlsearch
 set incsearch
 
-" build shortcut
-nnoremap <Leader>b : !start cmd /k "build.bat" & pause & exit<CR>
+"" build shortcut
+"nnoremap <Leader>b : !start cmd /k "build.bat" & pause & exit<CR>
 
 " replace all occurences
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>
 
 " wrap word in brackets
 inoremap w0 (<Esc>lEa)
@@ -28,9 +58,20 @@ inoremap w0 (<Esc>lEa)
 " move to the last char in line in insert mode
 inoremap a; <Esc>A
 
-" jedi-vim
-let g:jedi#use_tabs_not_buffers = 1
-autocmd FileType python setlocal completeopt-=preview
+"" jedi-vim
+"let g:jedi#use_tabs_not_buffers = 1
+"autocmd FileType python setlocal completeopt-=preview
+" brackets wrap a word
+inoremap w0 (<Esc>lEi)
+
+" go to the end of the line
+inoremap a; <Esc>A
+
+"" jedi-vim
+"let g:jedi#popup_on_dot = 0
+"let g:jedi#use_tabs_not_buffers = 1
+"let g:jedi#completions_enabled = 0
+"autocmd FileType python setlocal completeopt-=preview
 
 " run selected python code with F5
 vnoremap <F5> :'<'>!python<CR>:redraw!<CR>
@@ -56,6 +97,7 @@ nnoremap <A-h> d^
 syntax on
 
 set title
+"set number "numbered lines
 set softtabstop=4 "tab length
 set shiftwidth=4 "indent length
 set expandtab "convert tabs to spaces
@@ -74,12 +116,9 @@ set nofoldenable    " disable folding
 filetype off
 filetype plugin indent on
 
-"set t_Co=256
+set t_Co=16
 "set colorcolumn=80
 "highlight ColorColumn guibg=#333 ctermbg=237
-
-nnoremap <Leader>w :update<CR>
-set pastetoggle=<F2> "Paste toggle
 
 "Invisible characters, on be default
 set list listchars=trail:·,tab:»·
@@ -109,17 +148,24 @@ inoremap (( ()<Esc>i
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround.git'
-Plugin 'davidhalter/jedi-vim.git'
+"Plugin 'tpope/vim-repeat'
+"Plugin 'davidhalter/jedi-vim.git'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'chaoren/vim-wordmotion'
 "Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline'
 "Plugin 'edkolev/promptline.vim'
 "Plugin 'edkolev/tmuxline.vim'
-"Plugin 'airblade/vim-gitgutter'
-"Plugin 'majutsushi/tagbar'
+Plugin 'airblade/vim-gitgutter'
+"Plugin 'svermeulen/vim-easyclip'
+"Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-easytags'
+Plugin 'ConradIrwin/vim-bracketed-paste'
+Plugin 'majutsushi/tagbar'
 Plugin 'lrvick/Conque-Shell.git'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'scrooloose/nerdtree'
@@ -129,11 +175,10 @@ Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'ervandew/supertab'
 "Plugin 'vim-scripts/fish.vim'
+Plugin 'vim-scripts/Tail-Bundle'
+Plugin 'kana/vim-arpeggio'
+"Plugin 'vim-scripts/Vimya'
 call vundle#end()
-
-"Airline
-let g:airline_powerline_fonts=1
-let g:airline_theme="powerlineish"
 
 "Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -145,12 +190,7 @@ silent! nmap <F3> :NERDTreeToggle<CR>
 let g:NERDTreeMapActivateNode="<F4>"
 
 "Tagbar
-if has("unix")
-    source ~/.vim/workflow.vim
-else
-    let g:tagbar_ctags_bin='/usr/local/bin/ctags'  "Proper Ctags locations
-    set guifont=Sauce\ Code\ Powerline\:h13
-endif
+let g:tagbar_ctags_bin='C:\Program Files (x86)\ctags58\ctags.exe'
 
 "Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -198,3 +238,30 @@ nmap '' csw'
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+"Vimya
+let g:vimyaTailCommand = 'Tail'
+let g:vimyaForceRefresh = 1
+let g:vimyaRefreshWait = 0
+nnoremap <leader>mm :py vimyaRun ()<cr>
+vnoremap <leader>mm :py vimyaRun ()<cr>
+nnoremap <leader>mb :py vimyaRun (forceBuffer = True)<cr>
+vnoremap <leader>mb :py vimyaRun (forceBuffer = True)<cr>
+
+nnoremap <Leader>mp :let g:vimyaPort=
+
+"multi_cursor
+let g:multi_cursor_exit_from_insert_mode = 0
+
+"Airline
+set encoding=utf-8
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'base16_ashes'
+set guifont=Source\ Code\ Pro\ for\ Powerline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#parts#ffenc#skip_expected_string='utf-8[dos]'
+let g:airline#extensions#hunks#enabled=0
+
+"Arpeggio
+"call arpeggio#map('i', '', 0, 'fu', 'function')
