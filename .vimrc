@@ -1,38 +1,42 @@
-let mapleader = ";"
-nnoremap <Leader>w :update<CR>
-set pastetoggle=<F2> "Paste toggle
-
-
 source O:\dev\krzysztof.klimczyk\dotfiles\flyingBark.vim
-nnoremap dev :!devCopy.py -c<CR>
-nnoremap svnup :!svnUpWorkspace.py<CR>
+
+" Leaders
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ";"
 nnoremap <Leader>b :update<CR>:!rez build -i -c<CR>
-nnoremap <Esc> :q<CR>
-vnoremap <C-c> "*y
 "nnoremap <Leader>rr :!rez release<CR>
+nnoremap <Leader>w :update<CR>
+inoremap <Leader>date <C-R>=strftime("%a%d%b%Y")<CR>
+"nnoremap <Leader>b : !start cmd /k "build.bat" & pause & exit<CR>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>
+nnoremap <Leader>u gUiwe
+inoremap <Leader>u <Esc>gUiwea
+
+"General
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set pastetoggle=<F2> "Paste toggle
+color kokos
+nmap <F5> :redraw!<CR>
 
 set undodir=O:\dev\krzysztof.klimczyk\dotfiles\.vim\.undo\\
 set backupdir=O:\dev\krzysztof.klimczyk\dotfiles\.vim\.backup\\
 set directory=O:\dev\krzysztof.klimczyk\dotfiles\.vim\.swap\\
 
-
-"General
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set encoding=utf-8
 inoremap jk <Esc>
+
+nnoremap <Esc> :q<CR>
+vnoremap <C-c> "*y
+
+set encoding=utf-8
 set selection=inclusive
 set timeoutlen=200
 set ignorecase
-color kokos
-nmap <F5> :redraw!<CR>
 
 inoremap <A-p> <Esc>"*p:redraw!<CR>
 nnoremap <A-p> <Esc>"*p:redraw!<CR>
 nnoremap fms o# FB_MODIFIED_START<Esc>
 nnoremap fme o# FB_MODIFIED_END<Esc>
 
-
-inoremap <Leader>date <C-R>=strftime("%a%d%b%Y")<CR>
 " python
 au! FileType python setl nosmartindent 
 set formatoptions+=cr
@@ -46,39 +50,18 @@ set formatoptions+=cr
 set hlsearch
 set incsearch
 
-"" build shortcut
-"nnoremap <Leader>b : !start cmd /k "build.bat" & pause & exit<CR>
-
-" replace all occurences
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>
-
 " wrap word in brackets
 inoremap w0 (<Esc>lEa)
 
 " move to the last char in line in insert mode
 inoremap a; <Esc>A
 
-"" jedi-vim
-"let g:jedi#use_tabs_not_buffers = 1
 "autocmd FileType python setlocal completeopt-=preview
 " brackets wrap a word
 inoremap w0 (<Esc>lEi)
 
 " go to the end of the line
 inoremap a; <Esc>A
-
-"" jedi-vim
-"let g:jedi#popup_on_dot = 0
-"let g:jedi#use_tabs_not_buffers = 1
-"let g:jedi#completions_enabled = 0
-"autocmd FileType python setlocal completeopt-=preview
-
-" run selected python code with F5
-vnoremap <F5> :'<'>!python<CR>:redraw!<CR>
-
-" convert a word to uppercase
-nnoremap <Leader>u gUiwe
-inoremap <Leader>u <Esc>gUiwea
 
 " moving with lh keys in normal mode
 nnoremap <S-l> e
@@ -143,63 +126,6 @@ inoremap {{ {<CR>}<Esc>ko
 " Go inside parenthesis after creating them 
 inoremap (( ()<Esc>i
 
-"Plugins
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround.git'
-"Plugin 'tpope/vim-repeat'
-"Plugin 'davidhalter/jedi-vim.git'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'chaoren/vim-wordmotion'
-"Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-airline/vim-airline'
-"Plugin 'edkolev/promptline.vim'
-"Plugin 'edkolev/tmuxline.vim'
-Plugin 'airblade/vim-gitgutter'
-"Plugin 'svermeulen/vim-easyclip'
-"Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
-Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'majutsushi/tagbar'
-Plugin 'lrvick/Conque-Shell.git'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-"Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'ervandew/supertab'
-"Plugin 'vim-scripts/fish.vim'
-Plugin 'vim-scripts/Tail-Bundle'
-Plugin 'kana/vim-arpeggio'
-"Plugin 'vim-scripts/Vimya'
-call vundle#end()
-
-"Tagbar
-nmap <F8> :TagbarToggle<CR>
-
-"NERDTree
-silent! nmap <F3> :NERDTreeToggle<CR>
-"silent! map <F3> :NERDTreeFind<CR>
-
-let g:NERDTreeMapActivateNode="<F4>"
-
-"Tagbar
-let g:tagbar_ctags_bin='C:\Program Files (x86)\ctags58\ctags.exe'
-
-"Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = '/usr/local/bin/python'
-
-
 "Tmux
 if exists('$TMUX')
   echom "TMUX"
@@ -227,6 +153,51 @@ else
   map <C-l> <C-w>l
 endif
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'ConradIrwin/vim-bracketed-paste'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'chaoren/vim-wordmotion'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'kana/vim-arpeggio'
+Plugin 'lrvick/Conque-Shell.git'
+Plugin 'majutsushi/tagbar'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround.git'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/Tail-Bundle'
+call vundle#end()
+
+"Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+"NERDTree
+silent! nmap <F3> :NERDTreeToggle<CR>
+
+let g:NERDTreeMapActivateNode="<F4>"
+
+"Tagbar
+let g:tagbar_ctags_bin='C:\Program Files (x86)\ctags58\ctags.exe'
+
+"Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = '/usr/local/bin/python'
+
 "Supertab
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
 
@@ -238,17 +209,6 @@ nmap '' csw'
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
-
-"Vimya
-let g:vimyaTailCommand = 'Tail'
-let g:vimyaForceRefresh = 1
-let g:vimyaRefreshWait = 0
-nnoremap <leader>mm :py vimyaRun ()<cr>
-vnoremap <leader>mm :py vimyaRun ()<cr>
-nnoremap <leader>mb :py vimyaRun (forceBuffer = True)<cr>
-vnoremap <leader>mb :py vimyaRun (forceBuffer = True)<cr>
-
-nnoremap <Leader>mp :let g:vimyaPort=
 
 "multi_cursor
 let g:multi_cursor_exit_from_insert_mode = 0
