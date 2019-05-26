@@ -1,4 +1,4 @@
-source O:\dev\krzysztof.klimczyk\dotfiles\flyingBark.vim
+"source O:\dev\krzysztof.klimczyk\dotfiles\flyingBark.vim
 
 " Leaders
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -11,10 +11,15 @@ inoremap <Leader>date <C-R>=strftime("%a%d%b%Y")<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>
 nnoremap <Leader>u gUiwe
 inoremap <Leader>u <Esc>gUiwea
+inoremap <Leader>u <Esc>gUiwea
+nnoremap <Leader>O vi""*y:tabnew<CR>:e <C-R>*<CR>
+nnoremap <Leader>o vi""*y:e! <C-R>*<CR>
+
 
 "General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set pastetoggle=<F2> "Paste toggle
+"set relativenumber
 color kokos
 nmap <F5> :redraw!<CR>
 
@@ -25,6 +30,7 @@ set directory=O:\dev\krzysztof.klimczyk\dotfiles\.vim\.swap\\
 inoremap jk <Esc>
 
 nnoremap <Esc> :q<CR>
+nnoremap <Esc><Esc> :q!<CR>
 vnoremap <C-c> "*y
 
 set encoding=utf-8
@@ -37,14 +43,14 @@ nnoremap <A-p> <Esc>"*p:redraw!<CR>
 nnoremap fms o# FB_MODIFIED_START<Esc>
 nnoremap fme o# FB_MODIFIED_END<Esc>
 
+nnoremap <leader>fa :CtrlP<cr>
+nnoremap <leader>t :CtrlPTag<cr>
+nnoremap <C-u> :!git pull<cr>
+
 " python
 au! FileType python setl nosmartindent 
 set formatoptions+=cr
 nnoremap pdb oimport pdb; pdb.set_trace()<Esc>
-
-" indentation options
-au! FileType python setl nosmartindent
-set formatoptions+=cr
 
 " search
 set hlsearch
@@ -100,8 +106,6 @@ filetype off
 filetype plugin indent on
 
 set t_Co=16
-"set colorcolumn=80
-"highlight ColorColumn guibg=#333 ctermbg=237
 
 "Invisible characters, on be default
 set list listchars=trail:·,tab:»·
@@ -161,23 +165,19 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
 Plugin 'chaoren/vim-wordmotion'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'kana/vim-arpeggio'
-Plugin 'lrvick/Conque-Shell.git'
 Plugin 'majutsushi/tagbar'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround.git'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/Tail-Bundle'
+Plugin 'rbong/vim-crystalline'
 call vundle#end()
 
 "Tagbar
@@ -190,13 +190,6 @@ let g:NERDTreeMapActivateNode="<F4>"
 
 "Tagbar
 let g:tagbar_ctags_bin='C:\Program Files (x86)\ctags58\ctags.exe'
-
-"Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = '/usr/local/bin/python'
 
 "Supertab
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
@@ -213,15 +206,26 @@ map g/ <Plug>(incsearch-stay)
 "multi_cursor
 let g:multi_cursor_exit_from_insert_mode = 0
 
-"Airline
-set encoding=utf-8
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'base16_ashes'
-set guifont=Source\ Code\ Pro\ for\ Powerline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#parts#ffenc#skip_expected_string='utf-8[dos]'
-let g:airline#extensions#hunks#enabled=0
-
 "Arpeggio
 "call arpeggio#map('i', '', 0, 'fu', 'function')
+
+" Crystalline
+function! StatusLine(current, width)
+  return (a:current ? crystalline#mode() . '%#Crystalline#' : '%#CrystallineInactive#')
+        \ . ' %f%h%w%m%r '
+        \ . (a:current ? '%#CrystallineFill# %{fugitive#head()} ' : '')
+        \ . '%=' . (a:current ? '%#Crystalline# %{&paste?"PASTE ":""}%{&spell?"SPELL ":""}' . crystalline#mode_color() : '')
+        \ . (a:width > 80 ? '%l/%L %c%V %P ' : ' ')
+endfunction
+
+function! TabLine()
+  let l:vimlabel = has("nvim") ?  " NVIM " : " VIM "
+  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+endfunction
+
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_tabline_fn = 'TabLine'
+let g:crystalline_theme = 'papercolor'
+
+set showtabline=2
+set laststatus=2
