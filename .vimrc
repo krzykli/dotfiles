@@ -6,6 +6,7 @@ let mapleader = ";"
 nnoremap <Leader>b :update<CR>:!rez build -i -c<CR>
 "nnoremap <Leader>rr :!rez release<CR>
 nnoremap <Leader>w :update<CR>
+nnoremap <Leader>rt :!ctags -R --exclude=.git<CR>
 inoremap <Leader>date <C-R>=strftime("%a%d%b%Y")<CR>
 "nnoremap <Leader>b : !start cmd /k "build.bat" & pause & exit<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>
@@ -15,6 +16,9 @@ inoremap <Leader>u <Esc>gUiwea
 nnoremap <Leader>O vi""*y:tabnew<CR>:e <C-R>*<CR>
 nnoremap <Leader>o vi""*y:e! <C-R>*<CR>
 
+" Python
+set pythondll=O:\software\rez_packages\python\2.7.11\platform-windows\arch-AMD64\python27.dll
+set pythonhome=O:\software\rez_packages\python\2.7.11\platform-windows\arch-AMD64
 
 "General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -161,24 +165,24 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'mhinz/vim-signify'
-Plugin 'chaoren/vim-wordmotion'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'kana/vim-arpeggio'
-Plugin 'majutsushi/tagbar'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround.git'
-Plugin 'rbong/vim-crystalline'
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'VundleVim/Vundle.vim'
+Plug 'mhinz/vim-signify'
+Plug 'chaoren/vim-wordmotion'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'haya14busa/incsearch.vim'
+Plug 'kana/vim-arpeggio'
+Plug 'majutsushi/tagbar'
+Plug 'michaeljsmith/vim-indent-object'
+"Plug 'nvie/vim-flake8'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'rbong/vim-crystalline'
+call plug#end()
 
 "Tagbar
 nmap <F8> :TagbarToggle<CR>
