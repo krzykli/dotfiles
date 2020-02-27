@@ -213,6 +213,7 @@ let g:multi_cursor_exit_from_insert_mode = 0
 
 "grep
 nmap <Leader>grep :Gitgrep 
+nmap <Leader>rg :Rg 
 
 "Arpeggio
 "call arpeggio#map('i', '', 0, 'fu', 'function')
