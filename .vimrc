@@ -182,6 +182,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'rbong/vim-crystalline'
+Plug 'yegappan/grep'
 call plug#end()
 
 "Tagbar
@@ -209,6 +210,9 @@ map g/ <Plug>(incsearch-stay)
 
 "multi_cursor
 let g:multi_cursor_exit_from_insert_mode = 0
+
+"grep
+nmap <Leader>grep :Gitgrep 
 
 "Arpeggio
 "call arpeggio#map('i', '', 0, 'fu', 'function')
