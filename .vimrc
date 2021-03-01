@@ -1,10 +1,10 @@
-"source O:\dev\krzysztof.klimczyk\dotfiles\flyingBark.vim
-
 " Leaders
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ";"
-nnoremap <Leader>b :update<CR>:!rez build -i -c<CR>
-"nnoremap <Leader>rr :!rez release<CR>
+nnoremap <Leader>b :update<CR>:!./build.sh<CR>
+"nnoremap <Leader>r :!./build/build.out<CR>
+nnoremap <Leader>r :update<CR>:!./build.sh;./build/build.out<CR>
+
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>rt :!ctags -R --exclude=.git<CR>
 inoremap <Leader>date <C-R>=strftime("%a%d%b%Y")<CR>
@@ -16,20 +16,20 @@ inoremap <Leader>u <Esc>gUiwea
 nnoremap <Leader>O vi""*y:tabnew<CR>:e <C-R>*<CR>
 nnoremap <Leader>o vi""*y:e! <C-R>*<CR>
 
-" Python
-set pythondll=O:\software\rez_packages\python\2.7.11\platform-windows\arch-AMD64\python27.dll
-set pythonhome=O:\software\rez_packages\python\2.7.11\platform-windows\arch-AMD64
+nmap // :BLines!<CR>
+nmap ?? :Rg!<CR>
+nmap lg :!lazygit<CR>
 
 "General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set termguicolors
 set pastetoggle=<F2> "Paste toggle
-"set relativenumber
-color kokos
+color molokai
 nmap <F5> :redraw!<CR>
 
-set undodir=O:\dev\krzysztof.klimczyk\dotfiles\.vim\.undo\\
-set backupdir=O:\dev\krzysztof.klimczyk\dotfiles\.vim\.backup\\
-set directory=O:\dev\krzysztof.klimczyk\dotfiles\.vim\.swap\\
+set undodir=~/.vim/.undo
+set backupdir=~/.backup
+set directory=~/.swap
 
 inoremap jk <Esc>
 
@@ -87,7 +87,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 nnoremap <A-h> d^
 
 "set shell=/bin/bash
-syntax on
+syn keyword cType u32
 
 set title
 "set number "numbered lines
@@ -96,11 +96,13 @@ set shiftwidth=4 "indent length
 set expandtab "convert tabs to spaces
 set scrolloff=10
 set cursorline
-set guioptions-=m  " remove menu bar
-set guioptions-=T  " remove toolbar
-set guioptions-=r  " remove scroll bar right
-set guioptions-=R  " remove scroll on split
+hi CursorLine   cterm=NONE ctermbg=1 ctermfg=6
+
 set guioptions-=L  " remove scroll bar left
+set guioptions-=R  " remove scroll on split
+set guioptions-=T  " remove toolbar
+set guioptions-=m  " remove menu bar
+set guioptions-=r  " remove scroll bar right
 set laststatus=2   " always show status line
 set noswapfile
 set wildmenu
@@ -120,8 +122,12 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
+
 set splitbelow
 set splitright
+
+set showtabline=2
+set laststatus=2
 
 "Tab navigation
 nnoremap tn :tabnew<CR>
@@ -134,70 +140,58 @@ inoremap {{ {<CR>}<Esc>ko
 " Go inside parenthesis after creating them 
 inoremap (( ()<Esc>i
 
-"Tmux
-if exists('$TMUX')
-  echom "TMUX"
-  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-    let previous_winnr = winnr()
-    silent! execute "wincmd " . a:wincmd
-    if previous_winnr == winnr()
-      call system("tmux select-pane -" . a:tmuxdir)
-      redraw!
-    endif
-  endfunction
-
-  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
-
-  nnoremap <silent> <c-h> :call tmuxorsplitswitch('h', 'l')<cr>
-  nnoremap <silent> <c-j> :call tmuxorsplitswitch('j', 'd')<cr>
-  nnoremap <silent> <c-k> :call tmuxorsplitswitch('k', 'u')<cr>
-  nnoremap <silent> <c-l> :call tmuxorsplitswitch('l', 'r')<cr>
-else
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
-endif
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'VundleVim/Vundle.vim'
-Plug 'mhinz/vim-signify'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'mhinz/vim-startify'
+Plug 'kevinhwang91/rnvimr', {'branch': 'main'}
+Plug 'rbgrouleff/bclose.vim'
 Plug 'chaoren/vim-wordmotion'
+Plug 'mhinz/vim-signify'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'kana/vim-arpeggio'
 Plug 'majutsushi/tagbar'
 Plug 'michaeljsmith/vim-indent-object'
-"Plug 'nvie/vim-flake8'
+Plug 'tikhomirov/vim-glsl'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'rbong/vim-crystalline'
+"Plug 'rbong/vim-crystalline'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'yegappan/grep'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 call plug#end()
 
 "Tagbar
 nmap <F8> :TagbarToggle<CR>
 
 "NERDTree
-silent! nmap <F3> :NERDTreeToggle<CR>
+silent! nmap <F3> :Vexplore<CR>
 
 let g:NERDTreeMapActivateNode="<F4>"
 
 "Tagbar
-let g:tagbar_ctags_bin='C:\Program Files (x86)\ctags58\ctags.exe'
+if has('win32')
+    let g:tagbar_ctags_bin='C:\Program Files (x86)\ctags58\ctags.exe'
+endif
 
 "Supertab
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
+
+"multi_cursor
+let g:multi_cursor_exit_from_insert_mode = 0
 
 "Surround
 nmap "" csw"
@@ -208,33 +202,12 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
-"multi_cursor
-let g:multi_cursor_exit_from_insert_mode = 0
-
 "grep
 nmap <Leader>grep :Gitgrep 
 nmap <Leader>rg :Rg 
 
-"Arpeggio
-"call arpeggio#map('i', '', 0, 'fu', 'function')
+"Ctags
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <Leader>= :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-" Crystalline
-function! StatusLine(current, width)
-  return (a:current ? crystalline#mode() . '%#Crystalline#' : '%#CrystallineInactive#')
-        \ . ' %f%h%w%m%r '
-        \ . (a:current ? '%#CrystallineFill# %{fugitive#head()} ' : '')
-        \ . '%=' . (a:current ? '%#Crystalline# %{&paste?"PASTE ":""}%{&spell?"SPELL ":""}' . crystalline#mode_color() : '')
-        \ . (a:width > 80 ? '%l/%L %c%V %P ' : ' ')
-endfunction
-
-function! TabLine()
-  let l:vimlabel = has("nvim") ?  " NVIM " : " VIM "
-  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
-endfunction
-
-let g:crystalline_statusline_fn = 'StatusLine'
-let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'papercolor'
-
-set showtabline=2
-set laststatus=2
+runtime! ~/dotfiles/syntax.vim

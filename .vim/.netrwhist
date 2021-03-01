@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/mentos'
+let g:netrw_dirhist_5='/Users/mentos/workspace/mvc/src/com/mvctest'
+let g:netrw_dirhist_4='/Users/mentos/workspace/eclipse/spring_demo_annotations'
+let g:netrw_dirhist_3='/Users/mentos/workspace/eclipse/sprint_demo_one/src/com'
+let g:netrw_dirhist_2='/Users/mentos/workspace/eclipse/sprint_demo_one/src'
+let g:netrw_dirhist_1='/Users/mentos/workspace/spring/spring-and-hibernate-for-beginners/01-spring-core-5/spring-demo-one/starter-files'
+let g:netrw_dirhist_0='/Users/mentos/workspace/spring/spring-and-hibernate-for-beginners/01-spring-core-5/spring-demo-one'
+let g:netrw_dirhist_9='/Users/mentos/workspace/eclipse/sprint_demo_one/src'
+let g:netrw_dirhist_8='/Users/mentos/workspace/eclipse/sprint_demo_one'
+let g:netrw_dirhist_7='/Users/mentos/workspace/eclipse/sprint_demo_one/lib'
