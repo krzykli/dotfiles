@@ -1,0 +1,13 @@
+snippet query
+filters = [
+    ["project", "is", fb.project.as_shotgun_record()]
+]
+fields = ['code']
+records = fb.sg.find("${1:record}", filters, fields)
+endsnippet
+
+snippet alink
+<a href="$1"${2: class="${3:link}"}>
+    $0
+</a>
+endsnippet
