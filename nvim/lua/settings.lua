@@ -1,10 +1,14 @@
 vim.cmd("colorscheme gruvbox-material")
 
+vim.cmd("set termguicolors")
 vim.cmd("set hidden")
 vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
+vim.cmd("set clipboard+=unnamed")
+
 
 vim.g.hidden = true
+vim.o.wrap = false
 vim.o.splitright = true
 vim.o.clipboard = "unnamedplus"
 vim.o.cursorline = true
@@ -13,6 +17,7 @@ vim.o.list = true
 vim.o.listchars = "trail:·,tab: ┊"
 vim.o.scrolloff = 10
 vim.o.scrolloff = 10
+vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.smartindent = true
 vim.o.smarttab = true

@@ -1,10 +1,10 @@
 vim.g.mapleader = ';'
---vim.api.nvim_set_keymap('n', ';', '<NOP>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('i', 'jk', '<ESC>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>re', ':so ~/.config/nvim/init.lua<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>t', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '<C-c>', '"*y', {noremap = true, silent = true})
 
 -- quickfix
 vim.api.nvim_set_keymap('n', '[', ':cprevious<CR>', {noremap = true, silent = true})
@@ -23,6 +23,7 @@ vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>', {noremap = true, silent =
 vim.api.nvim_set_keymap('n', 'tn', ':tabnew<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', 'tj', ':tabprevious<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', 'tk', ':tabnext<CR>', {noremap = true, silent = true})
+
 -- buffers
 -- vim.api.nvim_set_keymap('n', 'tn', ':enew<CR>', {noremap = true, silent = true})
 -- vim.api.nvim_set_keymap('n', 'tj', ':bprevious<CR>', {noremap = true, silent = true})
