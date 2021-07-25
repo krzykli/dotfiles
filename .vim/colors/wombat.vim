@@ -1,1 +1,0 @@
-Wombat/colors/wombat.vim

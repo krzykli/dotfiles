@@ -1,0 +1,30 @@
+# Don't print a new line at the start of the prompt
+add_newline = true
+
+format = '''$directory($python)($conda)( $git_branch)( $git_status)
+$character$status'''
+
+[character]
+success_symbol = "[•](bold green)"
+error_symbol = "[•](bold red)"
+
+[package]
+disabled = true
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) ❯"
+style = "white bold"
+
+[username]
+style_user = "blue bold"
+style_root = "#997744 bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[python]
+format = '(pyenv:[($virtualenv)]($style))'
+
+[conda]
+format = "[$symbol$environment]($style) "
