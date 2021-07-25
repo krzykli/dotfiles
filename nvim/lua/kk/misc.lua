@@ -1,4 +1,3 @@
-
 local M = {}
 
 M.open_google = function()
