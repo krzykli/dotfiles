@@ -8,7 +8,7 @@ vim.cmd("set clipboard+=unnamed")
 
 
 vim.g.hidden = true
-vim.o.wrap = false
+vim.o.wrap = true
 vim.o.splitright = true
 vim.o.clipboard = "unnamedplus"
 vim.o.cursorline = true

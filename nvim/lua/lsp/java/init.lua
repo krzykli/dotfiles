@@ -8,7 +8,7 @@ local setup_java_lsp_mappings = function(bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local opts = { noremap=true, silent=true }
 
-    buf_set_keymap('n', '<leader>mv', '<Cmd>lua require"kk".split_command("mvn clean verify")<CR>', opts)
+    buf_set_keymap('n', '<leader>mv', '<Cmd>lua require"kk.lsp-utils".split_command("mvn clean verify")<CR>', opts)
     buf_set_keymap('n', '<leader>oi', "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
     -- buf_set_keymap('n', '<leader>rr', "<Cmd>lua require'jdtls'.code_action(false, 'refactor')<CR>", opts)
     -- lua require('jdtls').code_action()<CR>

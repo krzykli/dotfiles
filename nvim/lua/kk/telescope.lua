@@ -38,6 +38,7 @@ M.switch_workplace = function()
         cwd="~/workspace",
         find_command={"ls"},
         attach_mappings = function(prompt_bufnr, map)
+
             function choose_workspace()
                 local content = action_state.get_selected_entry(prompt_bufnr)
                 local new_path = "~/workspace/" .. content.value
@@ -46,10 +47,12 @@ M.switch_workplace = function()
                 vim.api.nvim_notify("Workspace set to " .. new_path, vim.log.levels.INFO, {})
                 vim.notify("")
             end
+
             map('i', '<CR>', function(bufnr)
                 choose_workspace()
                 actions.close(bufnr)
             end)
+
             map('i', '<C-c>', function(bufnr)
                 actions.close(bufnr)
             end)
