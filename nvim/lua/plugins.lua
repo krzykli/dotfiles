@@ -37,5 +37,4 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
   use 'akinsho/nvim-bufferline.lua'
   use 'akinsho/nvim-toggleterm.lua'
-
 end)

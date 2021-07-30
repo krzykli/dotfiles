@@ -5,6 +5,21 @@ vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', {noremap = true, silent = tr
 vim.api.nvim_set_keymap('n', '<Leader>re', ':so ~/.config/nvim/init.lua<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>t', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '<C-c>', '"*y', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'Y', 'y$', {noremap = true, silent = true})
+
+-- undo break points
+vim.api.nvim_set_keymap('i', ',', ',C-g>u', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '.', '.<C-g>u', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '!', '!<C-g>u', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '?', '?<C-g>u', {noremap = true, silent = true})
+
+-- move text
+vim.api.nvim_set_keymap('v', 'J', ":m '>+1<CR>gv=gv", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<C-j>', "<ESC>:m +1<CR>==", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<C-k>', "<ESC>:m -2<CR>==", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>k', ":m .-2<CR>==", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>j', ":m .+1<CR>==", {noremap = true, silent = true})
 
 -- quickfix
 vim.api.nvim_set_keymap('n', '[', ':cprevious<CR>', {noremap = true, silent = true})
