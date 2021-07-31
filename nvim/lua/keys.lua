@@ -1,11 +1,18 @@
+-- general
 vim.g.mapleader = ';'
 vim.api.nvim_set_keymap('i', 'jk', '<ESC>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>re', ':so ~/.config/nvim/init.lua<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', 'fd', '<ESC>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>re', ':source ~/.config/nvim/init.lua<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>t', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '<C-c>', '"*y', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', 'Y', 'y$', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>a', 'ggVG', {noremap = true, silent = true})
+
+-- center search
+vim.api.nvim_set_keymap('n', 'n', 'nzz', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'N', 'Nzz', {noremap = true, silent = true})
 
 -- undo break points
 vim.api.nvim_set_keymap('i', ',', ',C-g>u', {noremap = true, silent = true})
