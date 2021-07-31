@@ -1,69 +1,74 @@
+local kh = require('kk.key-helpers')
 -- general
 vim.g.mapleader = ';'
-vim.api.nvim_set_keymap('i', 'jk', '<ESC>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', 'fd', '<ESC>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>re', ':source ~/.config/nvim/init.lua<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>t', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', '<C-c>', '"*y', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'Y', 'y$', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>a', 'ggVG', {noremap = true, silent = true})
+
+kh.insert_map('jk', '<ESC>')
+kh.visual_map('fd', '<ESC>')
+kh.normal_map('<leader>h', ':set hlsearch!<CR>')
+kh.normal_map('<leader>w', ':w<CR>')
+kh.normal_map('<leader>re', ':source ~/.config/nvim/init.lua<CR>')
+kh.normal_map('<Leader>t', ':NvimTreeToggle<CR>')
+kh.visual_map('<C-c>', '"*y')
+kh.normal_map('Y', 'y$')
+kh.normal_map('<leader>a', 'ggVG')
+
+-- aligned paste
+kh.normal_map('p', "o<ESC>magpV`amb==`bi")
 
 -- center search
-vim.api.nvim_set_keymap('n', 'n', 'nzz', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'N', 'Nzz', {noremap = true, silent = true})
+kh.normal_map('n', 'nzz')
+kh.normal_map('N', 'Nzz')
 
 -- undo break points
-vim.api.nvim_set_keymap('i', ',', ',C-g>u', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '.', '.<C-g>u', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '!', '!<C-g>u', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '?', '?<C-g>u', {noremap = true, silent = true})
+kh.insert_map(',', ',<C-g>u')
+kh.insert_map('.', '.<C-g>u')
+kh.insert_map('!', '!<C-g>u')
+kh.insert_map('?', '?<C-g>u')
 
 -- move text
-vim.api.nvim_set_keymap('v', 'J', ":m '>+1<CR>gv=gv", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '<C-j>', "<ESC>:m +1<CR>==", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '<C-k>', "<ESC>:m -2<CR>==", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>k', ":m .-2<CR>==", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>j', ":m .+1<CR>==", {noremap = true, silent = true})
+kh.visual_map('J', ":m '>+1<CR>gv=gv")
+kh.visual_map('K', ":m '<-2<CR>gv=gv")
+kh.insert_map('<C-j>', "<ESC>:m +1<CR>==")
+kh.insert_map('<C-k>', "<ESC>:m -2<CR>==")
+kh.normal_map('<leader>k', ":m .-2<CR>==")
+kh.normal_map('<leader>j', ":m .+1<CR>==")
 
 -- quickfix
-vim.api.nvim_set_keymap('n', '[', ':cprevious<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', ']', ':cnext<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '++', ':cclose<CR>', {noremap = true, silent = true})
+kh.normal_map('[', ':cprevious<CR>')
+kh.normal_map(']', ':cnext<CR>')
+kh.normal_map('++', ':cclose<CR>')
 
 -- windows
-vim.api.nvim_set_keymap('n', '<C-k>', ':wincmd k<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-j>', ':wincmd j<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-h>', ':wincmd h<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>', {noremap = true, silent = true})
+kh.normal_map('<C-k>', ':wincmd k<CR>')
+kh.normal_map('<C-j>', ':wincmd j<CR>')
+kh.normal_map('<C-h>', ':wincmd h<CR>')
+kh.normal_map('<C-l>', ':wincmd l<CR>')
 
-vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>', {noremap = true, silent = true})
+kh.normal_map('<C-l>', ':wincmd l<CR>')
 
 -- tabs
-vim.api.nvim_set_keymap('n', 'tn', ':tabnew<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'tj', ':tabprevious<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'tk', ':tabnext<CR>', {noremap = true, silent = true})
+kh.normal_map('tn', ':tabnew<CR>')
+kh.normal_map('tj', ':tabprevious<CR>')
+kh.normal_map('tk', ':tabnext<CR>')
 
 -- buffers
--- vim.api.nvim_set_keymap('n', 'tn', ':enew<CR>', {noremap = true, silent = true})
--- vim.api.nvim_set_keymap('n', 'tj', ':bprevious<CR>', {noremap = true, silent = true})
--- vim.api.nvim_set_keymap('n', 'tk', ':bnext<CR>', {noremap = true, silent = true})
+-- kh.normal_map('tn', ':enew<CR>')
+-- kh.normal_map('tj', ':bprevious<CR>')
+-- kh.normal_map('tk', ':bnext<CR>')
 
 -- telescope
-vim.api.nvim_set_keymap('n', '<Leader>fa', ":lua require('telescope.builtin').find_files()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>fg', ":lua require('telescope.builtin').git_files()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>fq', ":lua require('telescope.builtin').quickfix()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>fe', ":lua require('telescope.builtin').lsp_document_symbols()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>fr', ":lua require('telescope.builtin').lsp_references()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>fl', ":lua require('telescope.builtin').live_grep()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>fb', ":lua require('telescope.builtin').buffers()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>fh', ":lua require('telescope.builtin').help_tags()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>bb', ":lua require('telescope.builtin').git_branches()<CR>", {noremap = true, silent = true})
+kh.normal_map('<Leader>fa', ":lua require('telescope.builtin').find_files()<CR>")
+kh.normal_map('<Leader>fg', ":lua require('telescope.builtin').git_files()<CR>")
+kh.normal_map('<Leader>fq', ":lua require('telescope.builtin').quickfix()<CR>")
+kh.normal_map('<Leader>fe', ":lua require('telescope.builtin').lsp_document_symbols()<CR>")
+kh.normal_map('<Leader>fr', ":lua require('telescope.builtin').lsp_references()<CR>")
+kh.normal_map('<Leader>fl', ":lua require('telescope.builtin').live_grep()<CR>")
+kh.normal_map('<Leader>fb', ":lua require('telescope.builtin').buffers()<CR>")
+kh.normal_map('<Leader>fh', ":lua require('telescope.builtin').help_tags()<CR>")
+kh.normal_map('<Leader>bb', ":lua require('telescope.builtin').git_branches()<CR>")
 
-vim.api.nvim_set_keymap('n', '<Leader>vc', ":lua require('kk.telescope').search_dotfiles()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>fs', ":lua require('kk.telescope').switch_workplace()<CR>", {noremap = true, silent = true})
+kh.normal_map('<Leader>vc', ":lua require('kk.telescope').search_dotfiles()<CR>")
+kh.normal_map('<Leader>fs', ":lua require('kk.telescope').switch_workplace()<CR>")
 
 -- bufferline
-vim.api.nvim_set_keymap('n', '<Leader>gt', ":BufferLinePick<CR>", {noremap = true, silent = true})
+kh.normal_map('<Leader>gt', ":BufferLinePick<CR>")
