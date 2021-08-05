@@ -13,7 +13,7 @@ kh.normal_map('Y', 'y$')
 kh.normal_map('<leader>a', 'ggVG')
 
 -- aligned paste
-kh.normal_map('p', "o<ESC>magpV`amb==`bi")
+-- kh.normal_map('p', "o<ESC>magpV`amb==`bi")
 
 -- center search
 kh.normal_map('n', 'nzz')
