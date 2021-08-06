@@ -5,10 +5,14 @@ vim.cmd("set hidden")
 vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
 vim.cmd("set clipboard+=unnamed")
-
+vim.cmd("set noswapfile")
+vim.cmd("set nobackup")
+vim.cmd("set scrolloff=8")
+vim.cmd("set undodir=~/.vim/undodir")
+vim.cmd("set undofile")
 
 vim.g.hidden = true
-vim.o.wrap = true
+vim.o.wrap = false
 vim.o.splitright = true
 vim.o.clipboard = "unnamedplus"
 vim.o.cursorline = true
