@@ -1,3 +1,4 @@
+local kh = require('kk.key-helpers')
 local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
 
@@ -15,12 +16,21 @@ require('telescope').setup{
     layout_strategy = "flex",
     layout_config = {
       horizontal = {
+        width = 0.9,
         mirror = false,
       },
       vertical = {
+        width = 0.9,
         mirror = false,
       },
     },
+  },
+  extensions = {
+    project = {
+      base_dirs = {
+        '~/workspace/',
+      }
+    }
   }
 }
 require('telescope').load_extension('fzy_native')
@@ -32,34 +42,18 @@ M.search_dotfiles = function()
     })
 end
 
-M.switch_workplace = function()
-    require("telescope.builtin").find_files({
-        prompt_title = "Projects",
-        cwd="~/workspace",
-        find_command={"ls"},
-        attach_mappings = function(prompt_bufnr, map)
 
-            function choose_workspace()
-                local content = action_state.get_selected_entry(prompt_bufnr)
-                local new_path = "~/workspace/" .. content.value
+local workspace_root = '~/workspace/'
+local project_config = '/Users/kklimczyk/.config/current_projects'
 
-                vim.api.nvim_set_current_dir(new_path)
-                vim.api.nvim_notify("Workspace set to " .. new_path, vim.log.levels.INFO, {})
-                vim.notify("")
-            end
+local current_projects = {}
+for line in io.lines(project_config) do 
+    current_projects[#current_projects + 1] = line
+end
 
-            map('i', '<CR>', function(bufnr)
-                choose_workspace()
-                actions.close(bufnr)
-            end)
-
-            map('i', '<C-c>', function(bufnr)
-                actions.close(bufnr)
-            end)
-
-            return true
-        end
-    })
+local access_key = {'j', 'k', 'i'}
+for i, project in ipairs(current_projects) do
+    kh.normal_map('<Leader>f' .. access_key[i], ":lua require('telescope.builtin').find_files({prompt_title='" .. project .. "', cwd='" .. workspace_root .. project .. "'})<CR>")
 end
 
 return M

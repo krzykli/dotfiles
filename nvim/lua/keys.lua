@@ -7,13 +7,11 @@ kh.visual_map('fd', '<ESC>')
 kh.normal_map('<leader>h', ':set hlsearch!<CR>')
 kh.normal_map('<leader>w', ':w<CR>')
 kh.normal_map('<leader>re', ':source ~/.config/nvim/init.lua<CR>')
-kh.normal_map('<Leader>t', ':NvimTreeToggle<CR>')
+kh.normal_map('<Leaeer>t', ':NvimTreeToggle<CR>')
 kh.visual_map('<C-c>', '"*y')
 kh.normal_map('Y', 'y$')
 kh.normal_map('<leader>a', 'ggVG')
 
--- aligned paste
--- kh.normal_map('p', "o<ESC>magpV`amb==`bi")
 
 -- center search
 kh.normal_map('n', 'nzz')
@@ -68,7 +66,7 @@ kh.normal_map('<Leader>fh', ":lua require('telescope.builtin').help_tags()<CR>")
 kh.normal_map('<Leader>bb', ":lua require('telescope.builtin').git_branches()<CR>")
 
 kh.normal_map('<Leader>vc', ":lua require('kk.telescope').search_dotfiles()<CR>")
-kh.normal_map('<Leader>fs', ":lua require('kk.telescope').switch_workplace()<CR>")
+kh.normal_map('<Leader>fs', ":lua require('telescope').extensions.project.project{}<CR>")
 
 -- bufferline
 kh.normal_map('<Leader>gt', ":BufferLinePick<CR>")

@@ -27,6 +27,7 @@ return require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
+  use 'nvim-telescope/telescope-project.nvim'
   -- lsp
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-compe'
@@ -37,4 +38,5 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
   use 'akinsho/nvim-bufferline.lua'
   use 'akinsho/nvim-toggleterm.lua'
+  use 'psliwka/vim-smoothie'
 end)
