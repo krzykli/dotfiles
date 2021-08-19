@@ -42,12 +42,56 @@ M.search_dotfiles = function()
     })
 end
 
+local conf = require("telescope.config").values
+local finders = require "telescope.finders"
+local pickers = require "telescope.pickers"
+local previewers = require "telescope.previewers"
+
+M.open_bookmarks = function()
+    local bookmarks_file = '/Users/kklimczyk/.config/bookmarks'
+
+    local bookmarks = {}
+    for line in io.lines(bookmarks_file) do
+        local label, link = line:match("([^,]+),%s+([^,]+)")
+        bookmarks[#bookmarks + 1] = {
+            label = label,
+            link = link
+        }
+    end
+    pickers.new({
+        prompt_title = "Bookmarks",
+        finder = finders.new_table {
+            results = bookmarks,
+            entry_maker = function(entry)
+                return {
+                    ordinal = entry.label,
+                    display = entry.label,
+                    link = entry.link
+                }
+            end,
+        },
+        previewer = previewers.cat.new({}),
+        sorter = conf.generic_sorter({}),
+        attach_mappings = function(prompt_bufnr)
+            actions.select_default:replace(function()
+                local entry = action_state.get_selected_entry()
+                vim.inspect(entry)
+                actions.close(prompt_bufnr)
+                print(entry.link)
+                local url = 'open ' .. entry.link
+                os.execute(url)
+            end)
+
+            return true
+        end,
+    }):find()
+end
 
 local workspace_root = '~/workspace/'
 local project_config = '/Users/kklimczyk/.config/current_projects'
 
 local current_projects = {}
-for line in io.lines(project_config) do 
+for line in io.lines(project_config) do
     current_projects[#current_projects + 1] = line
 end
 
