@@ -10,6 +10,8 @@ vim.cmd("set nobackup")
 vim.cmd("set scrolloff=8")
 vim.cmd("set undodir=~/.vim/undodir")
 vim.cmd("set undofile")
+vim.cmd("set number")
+vim.cmd("set relativenumber")
 
 vim.g.hidden = true
 vim.o.wrap = false

@@ -19,6 +19,7 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-tree.lua'
   use 'tpope/vim-commentary'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {'nvim-treesitter/playground'}
   use 'kevinhwang91/nvim-bqf'
   use 'junegunn/fzf'
   use 'mhinz/vim-signify'
