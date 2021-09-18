@@ -37,6 +37,7 @@ require('telescope').load_extension('fzy_native')
 
 M.search_dotfiles = function()
     require("telescope.builtin").find_files({
+        hidden=true,
         prompt_title = " my config ",
         cwd = "~/.config",
     })
@@ -48,7 +49,7 @@ local pickers = require "telescope.pickers"
 local previewers = require "telescope.previewers"
 
 M.open_bookmarks = function()
-    local bookmarks_file = '/Users/kklimczyk/.config/bookmarks'
+    local bookmarks_file = '/Users/kklimczyk/.config/bookmarks.txt'
 
     local bookmarks = {}
     for line in io.lines(bookmarks_file) do
@@ -88,7 +89,7 @@ M.open_bookmarks = function()
 end
 
 local workspace_root = '~/workspace/'
-local project_config = '/Users/kklimczyk/.config/current_projects'
+local project_config = '/Users/kklimczyk/.config/current_projects.txt'
 
 local current_projects = {}
 for line in io.lines(project_config) do

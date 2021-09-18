@@ -134,9 +134,6 @@ alias doclog="docker login docker.atl-paas.net"
 alias ca="cd ~/workspace/control-automation/"
 alias dlf="cd ~/workspace/data-landing-framework-schemas/"
 
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_COMPLETION_TRIGGER=';;'
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
@@ -150,7 +147,6 @@ alias initnvm=". /usr/local/opt/nvm/nvm.sh"
 alias initruby='eval "$(rbenv init -)"'
 
 source ~/.atlassian.zsh
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -180,3 +176,8 @@ man() {
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
         man "$@"
 }
+
+
+# fzf
+export FZF_COMPLETION_TRIGGER=';;'
+zvm_after_init_commands+=('source ~/.fzf.zsh')

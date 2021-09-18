@@ -2,6 +2,7 @@ local kh = require('kk.key-helpers')
 -- general
 vim.g.mapleader = ';'
 
+kh.normal_map('Q', '<nop>')
 kh.insert_map('jk', '<ESC>')
 kh.visual_map('fd', '<ESC>')
 kh.normal_map('<leader>h', ':set hlsearch!<CR>')
@@ -34,7 +35,7 @@ kh.normal_map('<leader>j', ":m .+1<CR>==")
 -- quickfix
 kh.normal_map('[', ':cprevious<CR>')
 kh.normal_map(']', ':cnext<CR>')
-kh.normal_map('++', ':cclose<CR>')
+kh.normal_map('=++', ':cclose<CR>')
 
 -- windows
 kh.normal_map('<C-k>', ':wincmd k<CR>')
@@ -42,12 +43,16 @@ kh.normal_map('<C-j>', ':wincmd j<CR>')
 kh.normal_map('<C-h>', ':wincmd h<CR>')
 kh.normal_map('<C-l>', ':wincmd l<CR>')
 
-kh.normal_map('<C-l>', ':wincmd l<CR>')
+-- kh.normal_map('<C-m>', ':vertical resize -5<CR>')
+-- kh.normal_map('<C-n>', ':vertical resize +5<CR>')
 
 -- tabs
 kh.normal_map('tn', ':tabnew<CR>')
 kh.normal_map('tj', ':tabprevious<CR>')
 kh.normal_map('tk', ':tabnext<CR>')
+
+-- termianl
+kh.terminal_map('jk', '<C-\\><C-n>')
 
 -- buffers
 -- kh.normal_map('tn', ':enew<CR>')
@@ -64,10 +69,12 @@ kh.normal_map('<Leader>fl', ":lua require('telescope.builtin').live_grep()<CR>")
 kh.normal_map('<Leader>fb', ":lua require('telescope.builtin').buffers()<CR>")
 kh.normal_map('<Leader>fh', ":lua require('telescope.builtin').help_tags()<CR>")
 kh.normal_map('<Leader>bb', ":lua require('telescope.builtin').git_branches()<CR>")
+kh.normal_map('<Leader>fs', ":lua require('telescope').extensions.project.project{}<CR>")
 
 kh.normal_map('<Leader>vc', ":lua require('kk.telescope').search_dotfiles()<CR>")
 kh.normal_map('<Leader>vx', ":lua require('kk.telescope').open_bookmarks()<CR>")
-kh.normal_map('<Leader>fs', ":lua require('telescope').extensions.project.project{}<CR>")
+kh.normal_map('test', ":lua require('kk.java').run_test_in_selection()<CR>")
+
 
 -- bufferline
 kh.normal_map('<Leader>gt', ":BufferLinePick<CR>")

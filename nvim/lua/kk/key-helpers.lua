@@ -11,4 +11,9 @@ end
 M.visual_map = function(keys, map)
     vim.api.nvim_set_keymap('v', keys, map, {noremap = true, silent = true})
 end
+
+M.terminal_map = function(keys, map)
+    vim.api.nvim_set_keymap('t', keys, map, {noremap = true, silent = true})
+end
+
 return M

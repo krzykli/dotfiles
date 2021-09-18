@@ -33,10 +33,10 @@ M.run_test_in_selection = function()
     if counter == 2 then
         local class_node = intersected_nodes[1]
         local method_node = intersected_nodes[2]
-        command = 'tmux split-window -h "mvn -Dtest=' .. class_node.name .. '#' .. method_node.name .. ' test ; read"'
+        command = 'tmux split-window -h "mvn clean -Dtest=' .. class_node.name .. '#' .. method_node.name .. ' test ; read"'
     else
         local class_node = intersected_nodes[1]
-        command = 'tmux split-window -h "mvn -Dtest=' .. class_node.name .. ' test ; read"'
+        command = 'tmux split-window -h "mvn clean -Dtest=' .. class_node.name .. ' test ; read"'
     end
 
 
