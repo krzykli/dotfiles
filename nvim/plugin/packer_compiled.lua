@@ -69,17 +69,137 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/LuaSnip"
+  },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+  },
+  ["cmp-nvim-lua"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/cmp-path"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/cmp_luasnip"
+  },
+  ["feline.nvim"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/feline.nvim"
+  },
+  fzf = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/fzf"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
   ["gruvbox-material"] = {
     loaded = true,
     path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/gruvbox-material"
+  },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
+  },
+  ["nvim-bqf"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/nvim-bqf"
+  },
+  ["nvim-bufferline.lua"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/nvim-cmp"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+  },
+  ["nvim-jdtls"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/nvim-jdtls"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-toggleterm.lua"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/packer.nvim"
+  },
+  playground = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/playground"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  ["telescope-fzy-native.nvim"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
+  },
+  ["telescope-project.nvim"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/telescope-project.nvim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
+  ["vim-easymotion"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/vim-easymotion"
+  },
+  ["vim-smoothie"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/vim-smoothie"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator"
+  },
+  ["vim-wordmotion"] = {
+    loaded = true,
+    path = "/Users/kklimczyk/.local/share/nvim/site/pack/packer/start/vim-wordmotion"
   }
 }
 

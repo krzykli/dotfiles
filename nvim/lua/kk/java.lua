@@ -2,12 +2,13 @@ local kkts = require'kk.treesitter'
 
 local M = {}
 
-local query = [[
-(method_declaration (identifier)? @method.name) @method.declaration
-(class_declaration (identifier) @class.name) @class.declaration
-]]
-
 M.run_test_in_selection = function()
+
+    local query = [[
+    (method_declaration (identifier)? @method.name) @method.declaration
+    (class_declaration (identifier) @class.name) @class.declaration
+    ]]
+
     local lang = "java"
     local success, parsed_query = pcall(function()
         return vim.treesitter.parse_query(lang, query)
@@ -43,6 +44,14 @@ M.run_test_in_selection = function()
     io.popen(command)
     local colour_command = 'tmux select-pane -t:.1 -P "bg=colour234"'
     io.popen(colour_command)
+end
+
+M.call_function_from_declaration = function()
+
+    local query = [[
+    (method_declaration (identifier)? @method.name) @method.declaration
+    ]]
+
 end
 
 return M

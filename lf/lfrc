@@ -1,0 +1,28 @@
+set icons
+set relativenumber
+set ratios 1:2:3
+set hidden
+
+cmd open $nvim "$fx"
+
+cmd mkdir % printf "Directory Name: "; read ans; mkdir $ans
+
+cmd mkfile % printf "File Name: "; read ans; touch $ans; echo 🎉 $ans created
+
+map m
+
+map mf mkfile
+map DD delete
+map gw cd ~/workspace
+
+map f $nvim $(fzf)
+
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ]; then
+        cmd="cd"
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+
+map d :fzf_jump

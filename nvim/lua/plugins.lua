@@ -8,9 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
-return require('packer').startup(function()
+return require('packer').startup({function()
   use 'wbthomason/packer.nvim'
   --
   use 'christoomey/vim-tmux-navigator'
@@ -22,7 +20,10 @@ return require('packer').startup(function()
   use {'nvim-treesitter/playground'}
   use 'kevinhwang91/nvim-bqf'
   use 'junegunn/fzf'
-  use 'mhinz/vim-signify'
+  -- use 'mhinz/vim-signify'
+  use 'lewis6991/gitsigns.nvim'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -31,14 +32,26 @@ return require('packer').startup(function()
   use 'nvim-telescope/telescope-project.nvim'
   -- lsp
   use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/nvim-compe'
   use 'mfussenegger/nvim-jdtls'
+  -- autocomplete
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-path'
   -- UI
   use 'norcalli/nvim-colorizer.lua'
   use 'sainnhe/gruvbox-material'
   use 'kyazdani42/nvim-web-devicons'
   use 'akinsho/nvim-bufferline.lua'
   use 'akinsho/nvim-toggleterm.lua'
-  use 'hoob3rt/lualine.nvim'
+  use 'famiu/feline.nvim'
   use 'psliwka/vim-smoothie'
-end)
+  use 'onsails/lspkind-nvim'
+
+  end,
+  config = {
+    display = {
+      open_fn = require('packer.util').float,
+    }
+}})

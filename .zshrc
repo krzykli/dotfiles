@@ -127,13 +127,6 @@ alias cac="~/go/src/bitbucket.org/atlassian/compliance-as-code"
 
 eval "$(starship init zsh)"
 
-# Aliases [atlassian]
-# TODO(kk): Pull them out
-alias grant="atlas packages permission grant -u kklimczyk"
-alias doclog="docker login docker.atl-paas.net"
-alias ca="cd ~/workspace/control-automation/"
-alias dlf="cd ~/workspace/data-landing-framework-schemas/"
-
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
@@ -181,3 +174,7 @@ man() {
 # fzf
 export FZF_COMPLETION_TRIGGER=';;'
 zvm_after_init_commands+=('source ~/.fzf.zsh')
+
+alias fenv='env | fzf'
+
+source ~/.config/lf_icons.zsh
