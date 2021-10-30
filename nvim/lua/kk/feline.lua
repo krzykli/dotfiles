@@ -98,6 +98,22 @@ components.active[1] = {
         right_sep = '  '
     },
     {
+      provider = function()
+        local dir = vim.fn['getcwd']()
+        if string.find(dir, '/review/') then
+            return ' REVIEW '
+        else
+            return ''
+        end
+      end,
+      hl = {
+        fg = 'black',
+        bg = 'magenta',
+        style = 'bold'
+      },
+      right_sep = ''
+    },
+    {
         -- filename
         provider = function()
             return vim.fn.expand("%:F")

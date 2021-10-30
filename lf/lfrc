@@ -18,11 +18,21 @@ map gw cd ~/workspace
 map f $nvim $(fzf)
 
 cmd fzf_jump ${{
-    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    res="$(find . -type d -maxdepth 1 | fzf --reverse --header='Jump to location')"
     if [ -d "$res" ]; then
         cmd="cd"
     fi
     lf -remote "send $id $cmd \"$res\""
 }}
 
-map d :fzf_jump
+map t :fzf_jump
+
+cmd fzf_jump_deep ${{
+    res="$(find . -type d | fzf --reverse --header='Jump to location')"
+    if [ -d "$res" ]; then
+        cmd="cd"
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+
+map T :fzf_jump_deep
