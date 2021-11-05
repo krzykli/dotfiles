@@ -52,3 +52,10 @@ fzf-bookmark-widget() {
 }
 zle     -N   fzf-bookmark-widget
 bindkey '^s' fzf-bookmark-widget
+
+# CTRL-b - projects
+run-vim() {
+    nvim
+}
+zle     -N   run-vim
+bindkey '^ ' run-vim

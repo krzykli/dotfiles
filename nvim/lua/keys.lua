@@ -13,6 +13,11 @@ kh.visual_map('<C-c>', '"*y')
 kh.normal_map('Y', 'y$')
 kh.normal_map('<leader>a', 'ggVG')
 
+-- 
+kh.normal_map('<leader>b', ':!./build.sh<CR>')
+kh.normal_map('<leader>r', ':!./run.sh<CR><CR>')
+kh.normal_map('<leader>br', ':!./build.sh && ./run.sh<CR><CR>')
+
 -- center search
 kh.normal_map('n', 'nzz')
 kh.normal_map('N', 'Nzz')
@@ -51,7 +56,7 @@ kh.normal_map('tj', ':tabprevious<CR>')
 kh.normal_map('tk', ':tabnext<CR>')
 
 -- termianl
--- kh.terminal_map('jk', '<C-\\><C-n>')
+kh.terminal_map('<ESC>', '<C-\\><C-n>')
 
 -- buffers
 -- kh.normal_map('tn', ':enew<CR>')
