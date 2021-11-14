@@ -88,6 +88,24 @@ components.active[1] = {
         right_sep = '  '
     },
     {
+      provider = function()
+        local cwd = vim.fn['getcwd']()
+        local tokens = {}
+
+        for match in cwd:gmatch("[a-zA-Z-]+") do
+            table.insert(tokens, match)
+        end
+
+        return tokens[#tokens]
+      end,
+      hl = {
+        fg = 'red',
+        bg = 'bg',
+        style = 'bold'
+      },
+      right_sep = ' '
+    },
+    {
         -- gitBranch
         provider = 'git_branch',
         hl = {

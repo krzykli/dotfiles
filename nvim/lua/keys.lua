@@ -13,10 +13,11 @@ kh.visual_map('<C-c>', '"*y')
 kh.normal_map('Y', 'y$')
 kh.normal_map('<leader>a', 'ggVG')
 
--- 
-kh.normal_map('<leader>b', ':!./build.sh<CR>')
-kh.normal_map('<leader>r', ':!./run.sh<CR><CR>')
-kh.normal_map('<leader>br', ':!./build.sh && ./run.sh<CR><CR>')
+--
+kh.normal_map('<leader>bb', ':w<CR>:!./build.sh<CR>')
+kh.normal_map('<leader>b', ':w<CR>:!./compile.sh<CR>')
+kh.normal_map('<leader>br', ':w<CR>:!./compile.sh && ./run.sh<CR><CR>')
+kh.normal_map('<leader>r', ':w<CR>:!./run.sh<CR><CR>')
 
 -- center search
 kh.normal_map('n', 'nzz')
@@ -63,6 +64,7 @@ kh.terminal_map('<ESC>', '<C-\\><C-n>')
 -- kh.normal_map('tj', ':bprevious<CR>')
 -- kh.normal_map('tk', ':bnext<CR>')
 
+kh.normal_map('<Leader>fo', ":lua vim.lsp.buf.formatting()<CR>")
 -- telescope
 kh.normal_map('<Leader>fa', ":lua require('telescope.builtin').find_files()<CR>")
 kh.normal_map('<Leader>fg', ":lua require('telescope.builtin').git_files()<CR>")
@@ -75,6 +77,9 @@ kh.normal_map('<Leader>fs', ":lua require('telescope').extensions.project.projec
 kh.normal_map('<Leader>vc', ":lua require('kk.telescope').search_dotfiles()<CR>")
 kh.normal_map('<Leader>vx', ":lua require('kk.telescope').open_bookmarks()<CR>")
 kh.normal_map('test', ":lua require('kk.java').run_test_in_selection()<CR>")
+
+-- gitsigns
+kh.normal_map('<Leader>gb', ":Gitsigns toggle_current_line_blame<CR>")
 
 -- bufferline
 kh.normal_map('<Leader>gt', ":BufferLinePick<CR>")
