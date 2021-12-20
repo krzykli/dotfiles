@@ -11,6 +11,8 @@ end
 return require('packer').startup({function()
   use 'wbthomason/packer.nvim'
   --
+  use 'lewis6991/impatient.nvim'
+  use 'rcarriga/nvim-notify'
   use 'christoomey/vim-tmux-navigator'
   use 'easymotion/vim-easymotion'
   use 'chaoren/vim-wordmotion'
@@ -19,7 +21,7 @@ return require('packer').startup({function()
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use {'nvim-treesitter/playground'}
   use 'kevinhwang91/nvim-bqf'
-  use 'junegunn/fzf'
+  -- use 'ggandor/lightspeed.nvim'
   -- use 'mhinz/vim-signify'
   use 'lewis6991/gitsigns.nvim'
   use 'L3MON4D3/LuaSnip'

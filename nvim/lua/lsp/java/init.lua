@@ -33,7 +33,7 @@ require'lspconfig'.jdtls.setup{
     "-Xms1g",
     "-Xmx2G",
     "-jar",
-    HOME .. "/jdt-language-server/plugins/org.eclipse.equinox.launcher_1.6.200.v20210416-2027.jar",
+    HOME .. "/jdt-language-server/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
     "-configuration",
     HOME .. "/jdt-language-server/config_mac",
     "-data",

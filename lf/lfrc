@@ -12,12 +12,24 @@ cmd mkfile % printf "File Name: "; read ans; touch $ans; echo 🎉 $ans created
 map m
 
 map mf mkfile
+map md mkdir
+map C-n mkfile
 map DD delete
 map gw cd ~/workspace
 
 map f $nvim $(fzf)
 
-cmd fzf_jump ${{
+cmd fzf_file_jump ${{
+    res="$(find . -type f | fzf --reverse --header='Jump to file directory')"
+    if [ -f "$res" ]; then
+        cmd="cd"
+    fi
+    lf -remote "send $id $cmd `dirname \"$res\"`"
+}}
+
+map F :fzf_file_jump
+
+cmd fzf_dir_jump ${{
     res="$(find . -type d -maxdepth 1 | fzf --reverse --header='Jump to location')"
     if [ -d "$res" ]; then
         cmd="cd"
@@ -25,9 +37,9 @@ cmd fzf_jump ${{
     lf -remote "send $id $cmd \"$res\""
 }}
 
-map t :fzf_jump
+map t :fzf_dir_jump
 
-cmd fzf_jump_deep ${{
+cmd fzf_dir_jump_deep ${{
     res="$(find . -type d | fzf --reverse --header='Jump to location')"
     if [ -d "$res" ]; then
         cmd="cd"
@@ -35,4 +47,4 @@ cmd fzf_jump_deep ${{
     lf -remote "send $id $cmd \"$res\""
 }}
 
-map T :fzf_jump_deep
+map T :fzf_dir_jump_deep

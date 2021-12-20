@@ -1,4 +1,5 @@
 require('plugins')
+require('impatient')
 require('settings')
 require('keys')
 require('lsp')
@@ -9,6 +10,7 @@ require('kk.toggleterm')
 require('kk.telescope')
 require('kk.feline')
 require('kk.gitsigns')
+require('kk.notify')
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -16,3 +18,4 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+vim.highlight.link("VirtualTextError", "Red", true)

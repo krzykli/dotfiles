@@ -1,4 +1,24 @@
 local kh = require('kk.key-helpers')
+local Job = require "plenary.job"
+
+
+function RunCommand(command)
+    local stderr = {}
+    local stdout, _ = Job
+    :new({
+        command = command,
+        on_stderr = function(_, data)
+            table.insert(stderr, data)
+        end,
+    })
+    :sync()
+    if next(stderr) then
+        require "notify"(stderr, "error", {title="Builder"})
+    else
+        require "notify"(stdout, "info", {title="Builder"})
+    end
+end
+
 -- general
 vim.g.mapleader = ';'
 
@@ -8,14 +28,16 @@ kh.visual_map('fd', '<ESC>')
 kh.normal_map('<leader>h', ':set hlsearch!<CR>')
 kh.normal_map('<leader>w', ':w<CR>')
 kh.normal_map('<leader>re', ':source ~/.config/nvim/init.lua<CR>')
+
 kh.normal_map('<leader>t', ':NvimTreeToggle<CR>')
 kh.visual_map('<C-c>', '"*y')
 kh.normal_map('Y', 'y$')
 kh.normal_map('<leader>a', 'ggVG')
+kh.normal_map('<leader>s', ':echo "renaming..."<CR>:%s/')
 
 --
 kh.normal_map('<leader>bb', ':w<CR>:!./build.sh<CR>')
-kh.normal_map('<leader>b', ':w<CR>:!./compile.sh<CR>')
+kh.normal_map('<leader>b', ':lua RunCommand("./compile.sh")<CR>')
 kh.normal_map('<leader>br', ':w<CR>:!./compile.sh && ./run.sh<CR><CR>')
 kh.normal_map('<leader>r', ':w<CR>:!./run.sh<CR><CR>')
 
@@ -83,3 +105,6 @@ kh.normal_map('<Leader>gb', ":Gitsigns toggle_current_line_blame<CR>")
 
 -- bufferline
 kh.normal_map('<Leader>gt', ":BufferLinePick<CR>")
+
+-- lf
+kh.normal_map('<Leader>lf', ":tabnew<CR>:set nonumber<CR>:set norelativenumber<CR>:term<CR>alf<CR>")
