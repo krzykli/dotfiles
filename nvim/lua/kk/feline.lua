@@ -6,7 +6,7 @@ local components = {
   inactive = {{}, {}, {}},
 }
 
-local colors = {
+local theme = {
   bg = '#282828',
   black = '#282828',
   yellow = '#d8a657',
@@ -22,7 +22,7 @@ local colors = {
   red = '#ea6962',
 }
 
-local vi_mode_colors = {
+local vi_mode_theme = {
   NORMAL = 'green',
   OP = 'green',
   INSERT = 'red',
@@ -177,7 +177,7 @@ components.active[2] = {
     {
         -- diagnosticWarn
         provider = 'diagnostic_warnings',
-        enabled = function() return lsp.diagnostics_exist('Warning') end,
+        enabled = function() return lsp.diagnostics_exist('Warn') end,
         hl = {
             fg = 'yellow',
             style = 'bold'
@@ -195,7 +195,7 @@ components.active[2] = {
     {
         -- diagnosticInfo
         provider = 'diagnostic_info',
-        enabled = function() return lsp.diagnostics_exist('Information') end,
+        enabled = function() return lsp.diagnostics_exist('Info') end,
         hl = {
             fg = 'skyblue',
             style = 'bold'
@@ -292,8 +292,8 @@ components.active[3] = {
 }
 
 require('feline').setup({
-  colors = colors,
-  vi_mode_colors = vi_mode_colors,
+  theme = theme,
+  vi_mode_theme = vi_mode_theme,
   components = components,
 })
 

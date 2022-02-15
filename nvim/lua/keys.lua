@@ -108,3 +108,6 @@ kh.normal_map('<Leader>gt', ":BufferLinePick<CR>")
 
 -- lf
 kh.normal_map('<Leader>lf', ":tabnew<CR>:set nonumber<CR>:set norelativenumber<CR>:term<CR>alf<CR>")
+
+-- luansip
+

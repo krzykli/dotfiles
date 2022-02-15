@@ -16,7 +16,6 @@ return require('packer').startup({function()
   use 'christoomey/vim-tmux-navigator'
   use 'easymotion/vim-easymotion'
   use 'chaoren/vim-wordmotion'
-  use 'kyazdani42/nvim-tree.lua'
   use 'tpope/vim-commentary'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use {'nvim-treesitter/playground'}
@@ -24,8 +23,8 @@ return require('packer').startup({function()
   -- use 'ggandor/lightspeed.nvim'
   -- use 'mhinz/vim-signify'
   use 'lewis6991/gitsigns.nvim'
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
+  -- use 'L3MON4D3/LuaSnip'
+  -- use 'saadparwaiz1/cmp_luasnip'
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -42,14 +41,16 @@ return require('packer').startup({function()
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-path'
   -- UI
+  use 'kyazdani42/nvim-web-devicons'
+  -- use 'kyazdani42/nvim-tree.lua'
   use 'norcalli/nvim-colorizer.lua'
   use 'sainnhe/gruvbox-material'
-  use 'kyazdani42/nvim-web-devicons'
   use 'akinsho/nvim-bufferline.lua'
   use 'akinsho/nvim-toggleterm.lua'
   use 'famiu/feline.nvim'
   use 'psliwka/vim-smoothie'
   use 'onsails/lspkind-nvim'
+  -- use 'glepnir/lspsaga.nvim'
 
   end,
   config = {

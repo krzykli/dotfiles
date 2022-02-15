@@ -178,3 +178,8 @@ zvm_after_init_commands+=('source ~/.fzf.zsh')
 alias fenv='env | fzf'
 
 source ~/.config/lf_icons.zsh
+
+alias cat=bat
+
+# go
+export PATH="$HOME/go/bin:$PATH"
