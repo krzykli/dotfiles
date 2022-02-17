@@ -5,13 +5,13 @@ require('keys')
 require('lsp')
 require('bufferline').setup{}
 
+require('kk.luasnip')
 require('kk.cmp')
 require('kk.toggleterm')
 require('kk.telescope')
 require('kk.feline')
 require('kk.gitsigns')
 require('kk.notify')
--- require('kk.luasnip')
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
