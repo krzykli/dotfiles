@@ -23,8 +23,14 @@ return require('packer').startup({function()
   -- use 'ggandor/lightspeed.nvim'
   -- use 'mhinz/vim-signify'
   use 'lewis6991/gitsigns.nvim'
-  -- use 'L3MON4D3/LuaSnip'
-  -- use 'saadparwaiz1/cmp_luasnip'
+  use { 
+      'hrsh7th/nvim-cmp'
+  }
+  use { 'saadparwaiz1/cmp_luasnip' }
+  use {
+      'L3MON4D3/LuaSnip',
+      after = 'nvim-cmp'
+  }
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -35,7 +41,6 @@ return require('packer').startup({function()
   use 'neovim/nvim-lspconfig'
   use 'mfussenegger/nvim-jdtls'
   -- autocomplete
-  use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-nvim-lua'
