@@ -42,6 +42,34 @@ M.intersect_nodes = function(nodes, row, col)
     return found
 end
 
+
+function M.parse(bufnr, query, lang_tree)
+  lang_tree = lang_tree or parsers.get_parser(bufnr)
+
+  local success, parsed_query = pcall(function()
+    return vim.treesitter.parse_query(lang_tree:lang(), query)
+  end)
+
+  if not success then
+    return {}
+  end
+
+  local results = {}
+
+  for _, tree in ipairs(lang_tree:trees()) do
+    local root = tree:root()
+    local start_row, _, end_row, _ = root:range()
+
+    for match in ts_query.iter_prepared_matches(parsed_query, root, bufnr, start_row, end_row) do
+      locals.recurse_local_nodes(match, function(_, node, path)
+        table.insert(results, { node = node, tag = path })
+      end)
+    end
+  end
+
+  return results
+end
+
 M.find_nodes = function(lang, parsed_query)
     local bufnr = vim.api.nvim_get_current_buf()
     local parser = parsers.get_parser(bufnr, lang)

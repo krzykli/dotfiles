@@ -2,8 +2,8 @@
 HOME = vim.fn.expand('$HOME')
 
 
-local setup_java_lsp_mappings = function(bufnr)
-    require'kk.lsp-utils'.setup_lsp_mappings(bufnr)
+local setup_java_lsp_mappings = function(_, bufnr)
+    require'kk.lsp-utils'.setup_lsp_mappings(_, bufnr)
 
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local opts = { noremap=true, silent=true }

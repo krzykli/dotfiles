@@ -12,6 +12,7 @@ vim.cmd("set undodir=~/.vim/undodir")
 vim.cmd("set undofile")
 vim.cmd("set number")
 vim.cmd("set relativenumber")
+vim.cmd("set laststatus=3")
 
 vim.g.hidden = true
 vim.o.wrap = false

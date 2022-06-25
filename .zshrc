@@ -139,6 +139,9 @@ alias initpyenv='init_pyenv'
 alias initnvm=". /usr/local/opt/nvm/nvm.sh"
 alias initruby='eval "$(rbenv init -)"'
 
+alias "dockerstop"='docker stop $(docker ps -aq)'
+alias "dockerrm"='docker stop $(docker ps -aq)'
+
 source ~/.atlassian.zsh
 
 # >>> conda initialize >>>

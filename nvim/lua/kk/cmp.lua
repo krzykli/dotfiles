@@ -44,6 +44,8 @@ cmp.setup {
                 fallback()
             end
         end, { "i", "s" }),
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
     },
 
     sources = {
@@ -51,11 +53,7 @@ cmp.setup {
         { name = "nvim_lua" },
         { name = "luasnip" },
         { name = "path" },
-        { name = "buffer", keyword_length = 5 },
-    };
-
-    documentation = {
-        border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+        { name = "buffer"}
     };
 
     formatting = {
@@ -68,6 +66,12 @@ cmp.setup {
                 path = "[path]",
                 luasnip = "[snip]",
             },
+        },
+    },
+
+    window = {
+        documentation = {
+            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
         },
     },
 

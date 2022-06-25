@@ -32,14 +32,20 @@ return require('packer').startup({function()
       after = 'nvim-cmp'
   }
   -- telescope
+  use 'hashivim/vim-terraform'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'nvim-telescope/telescope-project.nvim'
+  use 'nvim-telescope/telescope-dap.nvim'
   -- lsp
   use 'neovim/nvim-lspconfig'
   use 'mfussenegger/nvim-jdtls'
+  -- dap
+  use 'mfussenegger/nvim-dap'
+  use 'mfussenegger/nvim-dap-python'
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   -- autocomplete
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -55,6 +61,7 @@ return require('packer').startup({function()
   use 'famiu/feline.nvim'
   use 'psliwka/vim-smoothie'
   use 'onsails/lspkind-nvim'
+  use 'dhruvasagar/vim-zoom'
   -- use 'glepnir/lspsaga.nvim'
 
   end,

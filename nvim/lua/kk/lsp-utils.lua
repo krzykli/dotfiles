@@ -9,7 +9,7 @@ function M.split_command(command)
     vim.cmd('wincmd p')
 end
 
-function M.setup_lsp_mappings(bufnr)
+function M.setup_lsp_mappings(_, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 

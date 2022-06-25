@@ -27,7 +27,8 @@ kh.insert_map('jk', '<ESC>')
 kh.visual_map('fd', '<ESC>')
 kh.normal_map('<leader>h', ':set hlsearch!<CR>')
 kh.normal_map('<leader>w', ':w<CR>')
-kh.normal_map('<leader>re', ':source ~/.config/nvim/init.lua<CR>')
+kh.normal_map('<leader>wq', ':wq<CR>')
+kh.normal_map('<leader>q', ':q<CR>')
 
 kh.normal_map('<leader>t', ':NvimTreeToggle<CR>')
 kh.visual_map('<C-c>', '"*y')
@@ -52,10 +53,11 @@ kh.insert_map('!', '!<C-g>u')
 kh.insert_map('?', '?<C-g>u')
 
 -- move text
-kh.visual_map('J', ":m '>+1<CR>gv=gv")
-kh.visual_map('K', ":m '<-2<CR>gv=gv")
+-- kh.visual_map('J', ":m '>+1<CR>gv=gv")
+-- kh.visual_map('K', ":m '<-2<CR>gv=gv")
 kh.insert_map('<C-j>', "<ESC>:m +1<CR>==")
 kh.insert_map('<C-k>', "<ESC>:m -2<CR>==")
+kh.insert_map('=(', "(<ESC>A)")
 kh.normal_map('<leader>k', ":m .-2<CR>==")
 kh.normal_map('<leader>j', ":m .+1<CR>==")
 
@@ -89,6 +91,8 @@ kh.terminal_map('<ESC>', '<C-\\><C-n>')
 kh.normal_map('<Leader>fo', ":lua vim.lsp.buf.formatting()<CR>")
 -- telescope
 kh.normal_map('<Leader>fa', ":lua require('telescope.builtin').find_files()<CR>")
+kh.normal_map('<Leader>fc', ":lua require('telescope.builtin').commands()<CR>")
+kh.normal_map('<Leader>fd', ":lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>")
 kh.normal_map('<Leader>fg', ":lua require('telescope.builtin').git_files()<CR>")
 kh.normal_map('<Leader>fe', ":lua require('telescope.builtin').lsp_document_symbols()<CR>")
 kh.normal_map('<Leader>fr', ":lua require('telescope.builtin').lsp_references()<CR>")
@@ -110,4 +114,15 @@ kh.normal_map('<Leader>gt', ":BufferLinePick<CR>")
 kh.normal_map('<Leader>lf', ":tabnew<CR>:set nonumber<CR>:set norelativenumber<CR>:term<CR>alf<CR>")
 
 -- luansip
+kh.normal_map("<leader><leader>u", "<cmd>source ~/.config/nvim/lua/kk/luasnip.lua<CR>")
+
+-- dap
+kh.normal_map('∫', ":lua require('dap').toggle_breakpoint()<CR>") -- alt-b
+kh.normal_map('ß', ":lua require('dap').continue()<CR>") --alt-s
+kh.normal_map('¬', ":lua require('dap').step_over()<CR>") -- alt-l
+kh.normal_map('∆', ":lua require('dap').step_into()<CR>") -- alt-j
+kh.normal_map('˚', ":lua require('dap').step_out()<CR>") -- alt-k
+kh.normal_map('ø', ":lua require('dapui').toggle()<CR>") -- alt-o
+-- dap python
+kh.normal_map("<Leader>rt", ":lua require('dap-python').test_method()<CR>")
 
