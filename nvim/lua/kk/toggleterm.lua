@@ -1,5 +1,4 @@
-
-require("toggleterm").setup{
+require("toggleterm").setup({
   open_mapping = [[<c-t>]],
   hide_numbers = true, -- hide the number column in toggleterm buffers
   shade_filetypes = {},
@@ -8,7 +7,7 @@ require("toggleterm").setup{
   start_in_insert = true,
   insert_mappings = true, -- whether or not the open mapping applies in insert mode
   persist_size = true,
-  direction = 'float',
+  direction = "float",
   close_on_exit = true, -- close the terminal window when the process exits
   -- This field is only relevant if direction is set to 'float'
   float_opts = {
@@ -16,16 +15,16 @@ require("toggleterm").setup{
     -- see :h nvim_win_open for details on borders however
     -- the 'curved' border is a custom border type
     -- not natively supported but implemented in this plugin.
-    border = 'curved',
-    winblend = 0
-  }
-}
+    border = "curved",
+    winblend = 0,
+  },
+})
 
-local Terminal  = require('toggleterm.terminal').Terminal
+local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 
 function _lazygit_toggle()
   lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>gi", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })

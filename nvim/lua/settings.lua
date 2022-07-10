@@ -31,4 +31,3 @@ vim.o.smarttab = true
 vim.o.softtabstop = 4
 vim.o.termguicolors = true
 vim.o.timeoutlen = 200
-

@@ -1,10 +1,10 @@
-local kh = require('kk.key-helpers')
-local actions = require('telescope.actions')
-local action_state = require('telescope.actions.state')
+local kh = require("kk.key-helpers")
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 
 local M = {}
 
-require('telescope').setup{
+require("telescope").setup({
   defaults = {
     entry_prefix = "  ",
     initial_mode = "insert",
@@ -12,8 +12,13 @@ require('telescope').setup{
     selection_caret = "> ",
     selection_strategy = "reset",
     sorting_strategy = "descending",
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     layout_strategy = "flex",
+    pickers = {
+      bookmarks = {
+        theme = "dropdown",
+      },
+    },
     layout_config = {
       horizontal = {
         width = 0.9,
@@ -28,78 +33,93 @@ require('telescope').setup{
   extensions = {
     project = {
       base_dirs = {
-        '~/workspace/',
-      }
-    }
-  }
-}
-require('telescope').load_extension('fzy_native')
+        "~/workspace/",
+      },
+    },
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown({
+        -- even more opts
+      }),
+    },
+  },
+})
+require("telescope").load_extension("fzy_native")
+require("telescope").load_extension("ui-select")
 
 M.search_dotfiles = function()
-    require("telescope.builtin").find_files({
-        hidden=true,
-        prompt_title = " my config ",
-        cwd = "~/.config",
-    })
+  require("telescope.builtin").find_files({
+    hidden = true,
+    prompt_title = " my config ",
+    cwd = "~/.config",
+  })
 end
 
 local conf = require("telescope.config").values
-local finders = require "telescope.finders"
-local pickers = require "telescope.pickers"
-local previewers = require "telescope.previewers"
+local finders = require("telescope.finders")
+local pickers = require("telescope.pickers")
+local previewers = require("telescope.previewers")
 
 M.open_bookmarks = function()
-    local bookmarks_file = '/Users/kklimczyk/.config/bookmarks.txt'
+  local bookmarks_file = "/Users/kklimczyk/.config/bookmarks.txt"
 
-    local bookmarks = {}
-    for line in io.lines(bookmarks_file) do
-        local label, link = line:match("([^,]+),%s+([^,]+)")
-        bookmarks[#bookmarks + 1] = {
-            label = label,
-            link = link
-        }
-    end
-    pickers.new({
-        prompt_title = "Bookmarks",
-        finder = finders.new_table {
-            results = bookmarks,
-            entry_maker = function(entry)
-                return {
-                    ordinal = entry.label,
-                    display = entry.label,
-                    link = entry.link
-                }
-            end,
-        },
-        previewer = previewers.cat.new({}),
-        sorter = conf.generic_sorter({}),
-        attach_mappings = function(prompt_bufnr)
-            actions.select_default:replace(function()
-                local entry = action_state.get_selected_entry()
-                vim.inspect(entry)
-                actions.close(prompt_bufnr)
-                print(entry.link)
-                local url = 'open ' .. entry.link
-                os.execute(url)
-            end)
-
-            return true
+  local bookmarks = {}
+  for line in io.lines(bookmarks_file) do
+    local label, link = line:match("([^,]+),%s+([^,]+)")
+    bookmarks[#bookmarks + 1] = {
+      label = label,
+      link = link,
+    }
+  end
+  pickers
+    .new({}, {
+      prompt_title = "Bookmarks",
+      finder = finders.new_table({
+        results = bookmarks,
+        entry_maker = function(entry)
+          return {
+            ordinal = entry.label,
+            display = entry.label,
+            link = entry.link,
+          }
         end,
-    }):find()
+      }),
+      previewer = previewers.cat.new({}),
+      sorter = conf.generic_sorter({}),
+      attach_mappings = function(prompt_bufnr)
+        actions.select_default:replace(function()
+          local entry = action_state.get_selected_entry()
+          vim.inspect(entry)
+          actions.close(prompt_bufnr)
+          print(entry.link)
+          local url = "open " .. entry.link
+          os.execute(url)
+        end)
+
+        return true
+      end,
+    })
+    :find()
 end
 
-local workspace_root = '~/workspace/'
-local project_config = '/Users/kklimczyk/.config/current_projects.txt'
+local workspace_root = "~/workspace/"
+local project_config = "/Users/kklimczyk/.config/current_projects.txt"
 
 local current_projects = {}
 for line in io.lines(project_config) do
-    current_projects[#current_projects + 1] = line
+  current_projects[#current_projects + 1] = line
 end
 
-local access_key = {'j', 'k', 'i'}
+local access_key = { "j", "k", "i" }
 for i, project in ipairs(current_projects) do
-    kh.normal_map('<Leader>f' .. access_key[i], ":lua require('telescope.builtin').find_files({prompt_title='" .. project .. "', cwd='" .. workspace_root .. project .. "'})<CR>")
+  kh.normal_map(
+    "<Leader>f" .. access_key[i],
+    ":lua require('telescope.builtin').find_files({prompt_title='"
+      .. project
+      .. "', cwd='"
+      .. workspace_root
+      .. project
+      .. "'})<CR>"
+  )
 end
 
 return M
-

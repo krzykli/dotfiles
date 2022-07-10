@@ -93,5 +93,73 @@ M.choochoo = function ()
     -- end
 end
 
+
+local function locals()
+  local variables = {}
+  local idx = 1
+  while true do
+    local ln, lv = debug.getlocal(2, idx)
+    if ln ~= nil then
+      variables[ln] = lv
+    else
+      break
+    end
+    idx = 1 + idx
+  end
+  return variables
+end
+
+M.showme = function (winid)
+    local line = vim.api.nvim_get_current_line()
+    if line == "choochoo" then
+        M.choochoo()
+    end
+
+    vim.api.nvim_win_close(winid, true)
+end
+
+M.uitest = function ()
+  local bufnr = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "q", ":q!<CR>", {noremap=true, silent=true})
+  vim.api.nvim_buf_set_lines(bufnr, 0, 1000, false, {
+      "create a new variable",
+      "choochoo",
+      "perhaps",
+      "will be",
+      "useful"
+  })
+  local popup = require "plenary.popup"
+
+  local current_window = vim.api.nvim_get_current_win()
+  local window_width = vim.api.nvim_win_get_width(current_window)
+  local minwidth = 40
+  local win, opts = popup.create(bufnr,
+    {minwidth=minwidth,
+    minheight=20,
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    cursorline=true,
+    border=true,
+    title="KK TOOLBOX",
+    })
+
+  popup.move(win, {relative="editor", row=20, col=window_width - minwidth})
+  vim.api.nvim_win_set_option(win, 'winhl', 'Normal:blue')
+  -- vim.api.nvim_win_set_config(win, {relative="editor", row=20, col=window_width - 10})
+  vim.api.nvim_win_set_option(win, "winblend", 10);
+  vim.api.nvim_buf_set_keymap(
+        bufnr,
+        "n",
+        "<CR>",
+        "<Cmd>lua require('kk.misc').showme(" .. win ..")<CR>",
+        {}
+    )
+  -- a.nvim_win_set_option(win, "wrap", not nowrap)
+  -- local border_win = opts and opts.border and opts.border.win_id
+  -- if border_win then
+  --     a.nvim_win_set_option(border_win, "winblend", self.window.winblend)
+  -- end
+  -- return win, opts, border_win
+end
+
 return M
 
