@@ -21,6 +21,7 @@ vim.g.mapleader = ";"
 
 kh.normal_map("Q", "<nop>")
 kh.insert_map("jk", "<ESC>")
+kh.visual_map("gf", "gF")
 kh.visual_map("fd", "<ESC>")
 kh.normal_map("<leader>h", ":set hlsearch!<CR>")
 kh.normal_map("<leader>w", ":w<CR>")
@@ -78,7 +79,8 @@ kh.normal_map("tj", ":tabprevious<CR>")
 kh.normal_map("tk", ":tabnext<CR>")
 
 -- termianl
--- kh.terminal_map('<ESC>', '<C-\\><C-n>')
+kh.terminal_map('<C-`>', '<C-\\><C-n>')
+
 
 -- buffers
 -- kh.normal_map('tn', ':enew<CR>')
@@ -120,5 +122,14 @@ kh.normal_map("¬", ":lua require('dap').step_over()<CR>") -- alt-l
 kh.normal_map("∆", ":lua require('dap').step_into()<CR>") -- alt-j
 kh.normal_map("˚", ":lua require('dap').step_out()<CR>") -- alt-k
 kh.normal_map("ø", ":lua require('dapui').toggle()<CR>") -- alt-o
+
 -- dap python
 kh.normal_map("<Leader>rt", ":lua require('dap-python').test_method()<CR>")
+
+-- toggleterm
+kh.normal_map("<C-g>", "<cmd>lua _lazygit_toggle()<CR>")
+
+-- hop
+kh.normal_map('<leader>hs', "<cmd>lua require'hop'.hint_lines_skip_whitespace({})<cr>")
+kh.normal_map('<leader>h', "<cmd>lua require'hop'.hint_words({})<cr>")
+

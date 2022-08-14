@@ -15,14 +15,15 @@ return require("packer").startup({
     use("lewis6991/impatient.nvim")
     use("rcarriga/nvim-notify")
     use("christoomey/vim-tmux-navigator")
-    use("easymotion/vim-easymotion")
+    use {
+     'phaazon/hop.nvim',
+     branch = 'v2',
+   }
     use("chaoren/vim-wordmotion")
     use("tpope/vim-commentary")
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use({ "nvim-treesitter/playground" })
     use("kevinhwang91/nvim-bqf")
-    -- use 'ggandor/lightspeed.nvim'
-    -- use 'mhinz/vim-signify'
     use("lewis6991/gitsigns.nvim")
     use({
       "hrsh7th/nvim-cmp",
@@ -32,6 +33,7 @@ return require("packer").startup({
       "L3MON4D3/LuaSnip",
       after = "nvim-cmp",
     })
+    use('simrat39/rust-tools.nvim')
     -- telescope
     use("hashivim/vim-terraform")
     use("nvim-lua/popup.nvim")
@@ -55,16 +57,15 @@ return require("packer").startup({
     use("hrsh7th/cmp-path")
     -- UI
     use("kyazdani42/nvim-web-devicons")
-    -- use 'kyazdani42/nvim-tree.lua'
     use("norcalli/nvim-colorizer.lua")
     use("sainnhe/gruvbox-material")
     use("akinsho/nvim-bufferline.lua")
-    use("akinsho/nvim-toggleterm.lua")
+    use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
+        require("toggleterm").setup()
+    end}
     use("famiu/feline.nvim")
-    use("psliwka/vim-smoothie")
     use("onsails/lspkind-nvim")
     use("dhruvasagar/vim-zoom")
-    -- use 'glepnir/lspsaga.nvim'
   end,
   config = {
     display = {

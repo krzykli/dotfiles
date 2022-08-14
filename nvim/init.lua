@@ -4,7 +4,9 @@ require("settings")
 require("keys")
 require("lsp")
 require("bufferline").setup({})
+require'hop'.setup { keys = 'asdfghjkl' }
 
+require("kk.rust")
 require("kk.luasnip")
 require("kk.cmp")
 require("kk.toggleterm")

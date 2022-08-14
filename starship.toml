@@ -5,8 +5,9 @@ format = '''$directory($python)($conda)( $git_branch)( $git_status)
 $character$status'''
 
 [character]
-success_symbol = "[•](bold green)"
-error_symbol = "[•](bold red)"
+success_symbol = "[I ❱](bold green)"
+error_symbol = "[I ❱](bold red)"
+vicmd_symbol = "[N ❱](bold blue)"
 
 [package]
 disabled = true
