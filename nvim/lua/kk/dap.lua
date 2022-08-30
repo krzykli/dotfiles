@@ -1,6 +1,6 @@
 local dap = require("dap")
 
-vim.fn.sign_define("DapBreakpoint", { text = "🔴" })
+vim.fn.sign_define("DapBreakpoint", { text = "🐞" })
 vim.fn.sign_define("DapStopped", { text = "⭕" })
 
 -- python

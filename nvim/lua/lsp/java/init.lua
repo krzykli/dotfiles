@@ -9,7 +9,7 @@ local on_attach_cbk = function(_, bufnr)
   local opts = { noremap = true, silent = true }
 
   buf_set_keymap('n', '<leader>rr', "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
-  buf_set_keymap('n', '<leader>rn', "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
+  buf_set_keymap('n', '<leader>rm', "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
   -- lua require('jdtls').code_action()<CR>
   -- lua require('jdtls').code_action(true)<CR>
   -- lua require('jdtls').extract_variable()<CR>

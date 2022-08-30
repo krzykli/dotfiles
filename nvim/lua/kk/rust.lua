@@ -1,5 +1,4 @@
-local function on_initialized(_)
-    local bufnr = vim.api.nvim_get_current_buf()
+local function on_attach(_, bufnr)
     require('kk.lsp-utils').setup_lsp_mappings(_, bufnr)
 
     local function buf_set_keymap(...)
@@ -25,13 +24,13 @@ local opts = {
 
         -- callback to execute once rust-analyzer is done initializing the workspace
         -- The callback receives one parameter indicating the `health` of the server: "ok" | "warning" | "error"
-        on_initialized = on_initialized,
+        -- on_initialized = on_initialized,
 
         -- These apply to the default RustSetInlayHints command
         inlay_hints = {
 
             -- Only show inlay hints for the current line
-            only_current_line = false,
+            only_current_line = true,
 
             -- Event which triggers a refersh of the inlay hints.
             -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
@@ -177,6 +176,7 @@ local opts = {
         -- standalone file support
         -- setting it to false may improve startup time
         standalone = true,
+        on_attach = on_attach,
     }, -- rust-analyer options
 
     -- debugging stuff
@@ -190,5 +190,3 @@ local opts = {
 }
 
 require('rust-tools').setup(opts)
-
-local dap = require('dap')
