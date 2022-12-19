@@ -87,7 +87,6 @@ kh.terminal_map('<C-`>', '<C-\\><C-n>')
 -- kh.normal_map('tj', ':bprevious<CR>')
 -- kh.normal_map('tk', ':bnext<CR>')
 
-kh.normal_map("<Leader>fo", ":lua vim.lsp.buf.formatting()<CR>")
 -- telescope
 kh.normal_map("<Leader>fa", ":lua require('telescope.builtin').find_files()<CR>")
 kh.normal_map("<Leader>fc", ":lua require('telescope.builtin').commands()<CR>")
@@ -130,6 +129,5 @@ kh.normal_map("<Leader>rt", ":lua require('dap-python').test_method()<CR>")
 kh.normal_map("<C-g>", "<cmd>lua _lazygit_toggle()<CR>")
 
 -- hop
-kh.normal_map('<leader>hs', "<cmd>lua require'hop'.hint_lines_skip_whitespace({})<cr>")
-kh.normal_map('<leader>h', "<cmd>lua require'hop'.hint_words({})<cr>")
+kh.normal_map('<leader>h', "<cmd>lua require'hop'.hint_lines_skip_whitespace({})<cr>")
 

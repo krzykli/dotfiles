@@ -11,6 +11,17 @@ end
 return require("packer").startup({
   function()
     use("wbthomason/packer.nvim")
+    use { -- LSP Configuration & Plugins
+        'neovim/nvim-lspconfig',
+        requires = {
+          -- Automatically install LSPs to stdpath for neovim
+          'williamboman/mason.nvim',
+          'williamboman/mason-lspconfig.nvim',
+
+          -- Useful status updates for LSP
+          'j-hui/fidget.nvim',
+        },
+      }
     --
     use("lewis6991/impatient.nvim")
     use("rcarriga/nvim-notify")
@@ -19,8 +30,10 @@ return require("packer").startup({
      'phaazon/hop.nvim',
      branch = 'v2',
    }
+    -- use("hrsh7th/nvim-pasta")
     use("chaoren/vim-wordmotion")
     use("tpope/vim-commentary")
+    use 'nvim-treesitter/nvim-treesitter-context'
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use({ "nvim-treesitter/playground" })
     use("kevinhwang91/nvim-bqf")
@@ -34,6 +47,7 @@ return require("packer").startup({
       after = "nvim-cmp",
     })
     use('simrat39/rust-tools.nvim')
+    use('gbprod/yanky.nvim')
     -- telescope
     use("hashivim/vim-terraform")
     use("nvim-lua/popup.nvim")
@@ -44,7 +58,6 @@ return require("packer").startup({
     use("nvim-telescope/telescope-project.nvim")
     use("nvim-telescope/telescope-dap.nvim")
     -- lsp
-    use("neovim/nvim-lspconfig")
     use("mfussenegger/nvim-jdtls")
     -- dap
     use("mfussenegger/nvim-dap")
@@ -56,6 +69,8 @@ return require("packer").startup({
     use("hrsh7th/cmp-nvim-lua")
     use("hrsh7th/cmp-path")
     -- UI
+    use("folke/zen-mode.nvim")
+    use("folke/trouble.nvim")
     use("kyazdani42/nvim-web-devicons")
     use("norcalli/nvim-colorizer.lua")
     use("sainnhe/gruvbox-material")

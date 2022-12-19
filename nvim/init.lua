@@ -16,6 +16,39 @@ require("kk.gitsigns")
 require("kk.notify")
 require("kk.dap")
 require("kk.dapui")
+require("mason").setup()
+
+
+require("trouble").setup {
+}
+
+require("yanky").setup({
+  highlight = {
+    on_put = true,
+    on_yank = true,
+    timer = 100,
+  },
+})
+vim.api.nvim_set_hl(0, "YankyYanked", {link = "ErrorFloat"})
+
+vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+
+require("zen-mode").setup({
+  window = {
+    backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+    -- height and width can be:
+    -- * an absolute number of cells when > 1
+    -- * a percentage of the width / height of the editor when <= 1
+    -- * a function that returns the width or the height
+    width = 160, -- width of the Zen window
+  },
+})
+
 
 require("nvim-treesitter.configs").setup({
   highlight = {
@@ -46,7 +79,7 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
-vim.highlight.link("VirtualTextError", "Red", true)
+vim.api.nvim_set_hl(0, "VirtualTextError", {link = "ErrorFloat"})
 
 function _G.ReloadConfig()
   print("reload")
@@ -66,3 +99,21 @@ end
 
 vim.api.nvim_set_keymap("n", "<Leader>re", "<Cmd>lua ReloadConfig()<CR>", { silent = true, noremap = true })
 vim.cmd("command! ReloadConfig lua ReloadConfig()")
+
+vim.cmd[[au BufRead,BufNewFile *.wgsl	set filetype=wgsl]]
+
+------------
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.papoy = {
+  install_info = {
+    url = "/Users/kklimczyk/workspace/tree-sitter-papoy", -- local path or git repo
+    files = {"src/parser.c"},
+    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+    requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
+  },
+  filetype='pap'
+}
+local ft_to_parser = require "nvim-treesitter.parsers".filetype_to_parsername
+ft_to_parser.pap = "papoy"
+------------
+

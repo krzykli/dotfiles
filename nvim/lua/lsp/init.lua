@@ -11,7 +11,7 @@ local servers = { "pyright", "ccls", "tsserver", "gopls", "solargraph", "jsonls"
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup({
-    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 
     on_attach = require("kk.lsp-utils").setup_lsp_mappings,
 

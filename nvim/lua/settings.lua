@@ -10,11 +10,13 @@ vim.cmd("set nobackup")
 vim.cmd("set scrolloff=8")
 vim.cmd("set undodir=~/.vim/undodir")
 vim.cmd("set undofile")
--- vim.cmd("set number")
--- vim.cmd("set relativenumber")
+vim.cmd("set number")
+vim.cmd("set relativenumber")
 vim.cmd("set laststatus=3")
-
-
+vim.cmd("set pumheight=10")
+vim.cmd("set foldmethod=expr")
+vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
+vim.cmd("set nofoldenable")
 
 vim.opt.guifont = { "Hack Nerd Font", "h12" }
 vim.g.hidden = true
@@ -34,6 +36,7 @@ vim.o.smarttab = true
 vim.o.softtabstop = 4
 vim.o.termguicolors = true
 vim.o.timeoutlen = 200
+vim.o.ch = 0
 
 vim.cmd("let g:neovide_cursor_animation_length = 0.03")
 vim.cmd("let g:neovide_floating_blur = 1")
