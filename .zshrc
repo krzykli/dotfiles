@@ -4,7 +4,7 @@ if [[ -v ZSH_PROFILE ]]; then
     zmodload zsh/zprof
 fi
 
-source ~/.atlassian.zsh
+#source ~/.atlassian.zsh
 eval "$(starship init zsh)"
 
 export EDITOR="nvim"
@@ -12,6 +12,7 @@ export VISUAL="nvim"
 export NEOVIDE_MULTIGRID="1"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 #[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 #[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
@@ -51,8 +52,8 @@ man() {
 }
 
 
-source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # fzf
 export FZF_COMPLETION_TRIGGER=';;'
 
@@ -68,8 +69,12 @@ source ~/.config/zsh/widgets.zsh
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 
-source ~/.fzf.zsh
+#source ~/.fzf.zsh
 # zprof
 if [[ -v ZSH_PROFILE ]]; then
     zprof
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
