@@ -11,3 +11,7 @@ fi
 # Key bindings
 # ------------
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+
+# fzf theme
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:-1,bg:-1,hl:#6297cc --color=fg+:#e86666,bg+:#262626,hl+:#5fd7ff --color=info:#afaf87,prompt:#3dcfff,pointer:#af5fff --color=marker:#87ff00,spinner:#af5fff,header:#87afaf'

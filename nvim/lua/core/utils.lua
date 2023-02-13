@@ -189,4 +189,10 @@ M.packer_sync = function(...)
   end
 end
 
+M.set_highlights = function(highlights)
+  for hl, col in pairs(highlights) do
+    vim.api.nvim_set_hl(0, hl, col)
+  end
+end
+
 return M

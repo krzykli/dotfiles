@@ -1,3 +1,4 @@
+local utils = require("core.utils")
 local M = {}
 
 local present, telescope = pcall(require, "telescope")
@@ -11,29 +12,23 @@ vim.g.theme_switcher_loaded = true
 require("base46").load_highlight "telescope"
 local colors = require("base46").get_theme_tb "base_30"
 
-local function override_highlights()
-  local hl_overs = {
-    TelescopeBorder = {
-      fg = colors.black2,
-      bg = colors.black2,
-    },
+local hl_overs = {
+  TelescopeBorder = {
+    fg = colors.black2,
+    bg = colors.black2,
+  },
 
-    TelescopeResultsTitle = {
-      fg = colors.black2,
-      bg = colors.black2,
-    },
+  TelescopeResultsTitle = {
+    fg = colors.black2,
+    bg = colors.black2,
+  },
 
-    TelescopeNormal = { bg = colors.black2 },
+  TelescopeNormal = { bg = colors.black2 },
 
-    TelescopeSelection = { bg = colors.blue, fg = colors.darker_black },
-  }
+  TelescopeSelection = { bg = colors.black, fg = colors.white },
+}
 
-  for hl, col in pairs(hl_overs) do
-    vim.api.nvim_set_hl(0, hl, col)
-  end
-end
-
-override_highlights()
+utils.set_highlights(hl_overs)
 
 local options = {
   defaults = {
@@ -94,13 +89,6 @@ local options = {
   }
 }
 
-M.search_dotfiles = function()
-  require("telescope.builtin").find_files({
-    hidden = true,
-    prompt_title = " my config ",
-    cwd = "~/.config",
-  })
-end
 
 -- check for any override
 options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
@@ -112,5 +100,14 @@ pcall(function()
     telescope.load_extension(ext)
   end
 end)
+
+-- custom
+M.search_dotfiles = function()
+  require("telescope.builtin").find_files({
+    hidden = true,
+    prompt_title = " My Config ",
+    cwd = "~/.config",
+  })
+end
 
 return M

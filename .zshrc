@@ -52,8 +52,8 @@ man() {
 }
 
 
-#source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-#source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # fzf
 export FZF_COMPLETION_TRIGGER=';;'
 
@@ -65,11 +65,12 @@ export PATH="$HOME/go/bin:$PATH"
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/vi_mode.zsh
 source ~/.config/zsh/widgets.zsh
+source ~/.config/zsh/lf.zsh
 
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 
-#source ~/.fzf.zsh
+source ~/.fzf.zsh
 # zprof
 if [[ -v ZSH_PROFILE ]]; then
     zprof

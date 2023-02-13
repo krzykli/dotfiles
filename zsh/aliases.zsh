@@ -1,5 +1,6 @@
 alias ..="cd .."
 alias cac="~/go/src/bitbucket.org/atlassian/compliance-as-code"
+alias con="cd ~/.config"
 alias cat=bat
 alias cls=clear
 alias dev="cd ~/workspace"
@@ -12,6 +13,7 @@ alias gp="git pull"
 alias initnvm=". /usr/local/opt/nvm/nvm.sh"
 alias initpyenv='init_pyenv'
 alias initruby='eval "$(rbenv init -)"'
+alias show="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 alias lg=lazygit
 # alias nvim="~/nvim/bin/nvim"
 alias vi=nvim

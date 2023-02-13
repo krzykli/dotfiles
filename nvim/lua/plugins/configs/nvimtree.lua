@@ -6,7 +6,7 @@ end
 
 require("base46").load_highlight "nvimtree"
 
-local options s= {
+local options = {
   filters = {
     dotfiles = false,
     exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
@@ -35,7 +35,7 @@ local options s= {
   filesystem_watchers = {
     enable = true,
   },
-  actions = ss{
+  actions = {
     open_file = {
       resize_window = true,
     },

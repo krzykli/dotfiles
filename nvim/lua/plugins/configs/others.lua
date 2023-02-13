@@ -1,6 +1,7 @@
 local M = {}
 
 local utils = require "core.utils"
+local colors = require("base46").get_theme_tb "base_30"
 
 M.autopairs = function()
   local present1, autopairs = pcall(require, "nvim-autopairs")
@@ -28,7 +29,7 @@ M.blankline = function()
     return
   end
 
-  require("base46").load_highlight "blankline"
+  -- require("base46").load_highlight "blankline"
 
   local options = {
     indentLine_enabled = 1,
@@ -134,8 +135,8 @@ M.gitsigns = function()
 
   local options = {
     signs = {
-      add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
-      change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
+      add = { hl = "DiffAdd", text = "▐", numhl = "GitSignsAddNr" },
+      change = { hl = "DiffChange", text = "▐", numhl = "GitSignsChangeNr" },
       delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
       topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
       changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
