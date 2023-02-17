@@ -58,7 +58,7 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 
@@ -66,6 +66,9 @@ lspconfig.sumneko_lua.setup {
     Lua = {
       diagnostics = {
         globals = { "vim" },
+      },
+      completion = {
+        callSnippet = "Replace"
       },
       workspace = {
         library = {

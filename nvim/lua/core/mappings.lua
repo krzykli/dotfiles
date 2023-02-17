@@ -14,11 +14,6 @@ M.general = {
   n = {
     [":"] = { "<cmd>FineCmdline<CR>", "fine cmd line" },
     -- switch between windows
-    ["<C-h>"] = { "<C-w>h", "window left" },
-    ["<C-l>"] = { "<C-w>l", "window right" },
-    ["<C-j>"] = { "<C-w>j", "window down" },
-    ["<C-k>"] = { "<C-w>k", "window up" },
-
     ["<leader>a"] = { "ggVG", "copy whole file" },
     ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
     ["<leader>o"] = { "<cmd> Lspsaga outline<CR>", "outline"},
@@ -28,6 +23,9 @@ M.general = {
     end,
     "save current file"
     },
+
+    ["<leader>la"] = { '<cmd>lua require("core.utils").open_lua_buf()<CR>', "opens a lua buffer in a horizontal split"},
+    ["<leader>rl"] = { '<cmd>lua require("core.utils").exec_lua_buf()<CR>', "executes lua buffer"},
 
   },
 
@@ -425,5 +423,41 @@ M.gitsigns = {
   },
 }
 
+M.tmux = {
+  plugin = true,
+
+  n = {
+    ["<C-h>"] = { function ()
+      require('nvim-tmux-navigation').NvimTmuxNavigateLeft()
+    end,
+      "tmux nav left"
+    },
+    ["<C-j>"] = { function ()
+      require('nvim-tmux-navigation').NvimTmuxNavigateDown()
+    end,
+      "tmux nav down"
+    },
+    ["<C-k>"] = { function ()
+      require('nvim-tmux-navigation').NvimTmuxNavigateUp()
+    end,
+      "tmux nav up"
+    },
+    ["<C-l>"] = { function ()
+      require('nvim-tmux-navigation').NvimTmuxNavigateRight()
+    end,
+      "tmux nav right"
+    },
+    ["<C-\\>"] = { function ()
+      require('nvim-tmux-navigation').NvimTmuxNavigateLastActive()
+    end,
+      "tmux nav last"
+    },
+    ["<C-Space>"] = { function ()
+      require('nvim-tmux-navigation').NvimTmuxNavigateNext()
+    end,
+      "tmux nav next"
+    },
+  }
+}
 
 return M

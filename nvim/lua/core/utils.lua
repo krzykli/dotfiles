@@ -146,52 +146,43 @@ M.load_override = function(options_table, name)
   return merge_tb("force", options_table, plugin_options)
 end
 
-M.packer_sync = function(...)
-  local git_exists, git = pcall(require, "nvchad.utils.git")
-  local defaults_exists, defaults = pcall(require, "nvchad.utils.config")
-  local packer_exists, packer = pcall(require, "packer")
-
-  if git_exists and defaults_exists then
-    local current_branch_name = git.get_current_branch_name()
-
-    -- warn the user if we are on a snapshot branch
-    if current_branch_name:match(defaults.snaps.base_snap_branch_name .. "(.+)" .. "$") then
-      vim.api.nvim_echo({
-        { "WARNING: You are trying to use ", "WarningMsg" },
-        { "PackerSync" },
-        {
-          " on a NvChadSnapshot. This will cause issues if NvChad dependencies contain "
-            .. "any breaking changes! Plugin updates will not be included in this "
-            .. "snapshot, so they will be lost after switching between snapshots! Would "
-            .. "you still like to continue? [y/N]\n",
-          "WarningMsg",
-        },
-      }, false, {})
-
-      local ans = vim.trim(string.lower(vim.fn.input "-> "))
-
-      if ans ~= "y" then
-        return
-      end
-    end
-  end
-
-  if packer_exists then
-    packer.sync(...)
-
-    local plugins = M.load_config().plugins
-    local old_style_options = plugins.user or plugins.override or plugins.remove
-    if old_style_options then
-      vim.notify_once("NvChad: This plugin syntax is deprecated, use new style config.", "Error")
-    end
-  else
-    error "Packer could not be loaded!"
-  end
-end
-
 M.set_highlights = function(highlights)
   for hl, col in pairs(highlights) do
     vim.api.nvim_set_hl(0, hl, col)
+  end
+end
+
+M.open_lua_buf = function()
+  vim.cmd('split')
+  local win = vim.api.nvim_get_current_win()
+  local buf = vim.api.nvim_create_buf(true, true)
+  vim.api.nvim_win_set_buf(win, buf)
+  vim.api.nvim_buf_set_option(buf, "filetype", "lua")
+  local ns = vim.api.nvim_create_namespace("luascript")
+  vim.api.nvim_win_set_hl_ns(0, ns)
+  vim.api.nvim_set_hl(ns, "Normal", {bg="#111111"})
+  vim.api.nvim_buf_set_lines(buf, 0, 0, false, {"-- luascript"})
+
+  -- vim.lsp.start({
+  --   name = "lua-language-server",
+  --   cmd = { "lua-language-server" },
+  --   before_init = require("neodev.lsp").before_init,
+  --   root_dir = vim.fn.getcwd(),
+  --   settings = { Lua = {} },
+  -- })
+
+end
+
+M.exec_lua_buf = function()
+  local win = vim.api.nvim_get_current_win()
+  print(vim.inspect(win))
+  local buf = vim.api.nvim_win_get_buf(win)
+  local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+  if #lines == 0 then
+    return
+  end
+  for _, line in ipairs(lines) do
+    vim.cmd("lua " .. line)
   end
 end
 

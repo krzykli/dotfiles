@@ -1,36 +1,42 @@
-local packer = require("packer")
+vim.g.mapleader = ";"
 
-local init_options = require("plugins.configs.others").packer_init()
-packer.init(init_options)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-return packer.startup(function(use)
-  use 'lewis6991/impatient.nvim'
-  use 'wbthomason/packer.nvim'
-  use "christoomey/vim-tmux-navigator"
-  use 'chaoren/vim-wordmotion'
-  use 'kevinhwang91/nvim-bqf'
+require("lazy").setup({
 
-  use {
+  'chaoren/vim-wordmotion',
+  'kevinhwang91/nvim-bqf',
+
+  {
     "nvim-lua/plenary.nvim",
-    module = "plenary"
-  }
+  },
 
-  use {
+  {
     "gbprod/yanky.nvim",
     config = function ()
       require("yanky").setup(require("plugins.configs.others").yanky())
     end,
-    setup = function()
+    init = function()
       require("core.utils").load_mappings "yanky"
     end
-  }
+  },
 
-  use {
+  {
     'NvChad/extensions',
-    module = {"telescope", "nvchad"}
-  }
+  },
 
-  use {
+  {
     "NvChad/base46",
     config = function()
       local ok, base46 = pcall(require, "base46")
@@ -39,11 +45,11 @@ return packer.startup(function(use)
         base46.load_theme()
       end
     end,
-  }
+  },
 
-  use {
+  {
     "NvChad/ui",
-    after = "base46",
+    --after = "base46",
     config = function()
       local present, nvchad_ui = pcall(require, "nvchad_ui")
 
@@ -51,87 +57,74 @@ return packer.startup(function(use)
         nvchad_ui.setup()
       end
     end,
-  }
+  },
 
-  use {
+  {
     "NvChad/nvterm",
-    module = "nvterm",
     config = function()
       require "plugins.configs.nvterm"
     end,
-    setup = function()
+    init = function()
       require("core.utils").load_mappings "nvterm"
     end,
-  }
+  },
 
-  use {
+  {
     "nvim-tree/nvim-web-devicons",
-    after = "ui",
-    module = "nvim-web-devicons",
+    --after = "ui",
     config = function()
       require("plugins.configs.others").devicons()
     end,
-  }
+  },
 
-  use {
+  {
     "lukas-reineke/indent-blankline.nvim",
-    opt = true,
-    setup = function()
-      require("core.lazy_load").on_file_open "indent-blankline.nvim"
+    lazy = true,
+    init = function()
       require("core.utils").load_mappings "blankline"
     end,
     config = function()
       require("plugins.configs.others").blankline()
     end,
-  }
+  },
 
-  use {
+  {
     "NvChad/nvim-colorizer.lua",
-    opt = true,
-    setup = function()
-      require("core.lazy_load").on_file_open "nvim-colorizer.lua"
-    end,
+    lazy = true,
     config = function()
       require("plugins.configs.others").colorizer()
     end,
-  }
+  },
 
-  use {
+  {
     "nvim-treesitter/nvim-treesitter",
-    module = "nvim-treesitter",
-    setup = function()
-      require("core.lazy_load").on_file_open "nvim-treesitter"
-    end,
-    cmd = require("core.lazy_load").treesitter_cmds,
-    run = ":TSUpdate",
+    build = ":TSUpdate",
     config = function()
       require "plugins.configs.treesitter"
     end,
-  }
-  use "nvim-treesitter/playground"
+  },
+  "nvim-treesitter/playground",
 
   -- git stuff
-  use {
+  {
     "lewis6991/gitsigns.nvim",
     ft = "gitcommit",
-    setup = function()
-      require("core.lazy_load").gitsigns()
-    end,
     config = function()
       require("plugins.configs.others").gitsigns()
     end,
-  }
+  },
 
   -- lsp stuff
-  use {
+  {
     "williamboman/mason.nvim",
-    cmd = require("core.lazy_load").mason_cmds,
+
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     config = function()
       require "plugins.configs.mason"
     end,
-  }
+  },
 
-  use {
+  {
     "glepnir/lspsaga.nvim",
     branch = "main",
     config = function()
@@ -160,118 +153,126 @@ return packer.startup(function(use)
           },
       })
     end,
-    requires = { {"nvim-tree/nvim-web-devicons"} }
-  }
+    dependencies = { "nvim-tree/nvim-web-devicons" }
+  },
 
-  use {
+  {
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup({})
+    end
+  },
+
+  {
     "neovim/nvim-lspconfig",
-    opt = true,
-    setup = function()
-      require("core.lazy_load").on_file_open "nvim-lspconfig"
-    end,
+    lazy = true,
+    dependencies = {"folke/neodev.nvim"},
     config = function()
       require "plugins.configs.lspconfig"
     end,
-  }
+  },
 
   -- load luasnips + cmp related in insert mode only
 
-  use {
+  {
     "rafamadriz/friendly-snippets",
-    module = { "cmp", "cmp_nvim_lsp" },
     event = "InsertEnter",
-  }
+  },
 
-  use {
+  {
     "hrsh7th/nvim-cmp",
-    after = "friendly-snippets",
+    --after = "friendly-snippets",
     config = function()
       require "plugins.configs.cmp"
     end,
-  }
+  },
 
-  use {
+  {
     "L3MON4D3/LuaSnip",
     wants = "friendly-snippets",
-    after = "nvim-cmp",
+    --after = "nvim-cmp",
     config = function()
       require("plugins.configs.others").luasnip()
     end,
-  }
+  },
 
-  use {"saadparwaiz1/cmp_luasnip", after = "LuaSnip" }
-  use {"hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" }
-  use {"hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" }
-  use {"hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" }
-  use {"hrsh7th/cmp-path", after = "cmp-buffer" }
+  -- {"saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
+  -- {"hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" },
+  -- {"hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" },
+  -- {"hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" },
+  -- {"hrsh7th/cmp-path", after = "cmp-buffer" },
+  {"saadparwaiz1/cmp_luasnip"},
+  {"hrsh7th/cmp-nvim-lua"},
+  {"hrsh7th/cmp-nvim-lsp"},
+  {"hrsh7th/cmp-buffer"},
+  {"hrsh7th/cmp-path"},
 
   -- misc plugins
-  use {
+  {
     "windwp/nvim-autopairs",
-    after = "nvim-cmp",
+    --after = "nvim-cmp",
     config = function()
       require("plugins.configs.others").autopairs()
     end,
-  }
+  },
 
-  use {
+  {
     "numToStr/Comment.nvim",
-    module = "Comment",
     keys = { "gc", "gb" },
     config = function()
       require("plugins.configs.others").comment()
     end,
-    setup = function()
+    init = function()
       require("core.utils").load_mappings "comment"
     end,
-  }
+  },
 
   -- file managing , picker etc
-  use {
+  {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     config = function()
       require "plugins.configs.nvimtree"
     end,
-    setup = function()
+    init = function()
       require("core.utils").load_mappings "nvimtree"
     end,
-  }
+  },
 
-  use {
+  {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     config = function()
       require "plugins.configs.telescope"
     end,
-    setup = function()
+    init = function()
       require("core.utils").load_mappings "telescope"
     end,
-  }
+  },
 
-  use 'nvim-telescope/telescope-ui-select.nvim'
+  'nvim-telescope/telescope-ui-select.nvim',
 
-  use {
+  {
     "folke/trouble.nvim",
-    requires = "nvim-tree/nvim-web-devicons",
+    dependencies = {"nvim-tree/nvim-web-devicons"},
     config = function()
       require("trouble").setup {}
     end,
-  }
+  },
 
-  use 'simrat39/rust-tools.nvim'
+  'simrat39/rust-tools.nvim',
 
-  use {
+  {
     'mfussenegger/nvim-dap',
     config = function()
       require "plugins.configs.dap"
     end,
-  }
+  },
 
-  use 'mfussenegger/nvim-dap-python'
-  use 'mfussenegger/nvim-jdtls'
+  'mfussenegger/nvim-dap-python',
+  'mfussenegger/nvim-jdtls',
 
-  use {
+  {
     "rcarriga/nvim-dap-ui",
     config = function()
       require("dapui").setup({
@@ -316,14 +317,15 @@ return packer.startup(function(use)
         windows = { indent = 1 },
       })
     end,
-  }
+  },
 
 
-  use {
+  {
     'VonHeikemen/fine-cmdline.nvim',
-    requires = {
+    dependencies = {
       {'MunifTanjim/nui.nvim'}
     },
+    cmd = {"FineCmdline"},
     config = function ()
       require('fine-cmdline').setup({
         cmdline = {
@@ -343,7 +345,20 @@ return packer.startup(function(use)
         }
       })
   end
-  }
+  },
 
-end)
+
+  { 'alexghergh/nvim-tmux-navigation',
+    config = function()
+      local nvim_tmux_nav = require('nvim-tmux-navigation')
+
+      nvim_tmux_nav.setup {
+        disable_when_zoomed = true -- defaults to false
+      }
+    end,
+    init = function()
+      require("core.utils").load_mappings "tmux"
+    end
+  },
+})
 
