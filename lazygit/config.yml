@@ -1,0 +1,4 @@
+customCommands:
+  - key: 'a'
+    command: 'open https://bitbucket.org/atlassian/`basename $PWD`/pipelines'
+    context: 'localBranches'
