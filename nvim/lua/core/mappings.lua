@@ -25,7 +25,7 @@ M.general = {
     },
 
     ["<leader>la"] = { '<cmd>lua require("core.utils").open_lua_buf()<CR>', "opens a lua buffer in a horizontal split"},
-    ["<leader>rl"] = { '<cmd>lua require("core.utils").exec_lua_buf()<CR>', "executes lua buffer"},
+    ["<leader>lr"] = { '<cmd>lua require("core.utils").exec_lua_buf()<CR>', "executes lua buffer"},
 
   },
 

@@ -18,5 +18,5 @@ alias lg=lazygit
 # alias nvim="~/nvim/bin/nvim"
 alias vi=nvim
 alias vim=nvim
-alias ls="exa --icons"
-alias ll="exa --icons -l"
+alias ls="exa"
+alias ll="exa -l"

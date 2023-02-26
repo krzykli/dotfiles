@@ -108,7 +108,6 @@ require("lazy").setup({
   -- git stuff
   {
     "lewis6991/gitsigns.nvim",
-    ft = "gitcommit",
     config = function()
       require("plugins.configs.others").gitsigns()
     end,
@@ -129,28 +128,31 @@ require("lazy").setup({
     branch = "main",
     config = function()
       require("lspsaga").setup({
-         lightbulb = {
-            enable = true,
-            enable_in_insert = false,
-            sign = true,
-            sign_priority = 40,
-            virtual_text = false,
+        lightbulb = {
+          enable = true,
+          enable_in_insert = false,
+          sign = true,
+          sign_priority = 40,
+          virtual_text = false,
+        },
+        symbol_in_winbar = {
+          separator = " | "
+        },
+        outline = {
+          win_position = "right",
+          win_with = "",
+          win_width = 30,
+          show_detail = true,
+          auto_preview = false,
+          auto_refresh = true,
+          auto_close = true,
+          custom_sort = nil,
+          keys = {
+            jump = "<CR>",
+            expand_collapse = "u",
+            quit = "q",
           },
-          outline = {
-            win_position = "right",
-            win_with = "",
-            win_width = 30,
-            show_detail = true,
-            auto_preview = false,
-            auto_refresh = true,
-            auto_close = true,
-            custom_sort = nil,
-            keys = {
-              jump = "<CR>",
-              expand_collapse = "u",
-              quit = "q",
-            },
-          },
+        },
       })
     end,
     dependencies = { "nvim-tree/nvim-web-devicons" }
@@ -255,9 +257,7 @@ require("lazy").setup({
   {
     "folke/trouble.nvim",
     dependencies = {"nvim-tree/nvim-web-devicons"},
-    config = function()
-      require("trouble").setup {}
-    end,
+    opts = {},
   },
 
   'simrat39/rust-tools.nvim',
@@ -326,25 +326,23 @@ require("lazy").setup({
       {'MunifTanjim/nui.nvim'}
     },
     cmd = {"FineCmdline"},
-    config = function ()
-      require('fine-cmdline').setup({
-        cmdline = {
-          prompt = "  ",
+    opts = {
+      cmdline = {
+        prompt = "  ",
+      },
+      popup = {
+        position = {
+          row = '30%',
+          col = '50%',
         },
-        popup = {
-          position = {
-            row = '30%',
-            col = '50%',
-          },
-          size = {
-            width = '50%',
-          },
-          border = {
-            style = 'rounded',
-          },
-        }
-      })
-  end
+        size = {
+          width = '50%',
+        },
+        border = {
+          style = 'rounded',
+        },
+      }
+    }
   },
 
 
