@@ -82,6 +82,11 @@ lspconfig.lua_ls.setup {
   },
 }
 
+lspconfig.tsserver.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
 local rt = require("rust-tools")
 
 rt.setup({
@@ -101,6 +106,37 @@ vim.list_extend(bundles, vim.split(vim.fn.glob(JAVA_ROOT .. "/vscode-java-test/s
 
 M.java_config = {
 -- lspconfig.jdtls.setup({
+  --
+  settings = {
+    java = {
+      eclipse = {
+        downloadSources = true,
+      },
+      configuration = {
+        updateBuildConfiguration = "interactive",
+      },
+      maven = {
+        downloadSources = true,
+      },
+      implementationsCodeLens = {
+        enabled = true,
+      },
+      referencesCodeLens = {
+        enabled = true,
+      },
+      references = {
+        includeDecompiledSources = true,
+      },
+      format = {
+        enabled = true,
+        settings = {
+          url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
+          profile = "GoogleStyle",
+        },
+      },
+    },
+  },
+
   cmd = {
     HOME .. "/.sdkman/candidates/java/17.0.6-tem/bin/java",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",

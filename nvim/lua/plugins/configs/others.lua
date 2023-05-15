@@ -37,7 +37,6 @@ M.blankline = function()
       "help",
       "terminal",
       "alpha",
-      "packer",
       "lspinfo",
       "TelescopePrompt",
       "TelescopeResults",
@@ -47,7 +46,7 @@ M.blankline = function()
     buftype_exclude = { "terminal" },
     show_trailing_blankline_indent = false,
     show_first_indent_level = false,
-    show_current_context = true,
+    show_current_context = false,
     show_current_context_start = true,
   }
 
@@ -159,24 +158,6 @@ M.devicons = function()
 
     devicons.setup(options)
   end
-end
-
-M.packer_init = function()
-  return {
-    auto_clean = true,
-    compile_on_sync = true,
-    git = { clone_timeout = 6000 },
-    display = {
-      working_sym = "ﲊ",
-      error_sym = "✗ ",
-      done_sym = " ",
-      removed_sym = " ",
-      moved_sym = "",
-      open_fn = function()
-        return require("packer.util").float { border = "single" }
-      end,
-    },
-  }
 end
 
 M.yanky = function()

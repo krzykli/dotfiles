@@ -25,7 +25,7 @@ local hl_overs = {
 
   TelescopeNormal = { bg = colors.black2 },
 
-  TelescopeSelection = { bg = colors.black, fg = colors.white },
+  TelescopeSelection = { bg = colors.red, fg = colors.white },
 }
 
 utils.set_highlights(hl_overs)
@@ -92,6 +92,7 @@ local options = {
 
 -- check for any override
 options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
+
 telescope.setup(options)
 
 -- load extensions

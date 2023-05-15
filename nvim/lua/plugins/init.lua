@@ -1,22 +1,41 @@
 vim.g.mapleader = ";"
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
+  vim.fn.system {
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable", -- latest stable release
     lazypath,
-  })
+  }
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+require("lazy").setup {
 
-  'chaoren/vim-wordmotion',
-  'kevinhwang91/nvim-bqf',
+  "chaoren/vim-wordmotion",
+  "kevinhwang91/nvim-bqf",
+  "mbbill/undotree",
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      local null_ls = require "null-ls"
+      null_ls.setup {
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.diagnostics.eslint,
+          null_ls.builtins.completion.spell,
+
+          null_ls.builtins.formatting.google_java_format,
+          null_ls.builtins.diagnostics.checkstyle.with({
+              extra_args = { "-c", "/Users/kklimczyk/workspace/control-automation/checkstyle.xml" }, -- or "/sun_checks.xml" or path to self written rules
+          }),
+        },
+      }
+    end,
+  },
 
   {
     "nvim-lua/plenary.nvim",
@@ -24,16 +43,16 @@ require("lazy").setup({
 
   {
     "gbprod/yanky.nvim",
-    config = function ()
+    config = function()
       require("yanky").setup(require("plugins.configs.others").yanky())
     end,
     init = function()
       require("core.utils").load_mappings "yanky"
-    end
+    end,
   },
 
   {
-    'NvChad/extensions',
+    "NvChad/extensions",
   },
 
   {
@@ -79,7 +98,6 @@ require("lazy").setup({
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    lazy = true,
     init = function()
       require("core.utils").load_mappings "blankline"
     end,
@@ -127,7 +145,7 @@ require("lazy").setup({
     "glepnir/lspsaga.nvim",
     branch = "main",
     config = function()
-      require("lspsaga").setup({
+      require("lspsaga").setup {
         lightbulb = {
           enable = true,
           enable_in_insert = false,
@@ -136,7 +154,7 @@ require("lazy").setup({
           virtual_text = false,
         },
         symbol_in_winbar = {
-          separator = " | "
+          separator = " | ",
         },
         outline = {
           win_position = "right",
@@ -153,22 +171,22 @@ require("lazy").setup({
             quit = "q",
           },
         },
-      })
+      }
     end,
-    dependencies = { "nvim-tree/nvim-web-devicons" }
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   {
     "folke/neodev.nvim",
     config = function()
-      require("neodev").setup({})
-    end
+      require("neodev").setup {}
+    end,
   },
 
   {
     "neovim/nvim-lspconfig",
     lazy = true,
-    dependencies = {"folke/neodev.nvim"},
+    dependencies = { "folke/neodev.nvim" },
     config = function()
       require "plugins.configs.lspconfig"
     end,
@@ -203,11 +221,11 @@ require("lazy").setup({
   -- {"hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" },
   -- {"hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" },
   -- {"hrsh7th/cmp-path", after = "cmp-buffer" },
-  {"saadparwaiz1/cmp_luasnip"},
-  {"hrsh7th/cmp-nvim-lua"},
-  {"hrsh7th/cmp-nvim-lsp"},
-  {"hrsh7th/cmp-buffer"},
-  {"hrsh7th/cmp-path"},
+  { "saadparwaiz1/cmp_luasnip" },
+  { "hrsh7th/cmp-nvim-lua" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
 
   -- misc plugins
   {
@@ -252,30 +270,30 @@ require("lazy").setup({
     end,
   },
 
-  'nvim-telescope/telescope-ui-select.nvim',
+  "nvim-telescope/telescope-ui-select.nvim",
 
   {
     "folke/trouble.nvim",
-    dependencies = {"nvim-tree/nvim-web-devicons"},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
   },
 
-  'simrat39/rust-tools.nvim',
+  "simrat39/rust-tools.nvim",
 
   {
-    'mfussenegger/nvim-dap',
+    "mfussenegger/nvim-dap",
     config = function()
       require "plugins.configs.dap"
     end,
   },
 
-  'mfussenegger/nvim-dap-python',
-  'mfussenegger/nvim-jdtls',
+  "mfussenegger/nvim-dap-python",
+  "mfussenegger/nvim-jdtls",
 
   {
     "rcarriga/nvim-dap-ui",
     config = function()
-      require("dapui").setup({
+      require("dapui").setup {
         icons = { expanded = "▾", collapsed = "▸" },
         mappings = {
           -- Use a table to apply multiple mappings
@@ -315,48 +333,46 @@ require("lazy").setup({
           },
         },
         windows = { indent = 1 },
-      })
+      }
     end,
   },
 
-
   {
-    'VonHeikemen/fine-cmdline.nvim',
+    "VonHeikemen/fine-cmdline.nvim",
     dependencies = {
-      {'MunifTanjim/nui.nvim'}
+      { "MunifTanjim/nui.nvim" },
     },
-    cmd = {"FineCmdline"},
+    cmd = { "FineCmdline" },
     opts = {
       cmdline = {
         prompt = "  ",
       },
       popup = {
         position = {
-          row = '30%',
-          col = '50%',
+          row = "30%",
+          col = "50%",
         },
         size = {
-          width = '50%',
+          width = "50%",
         },
         border = {
-          style = 'rounded',
+          style = "rounded",
         },
-      }
-    }
+      },
+    },
   },
 
-
-  { 'alexghergh/nvim-tmux-navigation',
+  {
+    "alexghergh/nvim-tmux-navigation",
     config = function()
-      local nvim_tmux_nav = require('nvim-tmux-navigation')
+      local nvim_tmux_nav = require "nvim-tmux-navigation"
 
       nvim_tmux_nav.setup {
-        disable_when_zoomed = true -- defaults to false
+        disable_when_zoomed = true, -- defaults to false
       }
     end,
     init = function()
       require("core.utils").load_mappings "tmux"
-    end
+    end,
   },
-})
-
+}

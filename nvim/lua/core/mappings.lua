@@ -13,6 +13,7 @@ M.general = {
 
   n = {
     [":"] = { "<cmd>FineCmdline<CR>", "fine cmd line" },
+    [":H"] = { '<cmd>lua require("core.utils").toggle_cmd_height()<CR>', "toggle height of the command line" },
     -- switch between windows
     ["<leader>a"] = { "ggVG", "copy whole file" },
     ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
@@ -26,7 +27,7 @@ M.general = {
 
     ["<leader>la"] = { '<cmd>lua require("core.utils").open_lua_buf()<CR>', "opens a lua buffer in a horizontal split"},
     ["<leader>lr"] = { '<cmd>lua require("core.utils").exec_lua_buf()<CR>', "executes lua buffer"},
-
+    ["<leader>jq"] = { '<cmd>%!jq .<CR><cmd>set syntax=json<CR>', "formats file with jq"},
   },
 
   t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },

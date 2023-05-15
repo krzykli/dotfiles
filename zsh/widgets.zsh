@@ -1,10 +1,13 @@
 # CTRL-g - projects
 fzf-project-widget() {
-    cd ~/workspace
-    projects=`find . -type d -maxdepth 1`
-    selected=`echo "$projects" | fzf --layout reverse --height 30% --prompt="🔍 workspace: " --pointer=▶`
-    cd $selected
+  local selected_directory
+  selected_directory=$(find ~/workspace -maxdepth 1 -type d -exec basename {} \; | fzf --layout reverse --height 30% --prompt="🔍 workspace: " --pointer=▶)
+  if [[ -n $selected_directory ]]; then
+    BUFFER="cd ~/workspace/${selected_directory}"
+    zle accept-line
+  else
     zle reset-prompt
+  fi
 }
 zle     -N   fzf-project-widget
 bindkey '^g' fzf-project-widget

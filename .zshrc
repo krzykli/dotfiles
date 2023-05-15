@@ -4,7 +4,7 @@ if [[ -v ZSH_PROFILE ]]; then
     zmodload zsh/zprof
 fi
 
-#source ~/.atlassian.zsh
+source ~/.atlassian.zsh
 eval "$(starship init zsh)"
 
 export EDITOR="nvim"
@@ -14,7 +14,6 @@ export NEOVIDE_MULTIGRID="1"
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
-#[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 #[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 init_pyenv () {
@@ -22,16 +21,20 @@ init_pyenv () {
     if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 }
 
+init_nvm () {
+    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/kklimczyk/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/kklimczyk/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/kklimczyk/opt/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/kklimczyk/opt/anaconda3/bin:$PATH"
+        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -69,6 +72,8 @@ source ~/.config/zsh/lf.zsh
 
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
+bindkey -r "^J"
+
 
 source ~/.fzf.zsh
 # zprof

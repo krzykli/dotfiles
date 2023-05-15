@@ -20,3 +20,7 @@ alias vi=nvim
 alias vim=nvim
 alias ls="exa"
 alias ll="exa -l"
+
+atlas_clone() {
+    git clone git@bitbucket.org:atlassian/$1.git
+}

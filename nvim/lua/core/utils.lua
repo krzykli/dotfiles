@@ -186,4 +186,12 @@ M.exec_lua_buf = function()
   end
 end
 
+M.toggle_cmd_height = function()
+  if vim.opt.cmdheight == 0  then
+    vim.opt.cmdheight = 10
+  else
+    vim.opt.cmdheight = 0
+  end
+end
+
 return M
