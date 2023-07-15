@@ -1,4 +1,3 @@
-local utils = require("core.utils")
 local M = {}
 
 local present, telescope = pcall(require, "telescope")
@@ -8,27 +7,6 @@ if not present then
 end
 
 vim.g.theme_switcher_loaded = true
-
-require("base46").load_highlight "telescope"
-local colors = require("base46").get_theme_tb "base_30"
-
-local hl_overs = {
-  TelescopeBorder = {
-    fg = colors.black2,
-    bg = colors.black2,
-  },
-
-  TelescopeResultsTitle = {
-    fg = colors.black2,
-    bg = colors.black2,
-  },
-
-  TelescopeNormal = { bg = colors.black2 },
-
-  TelescopeSelection = { bg = colors.red, fg = colors.white },
-}
-
-utils.set_highlights(hl_overs)
 
 local options = {
   defaults = {
@@ -77,7 +55,9 @@ local options = {
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     mappings = {
-      n = { ["q"] = require("telescope.actions").close },
+      n = {
+        ["q"] = require("telescope.actions").close,
+      }
     },
   },
 
@@ -85,14 +65,17 @@ local options = {
   extensions = {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown { }
+    },
+    project = {
+      base_dirs = {
+        "~/workspace/",
+      }
     }
   }
 }
 
 
 -- check for any override
-options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
-
 telescope.setup(options)
 
 -- load extensions

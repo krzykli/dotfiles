@@ -17,6 +17,22 @@ require("lazy").setup {
 
   "chaoren/vim-wordmotion",
   "kevinhwang91/nvim-bqf",
+  {
+    "stevearc/oil.nvim",
+    config = function ()
+      require("oil").setup()
+    end
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require('nvim-surround').setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
   "mbbill/undotree",
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -25,13 +41,15 @@ require("lazy").setup {
       null_ls.setup {
         sources = {
           null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.rustfmt,
           null_ls.builtins.diagnostics.eslint,
           null_ls.builtins.completion.spell,
 
+          null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.google_java_format,
-          null_ls.builtins.diagnostics.checkstyle.with({
-              extra_args = { "-c", "/Users/kklimczyk/workspace/control-automation/checkstyle.xml" }, -- or "/sun_checks.xml" or path to self written rules
-          }),
+          null_ls.builtins.diagnostics.checkstyle.with {
+            extra_args = { "-c", "/Users/kklimczyk/workspace/control-automation/checkstyle.xml" }, -- or "/sun_checks.xml" or path to self written rules
+          },
         },
       }
     end,
@@ -166,7 +184,7 @@ require("lazy").setup {
           auto_close = true,
           custom_sort = nil,
           keys = {
-            jump = "<CR>",
+            jump = "{ CR }",
             expand_collapse = "u",
             quit = "q",
           },
@@ -271,6 +289,7 @@ require("lazy").setup {
   },
 
   "nvim-telescope/telescope-ui-select.nvim",
+  "nvim-telescope/telescope-project.nvim",
 
   {
     "folke/trouble.nvim",
@@ -335,31 +354,6 @@ require("lazy").setup {
         windows = { indent = 1 },
       }
     end,
-  },
-
-  {
-    "VonHeikemen/fine-cmdline.nvim",
-    dependencies = {
-      { "MunifTanjim/nui.nvim" },
-    },
-    cmd = { "FineCmdline" },
-    opts = {
-      cmdline = {
-        prompt = "  ",
-      },
-      popup = {
-        position = {
-          row = "30%",
-          col = "50%",
-        },
-        size = {
-          width = "50%",
-        },
-        border = {
-          style = "rounded",
-        },
-      },
-    },
   },
 
   {

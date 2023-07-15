@@ -2,3 +2,13 @@ customCommands:
   - key: 'a'
     command: 'open https://bitbucket.org/atlassian/`basename $PWD`/pipelines'
     context: 'localBranches'
+  - key: 't'
+    prompts:
+      - type: menuFromCommand
+        title: "pipelines"
+        command: get_pipelines
+        filter: '(?P<pipe>.*)'
+        valueFormat: '{{ .pipe}}'
+        labelFormat: '{{ .pipe | yellow }}'
+    command: execute_pipeline {{index .PromptResponses 0}}
+    context: localBranches

@@ -3,6 +3,8 @@
 if [[ -v ZSH_PROFILE ]]; then
     zmodload zsh/zprof
 fi
+source ~/zsh-defer/zsh-defer.plugin.zsh
+
 
 source ~/.atlassian.zsh
 eval "$(starship init zsh)"
@@ -14,6 +16,8 @@ export NEOVIDE_MULTIGRID="1"
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
+export NVIM_APPNAME="basic"
+export PATH="$HOME/.local/share/basic/mason/bin:$PATH"
 #[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 init_pyenv () {
@@ -25,20 +29,45 @@ init_nvm () {
     [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 }
 
+logs() {
+  service=`basename $PWD`
+
+  if [[ -n "$service" ]]; then
+    env=$(echo "ddev adev stg-apse2 prod-apse2" | tr ' ' '\n' | fzf --height=30% --reverse)
+
+    if [[ -n "$env" ]]; then
+      open http://go/logs/$service/$env
+    fi
+  fi
+}
+
+token() {
+  service=`basename $PWD`
+
+  env=$(echo "dev staging prod" | tr ' ' '\n' | fzf --height=30% --reverse)
+
+  if [[ -n "$env" ]]; then
+    atlas slauth token -a $service -e $env | pbcopy
+    echo "🎉 $service $env slauth token copied to clipboard"
+  fi
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+conda_init() {
+    __conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+        if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+            . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+        else
+            export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+        fi
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+    unset __conda_setup
+    # <<< conda initialize <<<
+}
 
 
 # man
@@ -55,8 +84,9 @@ man() {
 }
 
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# zsh-defer conda_init
+zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # fzf
 export FZF_COMPLETION_TRIGGER=';;'
 
@@ -74,13 +104,26 @@ bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 bindkey -r "^J"
 
-
 source ~/.fzf.zsh
+
+run_pipe() {
+    execute_pipeline $(get_pipelines | fzf --reverse --height 30%)
+}
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+
+# edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
 # zprof
 if [[ -v ZSH_PROFILE ]]; then
     zprof
 fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+zsh-defer source "$HOME/.sdkman/bin/sdkman-init.sh"

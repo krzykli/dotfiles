@@ -87,6 +87,23 @@ lspconfig.tsserver.setup {
   capabilities = M.capabilities,
 }
 
+lspconfig.pyright.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+
+lspconfig.jsonls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  settings = {
+    json = {
+      validate = {
+        enable = true
+      }
+    }
+  }
+}
+
 local rt = require("rust-tools")
 
 rt.setup({
