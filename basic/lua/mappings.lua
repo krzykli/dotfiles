@@ -19,6 +19,8 @@ local normal_maps = {
     ["<leader>:"] = { "q:i", "cmd" },
     ["QQ"] = { ":q<CR>", "quit" },
     ["<leader>gg"] = { "<cmd>LazyGit<CR>", "lazygit" },
+    ["n"] = { "nzz", "next and frame" },
+    ["N"] = { "Nzz", "previous and frame" },
     -- switch between windows
     ["<leader>a"] = { "ggVG", "copy whole file" },
     ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },

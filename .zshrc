@@ -18,6 +18,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 export NVIM_APPNAME="basic"
 export PATH="$HOME/.local/share/basic/mason/bin:$PATH"
+export PATH=/Users/kklimczyk/.asdf/installs/poetry/1.6.1/bin:$PATH
 #[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 init_pyenv () {
@@ -47,7 +48,7 @@ token() {
   env=$(echo "dev staging prod" | tr ' ' '\n' | fzf --height=30% --reverse)
 
   if [[ -n "$env" ]]; then
-    atlas slauth token -a $service -e $env | pbcopy
+    atlas slauth token -a $service -e $env -g continuous-control-monitoring-dl-admins | pbcopy
     echo "🎉 $service $env slauth token copied to clipboard"
   fi
 }
@@ -111,8 +112,6 @@ run_pipe() {
 }
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-
 # edit command line
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -125,5 +124,7 @@ if [[ -v ZSH_PROFILE ]]; then
 fi
 
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 zsh-defer source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"

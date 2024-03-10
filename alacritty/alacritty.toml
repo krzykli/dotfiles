@@ -1,0 +1,76 @@
+[colors.normal]
+black = "0x1E1E1E"
+blue = "0x569CD6"
+cyan = "0x9CDCFE"
+green = "0x608B4E"
+magenta = "0xC586C0"
+red = "0xF44747"
+white = "0xD4D4D4"
+yellow = "0xD7BA7D"
+
+[colors.primary]
+background = "0x1E1E1E"
+foreground = "0xD4D4D4"
+
+[cursor]
+blink_interval = 400
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Always"
+shape = "Beam"
+
+[font]
+size = 14
+
+[font.bold]
+family = "Hack Nerd Font"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Hack Nerd Font"
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[shell]
+args = ["-l", "-c", "tmux attach || tmux"]
+program = "/bin/zsh"
+
+[window.padding]
+x = 2
+y = 2
+

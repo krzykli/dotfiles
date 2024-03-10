@@ -20,7 +20,7 @@ M.autopairs = function()
 end
 
 M.blankline = function()
-  local present, blankline = pcall(require, "indent_blankline")
+  local present, blankline = pcall(require, "ibl")
 
   if not present then
     return
@@ -29,22 +29,22 @@ M.blankline = function()
   -- require("base46").load_highlight "blankline"
 
   local options = {
-    indentLine_enabled = 1,
-    filetype_exclude = {
-      "help",
-      "terminal",
-      "alpha",
-      "lspinfo",
-      "TelescopePrompt",
-      "TelescopeResults",
-      "mason",
-      "",
-    },
-    buftype_exclude = { "terminal" },
-    show_trailing_blankline_indent = false,
-    show_first_indent_level = false,
-    show_current_context = false,
-    show_current_context_start = true,
+    -- indentLine_enabled = 1,
+    -- filetype_exclude = {
+    --   "help",
+    --   "terminal",
+    --   "alpha",
+    --   "lspinfo",
+    --   "TelescopePrompt",
+    --   "TelescopeResults",
+    --   "mason",
+    --   "",
+    -- },
+    -- buftype_exclude = { "terminal" },
+    -- show_trailing_blankline_indent = false,
+    -- show_first_indent_level = false,
+    -- show_current_context = false,
+    -- show_current_context_start = true,
   }
 
   blankline.setup(options)
@@ -129,11 +129,11 @@ M.gitsigns = function()
 
   local options = {
     signs = {
-      add = { hl = "DiffAdd", text = "▐", numhl = "GitSignsAddNr" },
-      change = { hl = "DiffChange", text = "▐", numhl = "GitSignsChangeNr" },
-      delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
-      topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-      changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
+      add = { text = "▐"},
+      change = {  text = "▐"},
+      delete = {  text = ""},
+      topdelete = {  text = "‾"},
+      changedelete = {  text = "~"},
     },
   }
 

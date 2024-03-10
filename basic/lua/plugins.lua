@@ -103,6 +103,7 @@ require("lazy").setup {
     init = function()
       -- require("core.utils").load_mappings "blankline"
     end,
+    main = "ibl",
     config = function()
       require("configs.others").blankline()
     end,
@@ -114,7 +115,6 @@ require("lazy").setup {
     config = function()
       require "configs.treesitter"
     end,
-    lazy=true,
   },
 
   -- git stuff
@@ -205,15 +205,14 @@ require("lazy").setup {
 
   {
     "L3MON4D3/LuaSnip",
-    wants = "friendly-snippets",
-    --after = "nvim-cmp",
-    config = function()
-      require("configs.others").luasnip()
-    end,
-    event = "VeryLazy",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp"
   },
+  --
+  -- { "saadparwaiz1/cmp_luasnip", event = "VeryLazy" },
 
-  { "saadparwaiz1/cmp_luasnip", event = "VeryLazy" },
   { "hrsh7th/cmp-nvim-lua", event = "VeryLazy" },
   { "hrsh7th/cmp-nvim-lsp", event = "VeryLazy" },
   { "hrsh7th/cmp-buffer", event = "VeryLazy" },
@@ -256,13 +255,13 @@ require("lazy").setup {
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    lazy=true,
     opts = {},
   },
 
   {
-    "simrat39/rust-tools.nvim",
-    event = "VeryLazy",
+    'mrcjkb/rustaceanvim',
+    version = '^4',
+    ft = { 'rust' },
   },
 
   {
@@ -295,5 +294,34 @@ require("lazy").setup {
       "nvim-lua/plenary.nvim",
     },
     event = "VeryLazy",
+  },
+  {
+    "mfussenegger/nvim-dap",
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap"
+    },
+    config = function ()
+      require('dapui').setup()
+    end,
+  },
+  {
+    "leoluz/nvim-dap-go",
+    config = function ()
+      require('dap-go').setup()
+    end,
+    ft = {"go"},
+  },
+  {
+    "olexsmir/gopher.nvim",
+    config = function (_, opts)
+      require('gopher').setup(opts)
+    end,
+    ft = {"go"},
+    build = function ()
+      vim.cmd [[silent! GoInstallDeps]]
+    end
   },
 }

@@ -20,3 +20,14 @@ require("plugins")
 require("mappings")
 
 vim.cmd([[hi MsgArea guibg=#222222 guifg=#00CC77]])
+vim.cmd([[set nowrap]])
+
+vim.cmd('augroup PythonBlack')
+vim.cmd('autocmd!')
+vim.cmd('autocmd FileType python nnoremap <buffer> <leader>fm :!poetry run black %<CR><CR>')
+vim.cmd('augroup END')
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
