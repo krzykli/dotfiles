@@ -6,7 +6,11 @@ end
 
 local load_mappings = function(mode, map)
   for keybind, mapping_info in pairs(map) do
-    vim.keymap.set(mode, keybind, mapping_info[1])
+    local opts = vim.tbl_extend("force", {
+      desc = mapping_info[2],
+      silent = true,
+    }, mapping_info.opts or {})
+    vim.keymap.set(mode, keybind, mapping_info[1], opts)
   end
 end
 
@@ -24,7 +28,7 @@ local normal_maps = {
     -- switch between windows
     ["<leader>a"] = { "ggVG", "copy whole file" },
     ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
-    ["<leader>o"] = { "<cmd> Lspsaga outline<CR>", "outline"},
+    ["<leader>o"] = { "<cmd>Telescope lsp_document_symbols<CR>", "document symbols"},
 
     ["<leader>w"] = { function ()
       vim.api.nvim_command("write")
@@ -32,8 +36,6 @@ local normal_maps = {
     "save current file"
     },
 
-    ["<leader>la"] = { '<cmd>lua require("core.utils").open_lua_buf()<CR>', "opens a lua buffer in a horizontal split"},
-    ["<leader>lr"] = { '<cmd>lua require("core.utils").exec_lua_buf()<CR>', "executes lua buffer"},
     ["<leader>jq"] = { '<cmd>%!jq .<CR><cmd>set syntax=json<CR>', "formats file with jq"},
     ["∆"] = {'<cmd>cnext<CR>', "next quicklist item"},
     ["˚"] = {'<cmd>cprevious<CR>', "previous quicklist item"},
@@ -56,9 +58,6 @@ local normal_maps = {
     -- git
     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
     ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
-
-    -- pick a hidden term
-    ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
 
     -- lsp
     ["gD"] = {
@@ -133,14 +132,14 @@ local normal_maps = {
 
     ["[d"] = {
       function()
-        vim.diagnostic.goto_prev()
+        vim.diagnostic.jump({ count = -1, float = true })
       end,
       "goto prev",
     },
 
-    ["d]"] = {
+    ["]d"] = {
       function()
-        vim.diagnostic.goto_next()
+        vim.diagnostic.jump({ count = 1, float = true })
       end,
       "goto_next",
     },

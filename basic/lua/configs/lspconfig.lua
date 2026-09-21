@@ -1,3 +1,9 @@
+-- Compatibility entrypoint for any local code that still requires the old
+-- module name. The active configuration lives in configs.lsp.
+do
+  return require("configs.lsp")
+end
+
 local present, lspconfig = pcall(require, "lspconfig")
 
 if not present then

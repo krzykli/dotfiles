@@ -7,7 +7,7 @@ end
 vim.api.nvim_create_augroup("_mason", { clear = true })
 
 local options = {
-  PATH = "skip",
+  PATH = "prepend",
 
   ui = {
     icons = {
@@ -28,11 +28,23 @@ local options = {
     },
   },
 
-  max_concurrent_installers = 10,
+  max_concurrent_installers = 4,
+}
+
+local ensure_installed = {
+  "delve",
+  "gopls",
+  "jdtls",
+  "json-lsp",
+  "lua-language-server",
+  "pyright",
+  "ruff",
+  "typescript-language-server",
+  "yaml-language-server",
 }
 
 vim.api.nvim_create_user_command("MasonInstallAll", function()
-  vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
+  vim.cmd("MasonInstall " .. table.concat(ensure_installed, " "))
 end, {})
 
 mason.setup(options)

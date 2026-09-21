@@ -3,10 +3,9 @@
 if [[ -v ZSH_PROFILE ]]; then
     zmodload zsh/zprof
 fi
-source ~/zsh-defer/zsh-defer.plugin.zsh
-
-
-source ~/.atlassian.zsh
+# Optional local integrations. Keep the shell usable when a tool has been
+# uninstalled or a machine-specific file is absent.
+[[ -f "$HOME/.atlassian.zsh" ]] && source "$HOME/.atlassian.zsh"
 eval "$(starship init zsh)"
 
 export EDITOR="nvim"
@@ -17,7 +16,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 export NVIM_APPNAME="basic"
-export PATH="Users/kklimczyk/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/basic/mason/bin:$PATH"
 #[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
@@ -138,9 +137,9 @@ man() {
 }
 
 
-# zsh-defer conda_init
-zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Optional prompt enhancements.
+[[ -f "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[[ -f "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # fzf
 export FZF_COMPLETION_TRIGGER=';;'
 
@@ -165,7 +164,7 @@ run_pipe() {
 }
 
 kubeinit() {
-    zsh-defer export KUBECONFIG=$(atlas kitt context:create --pid=$$)
+    export KUBECONFIG=$(atlas kitt context:create --pid=$$)
 }
 
 # edit command line
@@ -182,20 +181,26 @@ fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
-zsh-defer source "$HOME/.sdkman/bin/sdkman-init.sh"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
 
 # Created by `pipx` on 2024-03-18 23:28:31
 export PATH="$PATH:/Users/kklimczyk/.local/bin"
 
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 export PATH="/opt/atlassian/orbit/bin:$PATH"
 
 export PATH="/Users/kklimczyk/.orbit/bin:$PATH"
 
 
 export GPG_TTY=$(tty)
-eval "$(rbenv init - zsh)"
+command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - zsh)"
 
 
-source ~/.afm-git-configrc
+[[ -f "$HOME/.afm-git-configrc" ]] && source "$HOME/.afm-git-configrc"
+
+# In Ghostty, start (or attach to) one persistent Tmux workspace. This stays
+# out of other terminals and avoids nesting when already inside Tmux.
+if [[ -o interactive && -z "$TMUX" && ( "$TERM_PROGRAM" == "ghostty" || "$TERM" == "xterm-ghostty" ) ]]; then
+    exec tmux new-session -A -s main
+fi

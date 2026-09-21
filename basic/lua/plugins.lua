@@ -45,10 +45,8 @@ require("lazy").setup {
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      -- load the colorscheme here
-      require('vscode').setup {
-        require('vscode').load()
-      }
+      require("vscode").setup({})
+      require("vscode").load()
     end,
   },
 
@@ -104,9 +102,6 @@ require("lazy").setup {
     config = function()
       require("yanky").setup(require("configs.others").yanky())
     end,
-    init = function()
-      --require("core.utils").load_mappings "yanky"
-    end,
     event = "VeryLazy"
   },
   {
@@ -119,9 +114,6 @@ require("lazy").setup {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    init = function()
-      -- require("core.utils").load_mappings "blankline"
-    end,
     main = "ibl",
     config = function()
       require("configs.others").blankline()
@@ -146,8 +138,7 @@ require("lazy").setup {
   -- lsp stuff
   {
     "williamboman/mason.nvim",
-
-    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    lazy = false,
     config = function()
       require "configs.mason"
     end,
@@ -198,10 +189,10 @@ require("lazy").setup {
 
   {
     "neovim/nvim-lspconfig",
-    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "folke/neodev.nvim" },
     config = function()
-      require "configs.lspconfig"
+      require "configs.lsp"
     end,
   },
 
@@ -220,6 +211,7 @@ require("lazy").setup {
     -- install jsregexp (optional!).
     build = "make install_jsregexp"
   },
+  { "saadparwaiz1/cmp_luasnip", event = "VeryLazy" },
 
 
   { "hrsh7th/cmp-nvim-lua", event = "VeryLazy" },
@@ -242,9 +234,6 @@ require("lazy").setup {
     keys = { "gc", "gb" },
     config = function()
       require("configs.others").comment()
-    end,
-    init = function()
-      -- require("core.utils").load_mappings "comment"
     end,
     event = "VeryLazy",
   },
@@ -340,26 +329,12 @@ require("lazy").setup {
 
   {
     "mfussenegger/nvim-jdtls",
-    event = "VeryLazy",
+    ft = "java",
   },
 
   {
-    'alexghergh/nvim-tmux-navigation', config = function()
-
-      local nvim_tmux_nav = require('nvim-tmux-navigation')
-
-      nvim_tmux_nav.setup {
-          disable_when_zoomed = true -- defaults to false
-      }
-
-      vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-      vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-      vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-      vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-      vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
-      vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
-
-    end
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
   },
   {
     "kdheepak/lazygit.nvim",
@@ -384,7 +359,16 @@ require("lazy").setup {
   {
     "leoluz/nvim-dap-go",
     config = function ()
-      require('dap-go').setup()
+      require("dap-go").setup({
+        dap_configurations = {
+          {
+            type = "go",
+            name = "Attach remote",
+            mode = "remote",
+            request = "attach",
+          },
+        },
+      })
     end,
     ft = {"go"},
   },

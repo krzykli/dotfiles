@@ -66,7 +66,7 @@ local options = {
     },
   },
 
-  extensions_list = { "themes", "terms", "ui-select" },
+  extensions_list = { "ui-select", "project" },
   extensions = {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown { }
@@ -84,11 +84,11 @@ local options = {
 telescope.setup(options)
 
 -- load extensions
-pcall(function()
-  for _, ext in ipairs(options.extensions_list) do
+for _, ext in ipairs(options.extensions_list) do
+  pcall(function()
     telescope.load_extension(ext)
-  end
-end)
+  end)
+end
 
 -- custom
 M.search_dotfiles = function()
