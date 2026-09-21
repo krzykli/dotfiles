@@ -1,160 +1,127 @@
-# PROFILING NOTES: https://esham.io/2018/02/zsh-profiling
-#
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/kklimczyk/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-export ZVM_VI_ESCAPE_BINDKEY="jk"
-export ZVM_KEYTIMEOUT=0.1
-
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode)
-source $ZSH/oh-my-zsh.sh
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# https://medium.com/@dannysmith/little-thing-2-speeding-up-zsh-f1860390f92
+# profile
+if [[ -v ZSH_PROFILE ]]; then
+    zmodload zsh/zprof
+fi
+source ~/zsh-defer/zsh-defer.plugin.zsh
 
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-#[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-#[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-export EDITOR=nvim
-# Aliases [general]
-alias ..="cd .."
-alias cls=clear
-alias nvim="~/nvim/bin/nvim"
-alias vim=nvim
-alias vi=nvim
-alias dev="cd ~/workspace"
-alias lg=lazygit
-alias ra=ranger
-alias gg="git grep"
-alias gp="git pull"
-alias gb="git branch | fzf-tmux -d 15"
-alias cac="~/go/src/bitbucket.org/atlassian/compliance-as-code"
-
+source ~/.atlassian.zsh
 eval "$(starship init zsh)"
 
+export EDITOR="nvim"
+export VISUAL="nvim"
+export NEOVIDE_MULTIGRID="1"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+export NVIM_APPNAME="basic"
+export PATH="Users/kklimczyk/.local/bin:$PATH"
+export PATH="$HOME/.local/share/basic/mason/bin:$PATH"
+#[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 init_pyenv () {
     eval "$(pyenv init -)"
     if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 }
 
-alias initpyenv='init_pyenv'
-alias initnvm=". /usr/local/opt/nvm/nvm.sh"
-alias initruby='eval "$(rbenv init -)"'
+inv () {
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+}
 
-source ~/.atlassian.zsh
+logs() {
+  service=`basename $PWD`
+
+  if [[ -n "$service" ]]; then
+    env=$(echo "ddev adev stg-apse2 prod-apse2" | tr ' ' '\n' | fzf --height=30% --reverse)
+
+    if [[ -n "$env" ]]; then
+      open http://go/logs/$service/$env
+    fi
+  fi
+}
+
+token() {
+  service=`basename $PWD`
+
+  env=$(echo "dev staging prod" | tr ' ' '\n' | fzf --height=30% --reverse)
+
+  if [[ -n "$env" ]]; then
+    atlas slauth token -a $service -e $env -g continuous-control-monitoring-dl-admins | pbcopy
+    echo "🎉 $service $env slauth token copied to clipboard"
+  fi
+}
+
+function scan_docker_image() {
+  local docker_image=""
+  local output_json_file=""
+
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -d|--docker-image)
+        docker_image="$2"
+        shift 2
+        ;;
+      -o|--output-file)
+        output_json_file="$2"
+        shift 2
+        ;;
+      *)
+        echo "Unknown option: $1"
+        echo "Usage: scan_docker_image -d <docker_image> -o <output_json_file>"
+        return 1
+        ;;
+    esac
+  done
+
+  if [[ -z $docker_image || -z $output_json_file ]]; then
+    echo "Both --docker-image and --output-file are required."
+    echo "Usage: scan_docker_image -d <docker_image> -o <output_json_file>"
+    return 1
+  fi
+
+  docker run \
+    -e AUTH_TOKEN=$(atlas slauth token -e staging --aud=sec-cs-image-scanner) \
+    -i docker.atl-paas.net/asecurityteam/cs-image-scanner-client:v0.1.2 \
+    "$docker_image" > "$output_json_file"
+}
+
+function search_artifactory() {
+  local DIGEST="$1"
+  if [[ -z "$USERNAME" || -z "$APASS" ]]; then
+    echo "Error: AUSERNAME and APASS environment variables must be set."
+    return 1
+  fi
+  curl -u"${USERNAME}":"${APASS}" \
+    -X POST \
+    -H 'Content-Type: text/plain; charset=utf-8' \
+    https://packages.atlassian.com/artifactory/api/search/aql \
+    -d @- << __EOF > "results.sha256__${DIGEST}.json"
+items.find({
+  "sha256":"${DIGEST}",
+  "repo" : "atlassian-docker-immutable-local"
+}).include("repo","path","name")
+__EOF
+}
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/kklimczyk/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/kklimczyk/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/kklimczyk/opt/anaconda3/etc/profile.d/conda.sh"
+conda_init() {
+    __conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/Users/kklimczyk/opt/anaconda3/bin:$PATH"
+        if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+            . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+        else
+            export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+        fi
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+    unset __conda_setup
+    # <<< conda initialize <<<
+}
 
 
 # man
@@ -171,10 +138,64 @@ man() {
 }
 
 
+# zsh-defer conda_init
+zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # fzf
 export FZF_COMPLETION_TRIGGER=';;'
-zvm_after_init_commands+=('source ~/.fzf.zsh')
-
-alias fenv='env | fzf'
 
 source ~/.config/lf_icons.zsh
+
+# go
+export PATH="$HOME/go/bin:$PATH"
+
+source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/vi_mode.zsh
+source ~/.config/zsh/widgets.zsh
+source ~/.config/zsh/lf.zsh
+
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
+bindkey -r "^J"
+
+source ~/.fzf.zsh
+
+run_pipe() {
+    execute_pipeline $(get_pipelines | fzf --reverse --height 30%)
+}
+
+kubeinit() {
+    zsh-defer export KUBECONFIG=$(atlas kitt context:create --pid=$$)
+}
+
+# edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
+# zprof
+if [[ -v ZSH_PROFILE ]]; then
+    zprof
+fi
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+zsh-defer source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+
+# Created by `pipx` on 2024-03-18 23:28:31
+export PATH="$PATH:/Users/kklimczyk/.local/bin"
+
+. "$HOME/.cargo/env"
+export PATH="/opt/atlassian/orbit/bin:$PATH"
+
+export PATH="/Users/kklimczyk/.orbit/bin:$PATH"
+
+
+export GPG_TTY=$(tty)
+eval "$(rbenv init - zsh)"
+
+
+source ~/.afm-git-configrc

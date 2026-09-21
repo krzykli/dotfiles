@@ -1,0 +1,22 @@
+
+2023/07/06 (16:27:19) | ===> btop++ v.1.2.13
+2023/07/06 (16:27:19) | ERROR: Exception in runner thread -> Proc:: -> basic_string::replace: __pos (which is 18446744073709551608) > this->size() (which is 0)
+
+2024/02/08 (16:29:29) | ===> btop++ v.1.2.13
+2024/02/08 (16:29:29) | ERROR: Exception in runner thread -> Proc:: -> basic_string::replace: __pos (which is 18446744073709551608) > this->size() (which is 0)
+
+2024/02/27 (16:25:00) | ===> btop++ v.1.2.13
+2024/02/27 (16:25:01) | ERROR: Stall in Runner thread, restarting!
+
+2026/04/05 (05:28:09) | ===> btop++ v.1.4.0
+2026/04/05 (05:28:09) | ERROR: failed getting network interfaces
+2026/04/05 (17:07:59) | ERROR: Stall in Runner thread, restarting!
+2026/04/05 (17:08:19) | ERROR: Stall in Runner thread, restarting!
+2026/04/05 (17:23:22) | ERROR: Stall in Runner thread, restarting!
+2026/04/05 (17:24:06) | ERROR: Stall in Runner thread, restarting!
+2026/04/05 (17:24:14) | ERROR: Stall in Runner thread, restarting!
+2026/04/05 (17:24:21) | ERROR: Stall in Runner thread, restarting!
+2026/04/05 (17:24:29) | ERROR: Stall in Runner thread, restarting!
+2026/04/05 (17:24:40) | ERROR: Stall in Runner thread, restarting!
+2026/04/05 (17:24:50) | ERROR: Stall in Runner thread, restarting!
+2026/04/05 (18:08:49) | ERROR: Stall in Runner thread, restarting!
