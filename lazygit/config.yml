@@ -12,3 +12,8 @@ customCommands:
         labelFormat: '{{ .pipe | yellow }}'
     command: execute_pipeline {{index .PromptResponses 0}}
     context: localBranches
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never

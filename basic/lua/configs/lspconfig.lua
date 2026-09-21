@@ -72,7 +72,7 @@ lspconfig.lua_ls.setup {
   },
 }
 
-lspconfig.tsserver.setup {
+lspconfig.yamlls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }
@@ -82,7 +82,11 @@ lspconfig.pyright.setup {
   capabilities = M.capabilities
 }
 
-lspconfig.ruff_lsp.setup {
+lspconfig.ruff.setup {
+  on_attach = M.on_attach,
+}
+
+lspconfig.ts_ls.setup {
   on_attach = M.on_attach,
 }
 

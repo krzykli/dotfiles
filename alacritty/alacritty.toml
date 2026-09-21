@@ -66,11 +66,13 @@ action = "DecreaseFontSize"
 key = "Minus"
 mods = "Control"
 
-[shell]
+[terminal.shell]
 args = ["-l", "-c", "tmux attach || tmux"]
 program = "/bin/zsh"
 
 [window.padding]
 x = 2
 y = 2
+
+[terminal]
 

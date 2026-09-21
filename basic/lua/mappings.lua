@@ -35,13 +35,14 @@ local normal_maps = {
     ["<leader>la"] = { '<cmd>lua require("core.utils").open_lua_buf()<CR>', "opens a lua buffer in a horizontal split"},
     ["<leader>lr"] = { '<cmd>lua require("core.utils").exec_lua_buf()<CR>', "executes lua buffer"},
     ["<leader>jq"] = { '<cmd>%!jq .<CR><cmd>set syntax=json<CR>', "formats file with jq"},
-    ["q]"] = {'<cmd>cnext<CR>', "next quicklist item"},
-    ["q["] = {'<cmd>cprevious<CR>', "previous quicklist item"},
+    ["∆"] = {'<cmd>cnext<CR>', "next quicklist item"},
+    ["˚"] = {'<cmd>cprevious<CR>', "previous quicklist item"},
+    ["ø"] = {'<cmd>copen<CR>', "open quicklist"},
 
     -- telescope
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
     ["<leader>fs"] = { "<cmd> lua require'telescope'.extensions.project.project{}<CR>", "projects" },
-    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
+    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true hidden=true<CR>", "find all" },
     ["<leader>fc"] = { "<cmd> Telescope commands <CR>", "all commands" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },

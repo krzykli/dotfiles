@@ -6,7 +6,7 @@ end
 
 local options = {
   ensure_installed = {
-    "lua", "java", "python", "rust", "html", "typescript", "query"
+    "lua", "java", "python", "rust", "html", "typescript", "query", "go"
   },
 
   highlight = {
@@ -38,3 +38,23 @@ local options = {
 }
 
 treesitter.setup(options)
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+
+vim.filetype.add({
+  filename = {
+    ['CODEOWNERS'] = 'codeowners'
+  },
+})
+
+parser_config.codeowners = {
+  install_info = {
+    url = "~/workspace/tree-sitter-codeowners",
+    files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    -- optional entries:
+    branch = "main",
+    generate_requires_npm = false,
+    requires_generate_from_grammar = false,
+  },
+  filetype = "codeowners",
+}

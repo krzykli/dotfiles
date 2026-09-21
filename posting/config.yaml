@@ -1,0 +1,7 @@
+
+keymap:
+  send-request: ctrl+g
+  quit: ctrl+q,ctrl+c
+  toggle-collection: ctrl+r
+  focus-url: ctrl+b
+theme: example

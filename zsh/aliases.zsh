@@ -20,9 +20,9 @@ alias lg=lazygit
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
-alias ls="exa"
-alias ll="exa -l"
-alias mvn=mvnd
+alias y=yazi
+alias lf=yazi
+alias p=posting
 
 atlas_clone() {
     git clone git@bitbucket.org:atlassian/$1.git

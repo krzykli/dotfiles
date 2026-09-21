@@ -9,6 +9,11 @@ end
 vim.g.theme_switcher_loaded = true
 
 local options = {
+	pickers = {
+		find_files = {
+			find_command = { "rg", "--files", "--hidden" },
+		},
+	},
   defaults = {
     vimgrep_arguments = {
       "rg",

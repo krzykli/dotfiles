@@ -17,8 +17,8 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 export NVIM_APPNAME="basic"
+export PATH="Users/kklimczyk/.local/bin:$PATH"
 export PATH="$HOME/.local/share/basic/mason/bin:$PATH"
-export PATH=/Users/kklimczyk/.asdf/installs/poetry/1.6.1/bin:$PATH
 #[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 init_pyenv () {
@@ -26,8 +26,8 @@ init_pyenv () {
     if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 }
 
-init_nvm () {
-    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+inv () {
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 }
 
 logs() {
@@ -52,6 +52,59 @@ token() {
     echo "🎉 $service $env slauth token copied to clipboard"
   fi
 }
+
+function scan_docker_image() {
+  local docker_image=""
+  local output_json_file=""
+
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -d|--docker-image)
+        docker_image="$2"
+        shift 2
+        ;;
+      -o|--output-file)
+        output_json_file="$2"
+        shift 2
+        ;;
+      *)
+        echo "Unknown option: $1"
+        echo "Usage: scan_docker_image -d <docker_image> -o <output_json_file>"
+        return 1
+        ;;
+    esac
+  done
+
+  if [[ -z $docker_image || -z $output_json_file ]]; then
+    echo "Both --docker-image and --output-file are required."
+    echo "Usage: scan_docker_image -d <docker_image> -o <output_json_file>"
+    return 1
+  fi
+
+  docker run \
+    -e AUTH_TOKEN=$(atlas slauth token -e staging --aud=sec-cs-image-scanner) \
+    -i docker.atl-paas.net/asecurityteam/cs-image-scanner-client:v0.1.2 \
+    "$docker_image" > "$output_json_file"
+}
+
+function search_artifactory() {
+  local DIGEST="$1"
+  if [[ -z "$USERNAME" || -z "$APASS" ]]; then
+    echo "Error: AUSERNAME and APASS environment variables must be set."
+    return 1
+  fi
+  curl -u"${USERNAME}":"${APASS}" \
+    -X POST \
+    -H 'Content-Type: text/plain; charset=utf-8' \
+    https://packages.atlassian.com/artifactory/api/search/aql \
+    -d @- << __EOF > "results.sha256__${DIGEST}.json"
+items.find({
+  "sha256":"${DIGEST}",
+  "repo" : "atlassian-docker-immutable-local"
+}).include("repo","path","name")
+__EOF
+}
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -111,6 +164,9 @@ run_pipe() {
     execute_pipeline $(get_pipelines | fzf --reverse --height 30%)
 }
 
+kubeinit() {
+    zsh-defer export KUBECONFIG=$(atlas kitt context:create --pid=$$)
+}
 
 # edit command line
 autoload -U edit-command-line
@@ -128,3 +184,18 @@ fi
 export SDKMAN_DIR="$HOME/.sdkman"
 zsh-defer source "$HOME/.sdkman/bin/sdkman-init.sh"
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+
+# Created by `pipx` on 2024-03-18 23:28:31
+export PATH="$PATH:/Users/kklimczyk/.local/bin"
+
+. "$HOME/.cargo/env"
+export PATH="/opt/atlassian/orbit/bin:$PATH"
+
+export PATH="/Users/kklimczyk/.orbit/bin:$PATH"
+
+
+export GPG_TTY=$(tty)
+eval "$(rbenv init - zsh)"
+
+
+source ~/.afm-git-configrc
